@@ -57,4 +57,17 @@ class NetworkService: NetworkServiceProtocol{
         }
     }
     
+    func deleteData(path: String) {
+        #warning("handle this function later when customer have orders")
+            AF.request("\(baseUrl)\(path).json", method: .delete, headers: headers).response { response in
+                switch response.result{
+                case .success(let data):
+                    print(data!)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+            }
+        }
+    
 }
