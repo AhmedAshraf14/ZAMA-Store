@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		318545A32C876F0B0067C820 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */; };
+		318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */; };
 		33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */; };
 		E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC42C8657CA006B83D1 /* AppDelegate.swift */; };
 		E255DFC72C8657CA006B83D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
+		318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				E255E04B2C865A9F006B83D1 /* BrandView.swift */,
+				318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */,
+				318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */,
 			);
 			path = BrandView;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				E255DFCE2C8657CB006B83D1 /* Assets.xcassets in Resources */,
 				E255DFCC2C8657CA006B83D1 /* Main.storyboard in Resources */,
 				E255E0072C8659DB006B83D1 /* Main2.storyboard in Resources */,
+				318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */,
 				E255E0052C8659DB006B83D1 /* Main3.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,6 +649,7 @@
 				E255E0592C865A9F006B83D1 /* LoginView.swift in Sources */,
 				E255E0602C865A9F006B83D1 /* SignUpViewModel.swift in Sources */,
 				E255E0582C865A9F006B83D1 /* LoginModel.swift in Sources */,
+				318545A32C876F0B0067C820 /* BrandCollectionViewCell.swift in Sources */,
 				E255E05E2C865A9F006B83D1 /* CategoriesModel.swift in Sources */,
 				E255E0572C865A9F006B83D1 /* LoginViewModel.swift in Sources */,
 				E255E05D2C865A9F006B83D1 /* CategoriesView.swift in Sources */,
