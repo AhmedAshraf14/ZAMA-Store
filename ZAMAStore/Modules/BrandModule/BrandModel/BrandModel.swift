@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UIKit
+struct Brand {
+    let brandName : String
+    let brandImage : String
+}

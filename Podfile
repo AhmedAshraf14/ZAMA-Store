@@ -9,5 +9,5 @@ target 'ZAMAStore' do
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'SDWebImage', '~> 5.0'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 5.8.1'
 end
