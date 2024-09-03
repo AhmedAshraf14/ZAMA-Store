@@ -10,6 +10,8 @@
 		318545A32C876F0B0067C820 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */; };
 		318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */; };
 		33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */; };
+		3C20FE872C8767760049328A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE862C8767760049328A /* Address.swift */; };
+		3C20FE892C87690A0049328A /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE882C87690A0049328A /* Customer.swift */; };
 		E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC42C8657CA006B83D1 /* AppDelegate.swift */; };
 		E255DFC72C8657CA006B83D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */; };
 		E255DFCC2C8657CA006B83D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E255DFCA2C8657CA006B83D1 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
+		3C20FE862C8767760049328A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		3C20FE882C87690A0049328A /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C20FE852C8767640049328A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3C20FE862C8767760049328A /* Address.swift */,
+				3C20FE882C87690A0049328A /* Customer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		62A24207AD307F69032F5084 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +154,7 @@
 		E255DFC32C8657CA006B83D1 /* ZAMAStore */ = {
 			isa = PBXGroup;
 			children = (
+				3C20FE852C8767640049328A /* Models */,
 				E255E0082C8659FE006B83D1 /* SupportFiles */,
 				E255E0012C8659CC006B83D1 /* View */,
 				E255E00B2C865A7C006B83D1 /* Services */,
@@ -628,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E255E0552C865A9F006B83D1 /* SettingModel.swift in Sources */,
+				3C20FE892C87690A0049328A /* Customer.swift in Sources */,
 				E255E0102C865A7C006B83D1 /* NetworkService.swift in Sources */,
 				E255E06A2C865A9F006B83D1 /* BrandView.swift in Sources */,
 				E255E06B2C865A9F006B83D1 /* BrandModel.swift in Sources */,
@@ -639,6 +654,7 @@
 				E255E0512C865A9F006B83D1 /* extTableView.swift in Sources */,
 				E255E0542C865A9F006B83D1 /* SettingView.swift in Sources */,
 				E255E00F2C865A7C006B83D1 /* NetworkManager.swift in Sources */,
+				3C20FE872C8767760049328A /* Address.swift in Sources */,
 				E255E06C2C865A9F006B83D1 /* DataDecoder.swift in Sources */,
 				E255E06D2C865A9F006B83D1 /* DataEncoder.swift in Sources */,
 				E255E05B2C865A9F006B83D1 /* ProfileView.swift in Sources */,
