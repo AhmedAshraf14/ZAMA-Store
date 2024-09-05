@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscountCell" id="gTV-IL-0wX" customClass="DiscountCell" customModule="ZAMAStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discount4" translatesAutoresizingMaskIntoConstraints="NO" id="zRV-ZA-WyP">
+                        <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SALE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTI-PL-1II">
+                        <rect key="frame" x="251" y="10" width="30" height="13.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPTO" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWB-iN-yQL">
+                        <rect key="frame" x="251.00000000000003" y="25.333333333333329" width="52.333333333333343" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awu-qf-iFF">
+                        <rect key="frame" x="250.99999999999997" y="51.333333333333343" width="37.666666666666657" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <color key="textColor" name="mintGreen"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm1-Ap-kuR">
+                        <rect key="frame" x="291.66666666666669" y="52.333333333333336" width="38.333333333333314" height="25.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Code Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7E-ae-yRL">
+                        <rect key="frame" x="128" y="152" width="125" height="29"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zRV-ZA-WyP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3b3-y8-ZYW"/>
+                <constraint firstItem="JTI-PL-1II" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="4gD-CD-Sk7"/>
+                <constraint firstItem="QWB-iN-yQL" firstAttribute="leading" secondItem="JTI-PL-1II" secondAttribute="leading" id="DzT-ge-T45"/>
+                <constraint firstItem="Awu-qf-iFF" firstAttribute="leading" secondItem="QWB-iN-yQL" secondAttribute="leading" id="L6P-80-iqU"/>
+                <constraint firstItem="QWB-iN-yQL" firstAttribute="top" secondItem="JTI-PL-1II" secondAttribute="bottom" constant="2" id="Yuc-MM-d2F"/>
+                <constraint firstItem="Gm1-Ap-kuR" firstAttribute="top" secondItem="QWB-iN-yQL" secondAttribute="bottom" constant="3" id="ZmG-qB-WDf"/>
+                <constraint firstItem="zRV-ZA-WyP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f9k-ay-JgZ"/>
+                <constraint firstAttribute="bottom" secondItem="zRV-ZA-WyP" secondAttribute="bottom" id="fSx-dP-0gY"/>
+                <constraint firstAttribute="trailing" secondItem="JTI-PL-1II" secondAttribute="trailing" constant="100" id="frN-ZO-VS0"/>
+                <constraint firstAttribute="trailing" secondItem="zRV-ZA-WyP" secondAttribute="trailing" id="sld-Eo-E4Z"/>
+                <constraint firstItem="Gm1-Ap-kuR" firstAttribute="leading" secondItem="Awu-qf-iFF" secondAttribute="trailing" constant="3" id="tHt-Ky-ygw"/>
+                <constraint firstItem="Awu-qf-iFF" firstAttribute="top" secondItem="QWB-iN-yQL" secondAttribute="bottom" constant="2" id="yLW-ej-u8I"/>
+            </constraints>
+            <size key="customSize" width="381" height="208"/>
+            <connections>
+                <outlet property="copiedCode" destination="z7E-ae-yRL" id="M9r-Yl-wYX"/>
+                <outlet property="imgBC" destination="zRV-ZA-WyP" id="ija-8I-s2b"/>
+                <outlet property="lblValue" destination="Awu-qf-iFF" id="6bG-5U-h4S"/>
+            </connections>
+            <point key="canvasLocation" x="119.84732824427481" y="76.056338028169023"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="discount4" width="563" height="317"/>
+        <namedColor name="mintGreen">
+            <color red="0.40200001001358032" green="0.76700001955032349" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

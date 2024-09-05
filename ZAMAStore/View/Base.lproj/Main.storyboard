@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlC-Tv-3W3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlC-Tv-3W3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -74,9 +74,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-2t-FYb">
-                                <rect key="frame" x="0.0" y="323" width="394" height="490"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eUP-2t-FYb">
+                                <rect key="frame" x="0.0" y="323" width="414" height="490"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OlS-aE-7VF">
                                     <size key="itemSize" width="128" height="128"/>
@@ -86,11 +85,10 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UgI-iy-s38">
-                                <rect key="frame" x="0.0" y="55" width="394" height="169"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UgI-iy-s38">
+                                <rect key="frame" x="0.0" y="60" width="414" height="231.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VpQ-VM-gnE">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VpQ-VM-gnE">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -98,7 +96,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AAi-fN-O7V">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="52" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="maQ-WN-2ye">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -107,15 +105,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="J9J-CA-IcU">
+                                <rect key="frame" x="148.5" y="265.5" width="117" height="26"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3rl-gq-Ht6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UgI-iy-s38" firstAttribute="height" secondItem="b5W-iA-0gL" secondAttribute="height" multiplier="0.258616" id="0uh-W1-eoj"/>
+                            <constraint firstItem="3rl-gq-Ht6" firstAttribute="trailing" secondItem="UgI-iy-s38" secondAttribute="trailing" id="5UY-N8-YZt"/>
+                            <constraint firstItem="J9J-CA-IcU" firstAttribute="bottom" secondItem="UgI-iy-s38" secondAttribute="bottom" id="9oR-PL-a3t"/>
+                            <constraint firstItem="UgI-iy-s38" firstAttribute="top" secondItem="b5W-iA-0gL" secondAttribute="top" constant="60" id="SrS-oP-Qzc"/>
+                            <constraint firstItem="J9J-CA-IcU" firstAttribute="centerX" secondItem="b5W-iA-0gL" secondAttribute="centerX" id="lHc-GF-dlL"/>
+                            <constraint firstItem="eUP-2t-FYb" firstAttribute="bottom" secondItem="3rl-gq-Ht6" secondAttribute="bottom" id="m2c-B7-GBb"/>
+                            <constraint firstItem="eUP-2t-FYb" firstAttribute="height" secondItem="b5W-iA-0gL" secondAttribute="height" multiplier="0.546875" id="tn6-1T-mpH"/>
+                            <constraint firstItem="eUP-2t-FYb" firstAttribute="leading" secondItem="3rl-gq-Ht6" secondAttribute="leading" id="x0J-Fu-vaN"/>
+                            <constraint firstItem="eUP-2t-FYb" firstAttribute="width" secondItem="b5W-iA-0gL" secondAttribute="width" id="xEV-DE-ZdZ"/>
+                            <constraint firstItem="UgI-iy-s38" firstAttribute="leading" secondItem="3rl-gq-Ht6" secondAttribute="leading" id="yHI-sa-XFg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="9Wa-9n-yfp"/>
                     <navigationItem key="navigationItem" id="GbJ-Fx-iL3"/>
                     <connections>
                         <outlet property="discountCollectionView" destination="UgI-iy-s38" id="ydk-UK-9qx"/>
                         <outlet property="homeCollectionView" destination="eUP-2t-FYb" id="MVt-fv-RVY"/>
+                        <outlet property="pageControl" destination="J9J-CA-IcU" id="PDE-z4-sM0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzs-Uy-T2E" sceneMemberID="firstResponder"/>
