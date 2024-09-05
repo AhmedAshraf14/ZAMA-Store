@@ -13,7 +13,7 @@
         <!--Item-->
         <scene sceneID="gkk-ct-q2a">
             <objects>
-                <viewController id="SKv-tn-cHP" customClass="CategoriesView" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoriesView" id="SKv-tn-cHP" customClass="CategoriesViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ABb-z4-vHy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
