@@ -9,34 +9,83 @@ import UIKit
 import SDWebImage
 class BrandView: UIViewController {
   
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var discountCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     let viewModel = BrandsViewModel()
+    var scrollTimer:Timer?
+    var count:Int=0
     override func viewDidLoad() {
        
         super.viewDidLoad()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
+        discountCollectionView.delegate = self
+        discountCollectionView.dataSource = self
         setupFlowLayout()
+        setupFlowLayout1()
+        viewModel.getData()
+        viewModel.ReloadCV={
+            self.discountCollectionView.reloadData()
+        }
+        scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
         homeCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
+        let nib2 = UINib(nibName: "DiscountCell", bundle: nil)
+        discountCollectionView.register(nib2, forCellWithReuseIdentifier: "DiscountCell")
+        
+        
+        
+       
+    }
+    func checkCount(){
+        if(count>=discountCollectionView.numberOfItems(inSection: 0)){
+            count = 0
+        }
+    }
+    @objc
+    func discountSlider(){
+        checkCount()
+        discountCollectionView.scrollToItem(at: IndexPath(item: count, section: 0), at: .centeredHorizontally, animated: true)
+        pageControl.currentPage = count
+        count+=1
     }
 }
 
 
-extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource{
+extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.brandsArray.count
+        if(collectionView == discountCollectionView){
+            pageControl.numberOfPages = viewModel.DiscountArray.count
+            return viewModel.DiscountArray.count
+        }
+        return viewModel.brandsArray.count
     }
+    // 10
+    // 2
+    //indexPath.row % PriceRule.count
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if(collectionView == discountCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscountCell", for: indexPath) as! DiscountCell
+            cell.lblValue.text = viewModel.DiscountArray[indexPath.row].code
+            cell.layer.cornerRadius = 20
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BrandCollectionViewCell
         cell.brandImage.image = UIImage(named: viewModel.brandsArray[indexPath.row].brandImage)
         cell.brandName.text = viewModel.brandsArray[indexPath.row].brandName
         cell.layer.cornerRadius = 20
         return cell
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if(collectionView == discountCollectionView){
+            return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        }
         return UIEdgeInsets(top: 5, left: 10, bottom: 10, right: 10)
     }
     func setupFlowLayout(){
@@ -46,6 +95,29 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource{
         homeCollectionView.collectionViewLayout = flowLayout
         
     }
+    func setupFlowLayout1(){
+        let flowLayout = UICollectionViewFlowLayout()
+        let itemWidth = (view.bounds.width - 30) / 2
+        flowLayout.itemSize = CGSize(width: view.bounds.width-20, height: view.bounds.height*0.258616)
+        flowLayout.scrollDirection = .horizontal
+        discountCollectionView.collectionViewLayout = flowLayout
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(collectionView == discountCollectionView){
+            
+            let cell = collectionView.cellForItem(at: indexPath) as! DiscountCell
+            cell.showLbl()
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = viewModel.DiscountArray[indexPath.row].code
+            DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                cell.showLbl()
+            }
+        }
+    }
     
     
 }
+
+
+

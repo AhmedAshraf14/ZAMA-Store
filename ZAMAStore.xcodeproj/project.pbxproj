@@ -12,6 +12,11 @@
 		33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */; };
 		3C20FE872C8767760049328A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE862C8767760049328A /* Address.swift */; };
 		3C20FE892C87690A0049328A /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE882C87690A0049328A /* Customer.swift */; };
+		3C20FE9C2C87EB020049328A /* PriceRuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE9B2C87EB020049328A /* PriceRuleModel.swift */; };
+		3C20FE9F2C87EDF70049328A /* DiscountCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE9E2C87EDF70049328A /* DiscountCellViewModel.swift */; };
+		3C20FEA62C87F10B0049328A /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEA42C87F10B0049328A /* DiscountCell.swift */; };
+		3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C20FEA52C87F10B0049328A /* DiscountCell.xib */; };
+		3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEAE2C8946CB0049328A /* DiscountModel.swift */; };
 		E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC42C8657CA006B83D1 /* AppDelegate.swift */; };
 		E255DFC72C8657CA006B83D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */; };
 		E255DFCC2C8657CA006B83D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E255DFCA2C8657CA006B83D1 /* Main.storyboard */; };
@@ -58,6 +63,11 @@
 		318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		3C20FE862C8767760049328A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		3C20FE882C87690A0049328A /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		3C20FE9B2C87EB020049328A /* PriceRuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRuleModel.swift; sourceTree = "<group>"; };
+		3C20FE9E2C87EDF70049328A /* DiscountCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCellViewModel.swift; sourceTree = "<group>"; };
+		3C20FEA42C87F10B0049328A /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
+		3C20FEA52C87F10B0049328A /* DiscountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCell.xib; sourceTree = "<group>"; };
+		3C20FEAE2C8946CB0049328A /* DiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
 		575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +135,58 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3C20FE8A2C87A0FF0049328A /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		3C20FE8D2C87A3070049328A /* BrandCell */ = {
+			isa = PBXGroup;
+			children = (
+				318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */,
+				318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */,
+			);
+			path = BrandCell;
+			sourceTree = "<group>";
+		};
+		3C20FE8E2C87A3300049328A /* DiscountCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C20FE9D2C87EDDF0049328A /* ViewModel */,
+				3C20FE9A2C87EAE80049328A /* Model */,
+				3C20FE992C87EADA0049328A /* View */,
+			);
+			path = DiscountCell;
+			sourceTree = "<group>";
+		};
+		3C20FE992C87EADA0049328A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C20FEA42C87F10B0049328A /* DiscountCell.swift */,
+				3C20FEA52C87F10B0049328A /* DiscountCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C20FE9A2C87EAE80049328A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C20FE9B2C87EB020049328A /* PriceRuleModel.swift */,
+				3C20FEAE2C8946CB0049328A /* DiscountModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C20FE9D2C87EDDF0049328A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C20FE9E2C87EDF70049328A /* DiscountCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		62A24207AD307F69032F5084 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,13 +216,13 @@
 		E255DFC32C8657CA006B83D1 /* ZAMAStore */ = {
 			isa = PBXGroup;
 			children = (
-				3C20FE852C8767640049328A /* Models */,
-				E255E0082C8659FE006B83D1 /* SupportFiles */,
-				E255E0012C8659CC006B83D1 /* View */,
-				E255E00B2C865A7C006B83D1 /* Services */,
-				E255E0112C865A9F006B83D1 /* Extensions */,
-				E255E0152C865A9F006B83D1 /* Modules */,
 				E255E04E2C865A9F006B83D1 /* Utitlites */,
+				E255E0112C865A9F006B83D1 /* Extensions */,
+				E255E00B2C865A7C006B83D1 /* Services */,
+				E255E0082C8659FE006B83D1 /* SupportFiles */,
+				3C20FE852C8767640049328A /* Models */,
+				E255E0012C8659CC006B83D1 /* View */,
+				E255E0152C865A9F006B83D1 /* Modules */,
 				E255DFD22C8657CC006B83D1 /* Info.plist */,
 			);
 			path = ZAMAStore;
@@ -181,6 +243,7 @@
 		E255E0082C8659FE006B83D1 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				3C20FE8A2C87A0FF0049328A /* NavigationBar */,
 				E255DFCD2C8657CB006B83D1 /* Assets.xcassets */,
 				E255DFC42C8657CA006B83D1 /* AppDelegate.swift */,
 				E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */,
@@ -490,8 +553,8 @@
 			isa = PBXGroup;
 			children = (
 				E255E04B2C865A9F006B83D1 /* BrandView.swift */,
-				318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */,
-				318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */,
+				3C20FE8E2C87A3300049328A /* DiscountCell */,
+				3C20FE8D2C87A3070049328A /* BrandCell */,
 			);
 			path = BrandView;
 			sourceTree = "<group>";
@@ -584,6 +647,7 @@
 			files = (
 				E255E0062C8659DB006B83D1 /* Main1.storyboard in Resources */,
 				E255DFD12C8657CC006B83D1 /* LaunchScreen.storyboard in Resources */,
+				3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */,
 				E255DFCE2C8657CB006B83D1 /* Assets.xcassets in Resources */,
 				E255DFCC2C8657CA006B83D1 /* Main.storyboard in Resources */,
 				E255E0072C8659DB006B83D1 /* Main2.storyboard in Resources */,
@@ -641,18 +705,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */,
 				E255E0552C865A9F006B83D1 /* SettingModel.swift in Sources */,
 				3C20FE892C87690A0049328A /* Customer.swift in Sources */,
 				E255E0102C865A7C006B83D1 /* NetworkService.swift in Sources */,
 				E255E06A2C865A9F006B83D1 /* BrandView.swift in Sources */,
 				E255E06B2C865A9F006B83D1 /* BrandModel.swift in Sources */,
 				E255E05F2C865A9F006B83D1 /* CategoriesViewModel.swift in Sources */,
+				3C20FE9C2C87EB020049328A /* PriceRuleModel.swift in Sources */,
 				E255E0682C865A9F006B83D1 /* SearchView.swift in Sources */,
 				E255E05A2C865A9F006B83D1 /* ProfileViewmodel.swift in Sources */,
 				E255E0522C865A9F006B83D1 /* UIColor.swift in Sources */,
 				E255E0622C865A9F006B83D1 /* SignUpView.swift in Sources */,
 				E255E0512C865A9F006B83D1 /* extTableView.swift in Sources */,
 				E255E0542C865A9F006B83D1 /* SettingView.swift in Sources */,
+				3C20FE9F2C87EDF70049328A /* DiscountCellViewModel.swift in Sources */,
 				E255E00F2C865A7C006B83D1 /* NetworkManager.swift in Sources */,
 				3C20FE872C8767760049328A /* Address.swift in Sources */,
 				E255E06C2C865A9F006B83D1 /* DataDecoder.swift in Sources */,
@@ -676,6 +743,7 @@
 				E255E0652C865A9F006B83D1 /* ProductDetailsView.swift in Sources */,
 				E255E0662C865A9F006B83D1 /* SearchViewModel.swift in Sources */,
 				E255DFC72C8657CA006B83D1 /* SceneDelegate.swift in Sources */,
+				3C20FEA62C87F10B0049328A /* DiscountCell.swift in Sources */,
 				E255E0612C865A9F006B83D1 /* SignupModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
