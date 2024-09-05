@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyClo07QWuu66y6U_FfzGPvGS5IBwVZ02JA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>7433419717</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>zama.ZAMAStore</string>
+	<key>PROJECT_ID</key>
+	<string>zama-app-52c47</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zama-app-52c47.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:7433419717:ios:f0f762853db012637769ac</string>
+</dict>
+</plist>

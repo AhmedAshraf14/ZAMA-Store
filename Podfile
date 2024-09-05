@@ -10,4 +10,5 @@ target 'ZAMAStore' do
   pod 'RxCocoa', '6.5.0'
   pod 'SDWebImage', '~> 5.0'
   pod 'Alamofire', '~> 5.8.1'
+  pod 'FirebaseAuth'
 end
