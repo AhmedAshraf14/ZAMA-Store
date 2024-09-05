@@ -34,6 +34,7 @@ struct Customer: Codable {
     let phone: String?
     let addresses: [Address]?
     let defaultAddress: Address?
+    let password: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -46,8 +47,9 @@ struct Customer: Codable {
         case lastOrderName = "last_order_name"
        // case currency
         case  phone
-             case addresses
+        case addresses
         case defaultAddress = "default_address"
+        case password
     }
 }
 

@@ -17,6 +17,8 @@
 		3C20FEA62C87F10B0049328A /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEA42C87F10B0049328A /* DiscountCell.swift */; };
 		3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C20FEA52C87F10B0049328A /* DiscountCell.xib */; };
 		3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEAE2C8946CB0049328A /* DiscountModel.swift */; };
+		E23C28252C87F12E002F6884 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C28242C87F12E002F6884 /* ValidationError.swift */; };
+		E24B62582C886E5D0099E503 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */; };
 		E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC42C8657CA006B83D1 /* AppDelegate.swift */; };
 		E255DFC72C8657CA006B83D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */; };
 		E255DFCC2C8657CA006B83D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E255DFCA2C8657CA006B83D1 /* Main.storyboard */; };
@@ -56,6 +58,7 @@
 		E255E06B2C865A9F006B83D1 /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E04D2C865A9F006B83D1 /* BrandModel.swift */; };
 		E255E06C2C865A9F006B83D1 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E04F2C865A9F006B83D1 /* DataDecoder.swift */; };
 		E255E06D2C865A9F006B83D1 /* DataEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E0502C865A9F006B83D1 /* DataEncoder.swift */; };
+		E278CE472C88E15F0004F9A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +74,8 @@
 		575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
+		E23C28242C87F12E002F6884 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		E255DFC12C8657CA006B83D1 /* ZAMAStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZAMAStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E255DFC42C8657CA006B83D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 		E255E04D2C865A9F006B83D1 /* BrandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
 		E255E04F2C865A9F006B83D1 /* DataDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 		E255E0502C865A9F006B83D1 /* DataEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEncoder.swift; sourceTree = "<group>"; };
+		E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +230,7 @@
 				E255E0012C8659CC006B83D1 /* View */,
 				E255E0152C865A9F006B83D1 /* Modules */,
 				E255DFD22C8657CC006B83D1 /* Info.plist */,
+				E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */,
 			);
 			path = ZAMAStore;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				E255E0122C865A9F006B83D1 /* extTableView.swift */,
 				E255E0132C865A9F006B83D1 /* UIColor.swift */,
 				E255E0142C865A9F006B83D1 /* Section.swift */,
+				E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -572,6 +580,7 @@
 			children = (
 				E255E04F2C865A9F006B83D1 /* DataDecoder.swift */,
 				E255E0502C865A9F006B83D1 /* DataEncoder.swift */,
+				E23C28242C87F12E002F6884 /* ValidationError.swift */,
 			);
 			path = Utitlites;
 			sourceTree = "<group>";
@@ -646,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E255E0062C8659DB006B83D1 /* Main1.storyboard in Resources */,
+				E278CE472C88E15F0004F9A5 /* GoogleService-Info.plist in Resources */,
 				E255DFD12C8657CC006B83D1 /* LaunchScreen.storyboard in Resources */,
 				3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */,
 				E255DFCE2C8657CB006B83D1 /* Assets.xcassets in Resources */,
@@ -706,6 +716,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */,
+				E24B62582C886E5D0099E503 /* UIViewController+Ext.swift in Sources */,
 				E255E0552C865A9F006B83D1 /* SettingModel.swift in Sources */,
 				3C20FE892C87690A0049328A /* Customer.swift in Sources */,
 				E255E0102C865A7C006B83D1 /* NetworkService.swift in Sources */,
@@ -714,6 +725,7 @@
 				E255E05F2C865A9F006B83D1 /* CategoriesViewModel.swift in Sources */,
 				3C20FE9C2C87EB020049328A /* PriceRuleModel.swift in Sources */,
 				E255E0682C865A9F006B83D1 /* SearchView.swift in Sources */,
+				E23C28252C87F12E002F6884 /* ValidationError.swift in Sources */,
 				E255E05A2C865A9F006B83D1 /* ProfileViewmodel.swift in Sources */,
 				E255E0522C865A9F006B83D1 /* UIColor.swift in Sources */,
 				E255E0622C865A9F006B83D1 /* SignUpView.swift in Sources */,
