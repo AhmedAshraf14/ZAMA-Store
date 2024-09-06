@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--categories-->
         <scene sceneID="gkk-ct-q2a">
             <objects>
                 <viewController storyboardIdentifier="CategoriesView" id="SKv-tn-cHP" customClass="CategoriesViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <viewLayoutGuide key="safeArea" id="rNI-k3-adh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="K4g-Jf-L2q"/>
+                    <tabBarItem key="tabBarItem" title="categories" selectedImage="bag" catalog="system" id="K4g-Jf-L2q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86U-Ch-QOG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="1551.9083969465648" y="-368.3098591549296"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="CO2-XF-5j7">
             <objects>
                 <viewController storyboardIdentifier="BrandView" id="JZx-g2-tjn" customClass="BrandView" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                             <constraint firstItem="UgI-iy-s38" firstAttribute="leading" secondItem="3rl-gq-Ht6" secondAttribute="leading" id="yHI-sa-XFg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="9Wa-9n-yfp"/>
+                    <tabBarItem key="tabBarItem" title="Home" selectedImage="house" catalog="system" id="9Wa-9n-yfp"/>
                     <navigationItem key="navigationItem" id="GbJ-Fx-iL3"/>
                     <connections>
                         <outlet property="discountCollectionView" destination="UgI-iy-s38" id="ydk-UK-9qx"/>
@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="3382.608695652174" y="-921.42857142857133"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="KSb-g0-lNz">
             <objects>
                 <viewController id="0Ml-5f-Q1u" customClass="ProfileView" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,7 +146,7 @@
                         <viewLayoutGuide key="safeArea" id="yn6-zz-W6C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="awp-mj-6Uk"/>
+                    <tabBarItem key="tabBarItem" title="Account" selectedImage="person" catalog="system" id="awp-mj-6Uk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJS-5H-zQM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,6 +154,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
