@@ -6,3 +6,10 @@
 //
 
 import Foundation
+class ProductCellViewModel{
+    let product:ProductModel
+    
+    init(product: ProductModel) {
+        self.product = product
+    }
+}
