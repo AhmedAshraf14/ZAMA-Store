@@ -61,9 +61,6 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         }
         return viewModel.brandsArray.count
     }
-    // 10
-    // 2
-    //indexPath.row % PriceRule.count
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
