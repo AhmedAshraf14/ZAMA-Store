@@ -30,12 +30,12 @@ class LoginView: UIViewController {
             self.presentAlert(title: "SignIn Error", message: error, buttonTitle: "OK")
         }
         viewModel.navigateForward = {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let homeVC = storyboard.instantiateViewController(withIdentifier: "BrandView") as? BrandView else {
-                print("ViewController not found")
-                return
-            }
-            self.navigationController?.pushViewController(homeVC, animated: true)
+            
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateInitialViewController()
+            initialViewController?.modalPresentationStyle = .fullScreen
+            self.present(initialViewController!, animated: true, completion: nil)
         }
 
     }
