@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
             let window = UIWindow(windowScene: windowScene)
-            let storyboard = UIStoryboard(name: "Main3", bundle: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateInitialViewController()
             window.rootViewController = initialViewController
             self.window = window

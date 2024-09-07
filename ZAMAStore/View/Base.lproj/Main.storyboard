@@ -18,14 +18,79 @@
                     <view key="view" contentMode="scaleToFill" id="ABb-z4-vHy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rr9-16-zlO">
+                                <rect key="frame" x="2" y="156" width="410" height="657"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mmf-gZ-GCP">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="szg-uF-CUO">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EGg-v2-XKX">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" translatesAutoresizingMaskIntoConstraints="NO" id="vZz-R1-1cS">
+                                <rect key="frame" x="0.0" y="92" width="414" height="32"/>
+                                <segments>
+                                    <segment title="men"/>
+                                    <segment title="women"/>
+                                    <segment title="kid"/>
+                                    <segment title="All"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" name="mintGreen"/>
+                                <connections>
+                                    <action selector="tagSegmentAct:" destination="SKv-tn-cHP" eventType="valueChanged" id="b8K-od-VMO"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" translatesAutoresizingMaskIntoConstraints="NO" id="jiz-UW-3Nn">
+                                <rect key="frame" x="0.0" y="123" width="414" height="32"/>
+                                <segments>
+                                    <segment title="T-SHIRTS"/>
+                                    <segment title="SHOES"/>
+                                    <segment title="ACCESSORIES"/>
+                                    <segment title="All"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" name="mintGreen"/>
+                                <connections>
+                                    <action selector="tagSegmentAct:" destination="SKv-tn-cHP" eventType="valueChanged" id="Q48-Ny-OnR"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rNI-k3-adh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rNI-k3-adh" firstAttribute="trailing" secondItem="Rr9-16-zlO" secondAttribute="trailing" constant="2" id="0P9-bH-dpe"/>
+                            <constraint firstItem="vZz-R1-1cS" firstAttribute="trailing" secondItem="rNI-k3-adh" secondAttribute="trailing" id="Dpn-gi-j9x"/>
+                            <constraint firstItem="jiz-UW-3Nn" firstAttribute="top" secondItem="vZz-R1-1cS" secondAttribute="bottom" id="F0a-Vw-jqD"/>
+                            <constraint firstItem="Rr9-16-zlO" firstAttribute="bottom" secondItem="rNI-k3-adh" secondAttribute="bottom" id="Hwj-yW-XZz"/>
+                            <constraint firstItem="rNI-k3-adh" firstAttribute="trailing" secondItem="jiz-UW-3Nn" secondAttribute="trailing" id="OuV-Gs-Tfq"/>
+                            <constraint firstItem="Rr9-16-zlO" firstAttribute="top" secondItem="jiz-UW-3Nn" secondAttribute="bottom" constant="2" id="i0U-WX-R9w"/>
+                            <constraint firstItem="vZz-R1-1cS" firstAttribute="leading" secondItem="rNI-k3-adh" secondAttribute="leading" id="lj2-wE-bUb"/>
+                            <constraint firstItem="vZz-R1-1cS" firstAttribute="top" secondItem="rNI-k3-adh" secondAttribute="top" id="ls5-Of-jN5"/>
+                            <constraint firstItem="Rr9-16-zlO" firstAttribute="leading" secondItem="rNI-k3-adh" secondAttribute="leading" constant="2" id="oWx-tt-G8J"/>
+                            <constraint firstItem="jiz-UW-3Nn" firstAttribute="leading" secondItem="ABb-z4-vHy" secondAttribute="leading" id="wIv-ud-wiS"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="categories" selectedImage="bag" catalog="system" id="K4g-Jf-L2q"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="K4g-Jf-L2q"/>
+                    <connections>
+                        <outlet property="categoriesCollectionView" destination="Rr9-16-zlO" id="E8D-0F-pRw"/>
+                        <outlet property="segmentGender" destination="vZz-R1-1cS" id="Zas-Mn-B68"/>
+                        <outlet property="segmentType" destination="jiz-UW-3Nn" id="Ur2-Vf-zKc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86U-Ch-QOG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="-253"/>
+            <point key="canvasLocation" x="3391.304347826087" y="-253.125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ODQ-nT-g4c">
