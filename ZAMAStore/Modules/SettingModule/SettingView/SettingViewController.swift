@@ -47,26 +47,6 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-    
-    /*
-     
-     guard let windowScene = (scene as? UIWindowScene) else { return }
-         let window = UIWindow(windowScene: windowScene)
-     
-         let flag = us.bool(forKey: "flag")
-    // flag.toggle()
-     let storyboard = UIStoryboard(name: flag ? "Main" : "Main3", bundle: nil)
-     if(flag){
-         let email = us.string(forKey: "email")
-         let password = us.string(forKey: "password")
-         
-         isValidAccount(email: email!, password: password!)
-     }
-         let initialViewController = storyboard.instantiateInitialViewController()
-         window.rootViewController = initialViewController
-         self.window = window
-         window.makeKeyAndVisible()
-     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(viewModel.customer?.addresses?.count == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -98,8 +78,9 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
             self.viewModel.putDefaultAddress(index: indexPath.row)
             handler(true)
         }
-        defaultAction.image=UIImage(systemName: "pin.fill")
-        defaultAction.backgroundColor = .lightGrey
+        defaultAction.image=UIImage(systemName: "pin.fill")?.withTintColor(.mintGreen, renderingMode: .alwaysOriginal)
+        //defaultAction.image?.withTintColor(.mintGreen)
+        defaultAction.backgroundColor = .secondaryLightGrey
         return(UISwipeActionsConfiguration(actions: [defaultAction]))
     }
 

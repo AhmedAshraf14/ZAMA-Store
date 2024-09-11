@@ -10,9 +10,9 @@
 		318545A32C876F0B0067C820 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */; };
 		318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */; };
 		33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */; };
-		3C0A10022C91167700478DF0 /* extBarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10012C91167600478DF0 /* extBarButtonItems.swift */; };
 		3C0A10082C91440800478DF0 /* AdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10072C91440800478DF0 /* AdressViewController.swift */; };
 		3C0A100A2C91441A00478DF0 /* AdressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10092C91441A00478DF0 /* AdressViewModel.swift */; };
+		3C0A10132C92482900478DF0 /* extBarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10122C92482900478DF0 /* extBarButtonItems.swift */; };
 		3C20FE872C8767760049328A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE862C8767760049328A /* Address.swift */; };
 		3C20FE892C87690A0049328A /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE882C87690A0049328A /* Customer.swift */; };
 		3C20FE9C2C87EB020049328A /* PriceRuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FE9B2C87EB020049328A /* PriceRuleModel.swift */; };
@@ -82,6 +82,7 @@
 		3C0A10012C91167600478DF0 /* extBarButtonItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extBarButtonItems.swift; sourceTree = "<group>"; };
 		3C0A10072C91440800478DF0 /* AdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressViewController.swift; sourceTree = "<group>"; };
 		3C0A10092C91441A00478DF0 /* AdressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressViewModel.swift; sourceTree = "<group>"; };
+		3C0A10122C92482900478DF0 /* extBarButtonItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extBarButtonItems.swift; sourceTree = "<group>"; };
 		3C20FE862C8767760049328A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		3C20FE882C87690A0049328A /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		3C20FE9B2C87EB020049328A /* PriceRuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRuleModel.swift; sourceTree = "<group>"; };
@@ -196,6 +197,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3C0A100F2C92472200478DF0 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3C0A10012C91167600478DF0 /* extBarButtonItems.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		3C20FE852C8767640049328A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,14 +212,6 @@
 				3C20FE882C87690A0049328A /* Customer.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3C20FE8A2C87A0FF0049328A /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				3C0A10012C91167600478DF0 /* extBarButtonItems.swift */,
-			);
-			path = NavigationBar;
 			sourceTree = "<group>";
 		};
 		3C20FE8D2C87A3070049328A /* BrandCell */ = {
@@ -316,6 +317,7 @@
 				E255DFC22C8657CA006B83D1 /* Products */,
 				E6F4E36C0130558BFC8009AA /* Pods */,
 				62A24207AD307F69032F5084 /* Frameworks */,
+				3C0A100F2C92472200478DF0 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -385,6 +387,7 @@
 		E255E0112C865A9F006B83D1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3C0A10122C92482900478DF0 /* extBarButtonItems.swift */,
 				E255E0122C865A9F006B83D1 /* extTableView.swift */,
 				E255E0132C865A9F006B83D1 /* UIColor.swift */,
 				E255E0142C865A9F006B83D1 /* Section.swift */,
@@ -889,6 +892,7 @@
 				3C20FE892C87690A0049328A /* Customer.swift in Sources */,
 				E255E0102C865A7C006B83D1 /* NetworkService.swift in Sources */,
 				E255E06A2C865A9F006B83D1 /* BrandView.swift in Sources */,
+				3C0A10132C92482900478DF0 /* extBarButtonItems.swift in Sources */,
 				E255E06B2C865A9F006B83D1 /* BrandModel.swift in Sources */,
 				3CA6F0C42C8B401400A9DE40 /* ProductModel.swift in Sources */,
 				E255E05F2C865A9F006B83D1 /* CategoriesViewModel.swift in Sources */,
@@ -926,7 +930,6 @@
 				E255E0692C865A9F006B83D1 /* BrandViewModel.swift in Sources */,
 				3C0A10082C91440800478DF0 /* AdressViewController.swift in Sources */,
 				E255E0562C865A9F006B83D1 /* SettingViewModel.swift in Sources */,
-				3C0A10022C91167700478DF0 /* extBarButtonItems.swift in Sources */,
 				E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */,
 				E255E0642C865A9F006B83D1 /* ProductDetailsModel.swift in Sources */,
 				E255E0652C865A9F006B83D1 /* ProductDetailsView.swift in Sources */,
