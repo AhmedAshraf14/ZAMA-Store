@@ -6,20 +6,21 @@
 //
 
 import Foundation
+
+struct AddressResponse:Codable{
+    var customer_address:Address?
+    init(){
+        customer_address=Address(addressDefault: false)
+    }
+}
 struct Address: Codable {
-    let id, customerID: Int
-    //let firstName, lastName: String
-    //let company: String?
-    let address1: String
-    let address2: String?
-    let city: String
-    //let province: String?
-    let country,phone :String
-   // let zip,
-    let name: String
-   // let provinceCode: String?
-   // let countryCode, countryName: String
-    let addressDefault: Bool
+    var id, customerID: Int?
+    var address1: String?
+    var address2: String?
+    var city: String?
+    var country,phone :String?
+    var name: String?
+    var addressDefault: Bool
 
     enum CodingKeys: String, CodingKey {
         case id

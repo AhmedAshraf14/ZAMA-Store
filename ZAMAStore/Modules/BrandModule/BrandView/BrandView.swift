@@ -28,15 +28,12 @@ class BrandView: UIViewController {
         viewModel.ReloadCV={
             self.discountCollectionView.reloadData()
         }
-        scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
+        //scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
         homeCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         let nib2 = UINib(nibName: "DiscountCell", bundle: nil)
         discountCollectionView.register(nib2, forCellWithReuseIdentifier: "DiscountCell")
-        
-        
-        
-       
+
     }
     func checkCount(){
         if(count>=discountCollectionView.numberOfItems(inSection: 0)){
