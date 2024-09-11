@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--categories-->
+        <!--Item-->
         <scene sceneID="gkk-ct-q2a">
             <objects>
                 <viewController storyboardIdentifier="CategoriesView" id="SKv-tn-cHP" customClass="CategoriesViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,7 +193,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" selectedImage="house" catalog="system" id="9Wa-9n-yfp"/>
-                    <navigationItem key="navigationItem" id="GbJ-Fx-iL3"/>
                     <connections>
                         <outlet property="discountCollectionView" destination="UgI-iy-s38" id="ydk-UK-9qx"/>
                         <outlet property="homeCollectionView" destination="eUP-2t-FYb" id="MVt-fv-RVY"/>
@@ -211,18 +210,51 @@
                     <view key="view" contentMode="scaleToFill" id="3As-we-RT9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vO-9O-c2Z">
+                                <rect key="frame" x="171.5" y="116" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lj2-vw-EF4">
+                                <rect key="frame" x="0.0" y="147" width="414" height="656"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="177" id="Iw9-wZ-Rdw">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="177"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iw9-wZ-Rdw" id="nVZ-9L-Gbl">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yn6-zz-W6C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lj2-vw-EF4" firstAttribute="top" secondItem="6vO-9O-c2Z" secondAttribute="bottom" constant="10" id="E42-m6-Jlh"/>
+                            <constraint firstItem="6vO-9O-c2Z" firstAttribute="centerX" secondItem="3As-we-RT9" secondAttribute="centerX" id="Sjm-ka-s7V"/>
+                            <constraint firstItem="Lj2-vw-EF4" firstAttribute="centerX" secondItem="3As-we-RT9" secondAttribute="centerX" id="VkU-eH-jyV"/>
+                            <constraint firstItem="Lj2-vw-EF4" firstAttribute="width" secondItem="3As-we-RT9" secondAttribute="width" id="b2d-b5-wEd"/>
+                            <constraint firstItem="6vO-9O-c2Z" firstAttribute="top" secondItem="yn6-zz-W6C" secondAttribute="top" constant="24" id="i20-rD-Np1"/>
+                            <constraint firstItem="yn6-zz-W6C" firstAttribute="bottom" secondItem="Lj2-vw-EF4" secondAttribute="bottom" constant="10" id="iA4-cT-hTs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" selectedImage="person" catalog="system" id="awp-mj-6Uk"/>
+                    <connections>
+                        <outlet property="lblName" destination="6vO-9O-c2Z" id="5xR-Ip-jzW"/>
+                        <outlet property="tableView" destination="Lj2-vw-EF4" id="aiY-D7-glg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJS-5H-zQM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3384" y="501"/>
+            <point key="canvasLocation" x="3382.608695652174" y="500.89285714285711"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bag" catalog="system" width="128" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <namedColor name="lightGrey">
