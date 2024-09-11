@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,15 +17,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
+        let us = UserDefaults.standard
         guard let windowScene = (scene as? UIWindowScene) else { return }
             let window = UIWindow(windowScene: windowScene)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+            let flag = us.bool(forKey: "flag")
+       // flag.toggle()
+        let storyboard = UIStoryboard(name: flag ? "Main" : "Main3", bundle: nil)
+        if(flag){
+            let email = us.string(forKey: "email")
+            let password = us.string(forKey: "password")
+            
+            isValidAccount(email: email!, password: password!)
+        }
             let initialViewController = storyboard.instantiateInitialViewController()
             window.rootViewController = initialViewController
             self.window = window
             window.makeKeyAndVisible()
         //guard let _ = (scene as? UIWindowScene) else { return }
+    }
+    
+    func isValidAccount(email: String, password: String){
+        NetworkService().getData(path: "customers/search", parameters: ["query":"email:\(email)"], model: CustomersResponse.self) { result, error in
+            if let result = result{
+                Auth.auth().signIn(withEmail: result.customers[0].email, password: password) {authresult, error in
+                    if let _ = error{
+                        //self?.noResult("email or password is Incorrect")
+                    }else {
+                        MyAccount.shared.currentUser = result.customers[0]
+                        print(MyAccount.shared.currentUser.firstName)
+                    }
+                }
+            }else {
+                //self?.noResult("Try again please")
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

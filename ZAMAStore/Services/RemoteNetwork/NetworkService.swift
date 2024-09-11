@@ -11,6 +11,7 @@ protocol NetworkServiceProtocol{
     func getData<T: Codable> (path: String, parameters: Alamofire.Parameters, model: T.Type, handler: @escaping (T?,Error?) -> Void)
     func postData(path: String, parameters: Alamofire.Parameters, postFlag: Bool, handler: @escaping (Any?,Error?) -> Void)
     func deleteData(path: String)
+    func deleteData1(path: String,handler:@escaping()->Void)
 }
 
 class NetworkService: NetworkServiceProtocol{
@@ -32,7 +33,12 @@ class NetworkService: NetworkServiceProtocol{
             case .success(let data):
                 handler(data,nil)
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                //print("Error: \(error.localizedDescription)")
+                print("Request failed with error: \(error)")
+                if let data = response.data,
+                   let errorResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print("Error response body: \(errorResponse)")
+                }
                 handler(nil,error)
             }
         }
@@ -63,6 +69,20 @@ class NetworkService: NetworkServiceProtocol{
                 switch response.result{
                 case .success(let data):
                     print(data!)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+            }
+        }
+    
+    func deleteData1(path: String,handler:@escaping()->Void) {
+        #warning("handle this function later when customer have orders")
+            AF.request("\(baseUrl)\(path).json", method: .delete, headers: headers).response { response in
+                switch response.result{
+                case .success(let data):
+                    print(data!)
+                    handler()
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
