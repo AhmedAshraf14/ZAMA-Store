@@ -31,6 +31,8 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getData()
+        segmentType.selectedSegmentIndex = 3
+        segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
@@ -52,6 +54,13 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         cell.putData()
         cell.layer.cornerRadius = 20
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productDetailsVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsView") as! ProductDetailsView
+        //productDetailsVC.viewModel.productID = viewModel.products[indexPath.item].id
+        productDetailsVC.viewModel.product = viewModel.products[indexPath.item]
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
 
 }

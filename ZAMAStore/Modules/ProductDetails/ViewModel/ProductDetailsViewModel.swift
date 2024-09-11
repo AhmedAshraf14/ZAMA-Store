@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+class ProductDetailsViewModel{
+    var networkService : NetworkServiceProtocol!
+    var productID = 7847468400777
+    var product : ProductModel!
+    
+    
+    init(){
+        networkService = NetworkService()
+    }
+    
+    func numberOfProductImages()->Int{
+        return product.images.count
+    }
+}
