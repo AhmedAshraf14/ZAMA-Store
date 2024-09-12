@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "FirebaseCore/Extension/FIRLogger.h"
+#import "FirebaseCore/Sources/Private/FIRLogger.h"
 
 #import <GoogleUtilities/GULAppEnvironmentUtil.h>
 #import <GoogleUtilities/GULLogger.h>
@@ -20,18 +20,17 @@
 
 #import "FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h"
 
-NSString *const kFIRLoggerSubsystem = @"com.google.firebase";
-
-NSString *const kFIRLoggerCore = @"[FirebaseCore]";
+FIRLoggerService kFIRLoggerCore = @"[Firebase/Core]";
 
 // All the FIRLoggerService definitions should be migrated to clients. Do not add new ones!
-NSString *const kFIRLoggerAnalytics = @"[FirebaseAnalytics]";
-NSString *const kFIRLoggerCrash = @"[FirebaseCrash]";
-NSString *const kFIRLoggerRemoteConfig = @"[FirebaseRemoteConfig]";
+FIRLoggerService kFIRLoggerAnalytics = @"[Firebase/Analytics]";
+FIRLoggerService kFIRLoggerCrash = @"[Firebase/Crash]";
+FIRLoggerService kFIRLoggerRemoteConfig = @"[Firebase/RemoteConfig]";
 
 /// Arguments passed on launch.
 NSString *const kFIRDisableDebugModeApplicationArgument = @"-FIRDebugDisabled";
 NSString *const kFIREnableDebugModeApplicationArgument = @"-FIRDebugEnabled";
+NSString *const kFIRLoggerForceSDTERRApplicationArgument = @"-FIRLoggerForceSTDERR";
 
 /// Key for the debug mode bit in NSUserDefaults.
 NSString *const kFIRPersistedDebugModeKey = @"/google/firebase/debug_mode";
@@ -54,12 +53,14 @@ static NSString *const kMessageCodePattern = @"^I-[A-Z]{3}[0-9]{6}$";
 static NSRegularExpression *sMessageCodeRegex;
 #endif
 
-void FIRLoggerInitialize(void) {
+void FIRLoggerInitializeASL(void) {
   dispatch_once(&sFIRLoggerOnceToken, ^{
     // Register Firebase Version with GULLogger.
     GULLoggerRegisterVersion(FIRFirebaseVersion());
 
+    // Override the aslOptions to ASL_OPT_STDERR if the override argument is passed in.
     NSArray *arguments = [NSProcessInfo processInfo].arguments;
+    BOOL overrideSTDERR = [arguments containsObject:kFIRLoggerForceSDTERRApplicationArgument];
 
     // Use the standard NSUserDefaults if it hasn't been explicitly set.
     if (sFIRLoggerUserDefaults == nil) {
@@ -75,7 +76,10 @@ void FIRLoggerInitialize(void) {
       [sFIRLoggerUserDefaults setBool:YES forKey:kFIRPersistedDebugModeKey];
       forceDebugMode = YES;
     }
-    GULLoggerInitialize();
+    GULLoggerInitializeASL();
+    if (overrideSTDERR) {
+      GULLoggerEnableSTDERR();
+    }
     if (forceDebugMode) {
       GULLoggerForceDebug();
     }
@@ -86,12 +90,8 @@ __attribute__((no_sanitize("thread"))) void FIRSetAnalyticsDebugMode(BOOL analyt
   sFIRAnalyticsDebugMode = analyticsDebugMode;
 }
 
-FIRLoggerLevel FIRGetLoggerLevel(void) {
-  return (FIRLoggerLevel)GULGetLoggerLevel();
-}
-
 void FIRSetLoggerLevel(FIRLoggerLevel loggerLevel) {
-  FIRLoggerInitialize();
+  FIRLoggerInitializeASL();
   GULSetLoggerLevel((GULLoggerLevel)loggerLevel);
 }
 
@@ -117,7 +117,7 @@ void FIRSetLoggerUserDefaults(NSUserDefaults *defaults) {
  */
 __attribute__((no_sanitize("thread"))) BOOL FIRIsLoggableLevel(FIRLoggerLevel loggerLevel,
                                                                BOOL analyticsComponent) {
-  FIRLoggerInitialize();
+  FIRLoggerInitializeASL();
   if (sFIRAnalyticsDebugMode && analyticsComponent) {
     return YES;
   }
@@ -125,14 +125,14 @@ __attribute__((no_sanitize("thread"))) BOOL FIRIsLoggableLevel(FIRLoggerLevel lo
 }
 
 void FIRLogBasic(FIRLoggerLevel level,
-                 NSString *category,
+                 FIRLoggerService service,
                  NSString *messageCode,
                  NSString *message,
                  va_list args_ptr) {
-  FIRLoggerInitialize();
-  GULOSLogBasic((GULLoggerLevel)level, kFIRLoggerSubsystem, category,
-                sFIRAnalyticsDebugMode && [kFIRLoggerAnalytics isEqualToString:category],
-                messageCode, message, args_ptr);
+  FIRLoggerInitializeASL();
+  GULLogBasic((GULLoggerLevel)level, service,
+              sFIRAnalyticsDebugMode && [kFIRLoggerAnalytics isEqualToString:service], messageCode,
+              message, args_ptr);
 }
 
 /**
@@ -143,12 +143,12 @@ void FIRLogBasic(FIRLoggerLevel level,
  * Calling FIRLogDebug(kFIRLoggerCore, @"I-COR000001", @"Configure succeed.") shows:
  * yyyy-mm-dd hh:mm:ss.SSS sender[PID] <Debug> [Firebase/Core][I-COR000001] Configure succeed.
  */
-#define FIR_LOGGING_FUNCTION(level)                                                       \
-  void FIRLog##level(NSString *category, NSString *messageCode, NSString *message, ...) { \
-    va_list args_ptr;                                                                     \
-    va_start(args_ptr, message);                                                          \
-    FIRLogBasic(FIRLoggerLevel##level, category, messageCode, message, args_ptr);         \
-    va_end(args_ptr);                                                                     \
+#define FIR_LOGGING_FUNCTION(level)                                                             \
+  void FIRLog##level(FIRLoggerService service, NSString *messageCode, NSString *message, ...) { \
+    va_list args_ptr;                                                                           \
+    va_start(args_ptr, message);                                                                \
+    FIRLogBasic(FIRLoggerLevel##level, service, messageCode, message, args_ptr);                \
+    va_end(args_ptr);                                                                           \
   }
 
 FIR_LOGGING_FUNCTION(Error)
@@ -157,17 +157,18 @@ FIR_LOGGING_FUNCTION(Notice)
 FIR_LOGGING_FUNCTION(Info)
 FIR_LOGGING_FUNCTION(Debug)
 
-#undef FIR_LOGGING_FUNCTION
+#undef FIR_MAKE_LOGGER
 
 #pragma mark - FIRLoggerWrapper
 
 @implementation FIRLoggerWrapper
 
 + (void)logWithLevel:(FIRLoggerLevel)level
-             service:(NSString *)service
-                code:(NSString *)code
-             message:(NSString *)message {
-  FIRLogBasic(level, service, code, message, NULL);
+         withService:(FIRLoggerService)service
+            withCode:(NSString *)messageCode
+         withMessage:(NSString *)message
+            withArgs:(va_list)args {
+  FIRLogBasic(level, service, messageCode, message, args);
 }
 
 @end

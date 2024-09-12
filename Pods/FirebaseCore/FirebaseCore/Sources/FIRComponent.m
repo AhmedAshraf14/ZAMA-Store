@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-#import "FirebaseCore/Extension/FIRComponent.h"
+#import "FirebaseCore/Sources/Private/FIRComponent.h"
 
-#import "FirebaseCore/Extension/FIRComponentContainer.h"
+#import "FirebaseCore/Sources/Private/FIRComponentContainer.h"
+#import "FirebaseCore/Sources/Private/FIRDependency.h"
 
 @interface FIRComponent ()
 
 - (instancetype)initWithProtocol:(Protocol *)protocol
              instantiationTiming:(FIRInstantiationTiming)instantiationTiming
+                    dependencies:(NSArray<FIRDependency *> *)dependencies
                    creationBlock:(FIRComponentCreationBlock)creationBlock;
 
 @end
@@ -32,24 +34,29 @@
                         creationBlock:(FIRComponentCreationBlock)creationBlock {
   return [[FIRComponent alloc] initWithProtocol:protocol
                             instantiationTiming:FIRInstantiationTimingLazy
+                                   dependencies:@[]
                                   creationBlock:creationBlock];
 }
 
 + (instancetype)componentWithProtocol:(Protocol *)protocol
                   instantiationTiming:(FIRInstantiationTiming)instantiationTiming
+                         dependencies:(NSArray<FIRDependency *> *)dependencies
                         creationBlock:(FIRComponentCreationBlock)creationBlock {
   return [[FIRComponent alloc] initWithProtocol:protocol
                             instantiationTiming:instantiationTiming
+                                   dependencies:dependencies
                                   creationBlock:creationBlock];
 }
 
 - (instancetype)initWithProtocol:(Protocol *)protocol
              instantiationTiming:(FIRInstantiationTiming)instantiationTiming
+                    dependencies:(NSArray<FIRDependency *> *)dependencies
                    creationBlock:(FIRComponentCreationBlock)creationBlock {
   self = [super init];
   if (self) {
     _protocol = protocol;
     _instantiationTiming = instantiationTiming;
+    _dependencies = [dependencies copy];
     _creationBlock = creationBlock;
   }
   return self;

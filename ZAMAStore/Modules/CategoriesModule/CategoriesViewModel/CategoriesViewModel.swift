@@ -14,13 +14,15 @@ class CategoriesViewModel{
     var allProducts:[ProductModel]=[]
     var productsTypeArray:[ProductModel]=[]
     var nwService:NetworkServiceProtocol
-    
+    var isBrand : Bool = false
+    var BrandOfDataString = ""
     init(){
         nwService = NetworkService()
     }
+    //func check
     
-    func getData() {
-        nwService.getData(path: "products", parameters: [:], model: ProductResponse.self) {[weak self] data, error in
+    func getData(param : [String : Any] = [:]) {
+        nwService.getData(path: "products", parameters: param, model: ProductResponse.self) {[weak self] data, error in
             if let data = data{
                 self?.products = data.products
                 self?.allProducts = data.products

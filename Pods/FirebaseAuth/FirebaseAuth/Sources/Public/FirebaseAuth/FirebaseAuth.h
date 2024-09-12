@@ -16,8 +16,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FIRActionCodeSettings.h"
+#import "FIRAdditionalUserInfo.h"
 #import "FIRAuth.h"
+#import "FIRAuthCredential.h"
+#import "FIRAuthDataResult.h"
 #import "FIRAuthErrors.h"
+#import "FIRAuthTokenResult.h"
 #import "FIREmailAuthProvider.h"
 #import "FIRFacebookAuthProvider.h"
 #import "FIRFederatedAuthProvider.h"
@@ -25,6 +30,24 @@
 #import "FIRGitHubAuthProvider.h"
 #import "FIRGoogleAuthProvider.h"
 #import "FIRMultiFactor.h"
-#import "FIRPhoneAuthProvider.h"
-#import "FIRRecaptchaBridge.h"
+#import "FIRMultiFactorAssertion.h"
+#import "FIRMultiFactorInfo.h"
+#import "FIRMultiFactorResolver.h"
+#import "FIRMultiFactorSession.h"
+#import "FIROAuthCredential.h"
+#import "FIROAuthProvider.h"
 #import "FIRTwitterAuthProvider.h"
+#import "FIRUser.h"
+#import "FIRUserInfo.h"
+#import "FIRUserMetadata.h"
+
+#if TARGET_OS_IOS
+#import "FIRAuthAPNSTokenType.h"
+#import "FIRAuthSettings.h"
+#import "FIRAuthUIDelegate.h"
+#import "FIRPhoneAuthCredential.h"
+#import "FIRPhoneAuthProvider.h"
+#import "FIRPhoneMultiFactorAssertion.h"
+#import "FIRPhoneMultiFactorGenerator.h"
+#import "FIRPhoneMultiFactorInfo.h"
+#endif
