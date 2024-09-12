@@ -32,7 +32,7 @@ struct Image: Codable {
 // MARK: - Option
 struct Option: Codable {
     let id, productID: Int
-    let name: Name
+    let name: String
     let position: Int
     let values: [String]
 
@@ -59,6 +59,7 @@ enum ProductType: String, Codable {
     case accessories = "ACCESSORIES"
     case shoes = "SHOES"
     case tShirts = "T-SHIRTS"
+    case Running
     case all = "All"
 }
 
@@ -77,12 +78,12 @@ struct Variant: Codable {
     let position: Int
     let inventoryPolicy: InventoryPolicy
     let compareAtPrice: String?
-    let option1: String
-    let option2: Option2
+    //let option1: String
+    //let option2: Option2
     let taxable: Bool
-    let fulfillmentService: FulfillmentService
+    //let fulfillmentService: FulfillmentService
     let grams: Int
-    let inventoryManagement: InventoryManagement
+    let inventoryManagement: InventoryManagement?
     let requiresShipping: Bool
     let sku: String
     let weight: Int
@@ -95,9 +96,9 @@ struct Variant: Codable {
         case title, price, position
         case inventoryPolicy = "inventory_policy"
         case compareAtPrice = "compare_at_price"
-        case option1, option2
+       // case option1, option2
         case taxable
-        case fulfillmentService = "fulfillment_service"
+        //case fulfillmentService = "fulfillment_service"
         case grams
         case inventoryManagement = "inventory_management"
         case requiresShipping = "requires_shipping"
