@@ -26,6 +26,26 @@ class NetworkService: NetworkServiceProtocol{
         "Content-Type": "application/json"
     ]
     
+    //because of api error
+    func getDraftOrders(path: String, parameters: Alamofire.Parameters, handler: @escaping (Data?, Error?) -> Void){
+        
+        AF.request("\(baseUrl)\(path).json",parameters: parameters, headers: headers1).validate().response{ response in
+            switch response.result {
+            case .success(let data):
+                handler(data,nil)
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                if let data = response.data{
+                    handler(data,error)
+                }else{
+                    handler(nil,error)
+                }
+            }
+            
+        }
+    }
+    
+    
     func getData<T: Codable> (path: String, parameters: Alamofire.Parameters, model: T.Type, handler: @escaping (T?, Error?) -> Void){
         
         AF.request("\(baseUrl)\(path).json",parameters: parameters, headers: headers1).validate().responseDecodable(of: model.self) { response in
@@ -33,7 +53,6 @@ class NetworkService: NetworkServiceProtocol{
             case .success(let data):
                 handler(data,nil)
             case .failure(let error):
-                //print("Error: \(error.localizedDescription)")
                 print("Request failed with error: \(error)")
                 if let data = response.data,
                    let errorResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
@@ -58,6 +77,11 @@ class NetworkService: NetworkServiceProtocol{
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                print("Request failed with error: \(error)")
+                if let data = response.data,
+                   let errorResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print("Error response body: \(errorResponse)")
+                }
                 handler(nil,error)
             }
         }
@@ -89,5 +113,6 @@ class NetworkService: NetworkServiceProtocol{
                 
             }
         }
+
     
 }

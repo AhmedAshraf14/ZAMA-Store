@@ -20,4 +20,13 @@ class MyAccount{
             handler()
         }
     }
+    
+    func putCustomer(draftOrderID:Int){
+        let paramaters : [String:Any] = ["customer":["id":currentUser!.id,"tags": draftOrderID==0 ? "" : "\(draftOrderID)"]]
+        networkService.postData(path: "customers/\(currentUser!.id)", parameters: paramaters, postFlag: false) { result, error in
+            MyAccount.shared.reloadCustomer {
+                
+            }
+        }
+    }
 }
