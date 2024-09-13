@@ -36,7 +36,30 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
+        self.setupNavbar()
     }
+    
+    func setupNavbar(){
+        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
+        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(secondButtonTapped))
+        let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
+        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
+        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
+        self.tabBarController?.title="Products"
+    }
+    @objc func firstButtonTapped() {
+        #warning("navigate to cart")
+        print("First button tapped")
+    }
+
+    @objc func secondButtonTapped() {
+        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
+        self.navigationController?.pushViewController(favVC, animated: true)
+    }
+    @objc func searchButtonTapped(){
+        print("search button tapped")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.products.count
     }

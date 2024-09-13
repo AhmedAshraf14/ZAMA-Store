@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3LK-Se-KOK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3LK-Se-KOK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -455,6 +455,7 @@
                     <connections>
                         <outlet property="colorButton" destination="w59-1X-LyA" id="BCo-so-au1"/>
                         <outlet property="descriptionTextView" destination="8OS-Pv-DZ9" id="RxY-jv-bid"/>
+                        <outlet property="favButton" destination="EFe-tq-MDa" id="frv-aU-ckl"/>
                         <outlet property="imagesCollectionView" destination="yFB-X4-NJz" id="Uei-JH-EJz"/>
                         <outlet property="pageControl" destination="pxG-54-RO9" id="n47-d7-Dfz"/>
                         <outlet property="productPriceLabel" destination="tLf-aa-IHx" id="d1B-3d-zlQ"/>
@@ -557,6 +558,43 @@
             </objects>
             <point key="canvasLocation" x="3567.1755725190837" y="-32.394366197183103"/>
         </scene>
+        <!--Draft Order View Controller-->
+        <scene sceneID="bUg-uL-wce">
+            <objects>
+                <viewController storyboardIdentifier="DraftOrderViewController" id="i1W-Ij-mQh" customClass="DraftOrderViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hya-jM-fva">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Adidas" translatesAutoresizingMaskIntoConstraints="NO" id="anU-sz-Uru">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5QZ-pK-R3s">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LJu-mY-Jsx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5QZ-pK-R3s" firstAttribute="top" secondItem="LJu-mY-Jsx" secondAttribute="top" id="Fuz-OC-Imc"/>
+                            <constraint firstItem="LJu-mY-Jsx" firstAttribute="bottom" secondItem="anU-sz-Uru" secondAttribute="bottom" id="KpA-bL-nSY"/>
+                            <constraint firstItem="5QZ-pK-R3s" firstAttribute="leading" secondItem="LJu-mY-Jsx" secondAttribute="leading" id="OKE-It-nfW"/>
+                            <constraint firstItem="LJu-mY-Jsx" firstAttribute="trailing" secondItem="anU-sz-Uru" secondAttribute="trailing" id="Vmj-Zf-oDD"/>
+                            <constraint firstItem="anU-sz-Uru" firstAttribute="top" secondItem="LJu-mY-Jsx" secondAttribute="top" id="ZZp-ic-TQE"/>
+                            <constraint firstItem="5QZ-pK-R3s" firstAttribute="bottom" secondItem="LJu-mY-Jsx" secondAttribute="bottom" id="lRi-LR-Kbc"/>
+                            <constraint firstItem="5QZ-pK-R3s" firstAttribute="trailing" secondItem="LJu-mY-Jsx" secondAttribute="trailing" id="lig-KO-hTz"/>
+                            <constraint firstItem="anU-sz-Uru" firstAttribute="leading" secondItem="LJu-mY-Jsx" secondAttribute="leading" id="nup-qq-cte"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="5QZ-pK-R3s" id="C4i-f9-7EE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phN-Y1-jmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4251.1450381679388" y="-32.394366197183103"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="FGo-oi-8VW">
             <objects>
@@ -577,6 +615,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Adidas" width="736" height="634"/>
         <image name="eye.slash" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <namedColor name="customGrey">

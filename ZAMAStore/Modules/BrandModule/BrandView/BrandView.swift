@@ -33,7 +33,34 @@ class BrandView: UIViewController {
         homeCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         let nib2 = UINib(nibName: "DiscountCell", bundle: nil)
         discountCollectionView.register(nib2, forCellWithReuseIdentifier: "DiscountCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavbar()
+    }
+    
+    
+    func setupNavbar(){
+        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
+        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(secondButtonTapped))
+        let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
+        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
+        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
+        self.tabBarController?.title="Home"
 
+    }
+    @objc func firstButtonTapped() {
+        #warning("navigate to cart")
+        print("First button tapped")
+    }
+
+    @objc func secondButtonTapped() {
+        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
+        self.navigationController?.pushViewController(favVC, animated: true)
+    }
+    @objc func searchButtonTapped(){
+        print("search button tapped")
     }
     func checkCount(){
         if(count>=discountCollectionView.numberOfItems(inSection: 0)){

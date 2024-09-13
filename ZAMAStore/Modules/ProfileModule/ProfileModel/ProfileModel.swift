@@ -24,6 +24,8 @@ struct Customer: Codable {
     let lastOrderID: Int?
     let lastOrderName: String?
    // let currency: String?
+    let note : String?
+    let tags : String?
     let phone: String?
     let addresses: [Address]?
     let defaultAddress: Address?
@@ -39,7 +41,9 @@ struct Customer: Codable {
         case lastOrderID = "last_order_id"
         case lastOrderName = "last_order_name"
        // case currency
-        case  phone
+        case note
+        case tags
+        case phone
         case addresses
         case defaultAddress = "default_address"
         case password

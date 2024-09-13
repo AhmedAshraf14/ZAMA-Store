@@ -15,7 +15,6 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
         tableView.delegate=self
         tableView.dataSource=self
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         setupView()
@@ -23,9 +22,9 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //#selector(firstButtonTapped)
     func setupView(){
         lblName.text = "Welcome \(viewModel.currentUser.firstName!)"
-        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(firstButtonTapped))
+        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
         let gearButton = UIBarButtonItem.gearButton(target: self, action: #selector(secondButtonTapped))
-        self.tabBarController?.navigationItem.rightBarButtonItems = [gearButton, heartButton]
+        self.tabBarController?.navigationItem.rightBarButtonItems = [gearButton, cartButton]
         self.tabBarController?.title="Profile"
 
     }
@@ -41,14 +40,25 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text="Celll"
+        switch indexPath.section {
+        case 0:
+            (cell.viewWithTag(1) as! UILabel).text = MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].title ?? "NO Title"
+        default:
+            (cell.viewWithTag(1) as! UILabel).text = MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].price ?? "N/A")"
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
             return viewModel.currentUser.ordersCount
         }
-        return viewModel.currentUser.ordersCount
+        //return (MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0) < 2 ? (MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0) : 2
+        if MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0 < 2{
+            return MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0
+        }else {
+            return 2
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -73,6 +83,8 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         button.setTitleColor(UIColor(named: "mintGreen"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.tag = section
+        button.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
         headerView.addSubview(button)
 
         // Set constraints for the label
@@ -88,6 +100,19 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         ])
 
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    @objc private func moreTapped(_ sender: UIButton){
+        if sender.tag == 0{
+            
+        }else {
+            let wishlistVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
+            self.navigationController?.pushViewController(wishlistVC, animated: true)
+        }
     }
     
 }

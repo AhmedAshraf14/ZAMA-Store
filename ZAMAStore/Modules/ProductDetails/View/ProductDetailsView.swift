@@ -10,6 +10,7 @@ import UIKit
 class ProductDetailsView: UIViewController {
     var viewModel : ProductDetailsViewModel!
     
+    @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     private var currentIndex = 0
@@ -22,7 +23,6 @@ class ProductDetailsView: UIViewController {
     @IBOutlet weak var colorButton: UIButton!
     
     
-    
     required init?(coder: NSCoder) {
         self.viewModel = ProductDetailsViewModel()
         super.init(coder: coder)
@@ -30,9 +30,18 @@ class ProductDetailsView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.productIsFav()
         setupImageSlider()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.isFav{
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else {
+            favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
     func setupImageSlider(){
@@ -74,6 +83,7 @@ class ProductDetailsView: UIViewController {
         if sizeButton.titleLabel?.text == "Size" || colorButton.titleLabel?.text == "Color" {
             self.presentAlert(title: "Error", message: "Choose Size and Color", buttonTitle: "OK")
         }
+        #warning("add to cart")
     }
     
     @IBAction func reviewsButtonPressed(_ sender: UIButton) {
@@ -83,6 +93,19 @@ class ProductDetailsView: UIViewController {
     }
     
     @IBAction func favButtonPressed(_ sender: UIButton) {
+        if viewModel.isFav{
+            viewModel.isFav.toggle()
+            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+            viewModel.deleteFavDraftOrder()
+        }else{
+            if viewModel.user?.tags == ""{
+                viewModel.postFavDraftOrder()
+            }else{
+                viewModel.putFavDraftOrder()
+            }
+            viewModel.isFav.toggle()
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
     }
     
     
