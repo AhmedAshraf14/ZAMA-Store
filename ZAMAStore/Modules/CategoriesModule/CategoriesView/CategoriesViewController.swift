@@ -32,8 +32,10 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     override func viewWillAppear(_ animated: Bool) {
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
+            print(viewModel.allProducts)
         }else {
             viewModel.getData()
+            print(viewModel.allProducts)
         }
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()

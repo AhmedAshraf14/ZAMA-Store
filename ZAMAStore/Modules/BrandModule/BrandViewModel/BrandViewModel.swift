@@ -10,9 +10,14 @@ import Foundation
 class BrandsViewModel {
     var ReloadCV : (()->Void) = {}
     var navigateForward : (()->Void) = {}
-    var brandsArray = [Brand(brandName: "ADIDAS", brandImage: "Adidas"),Brand(brandName: "VANS", brandImage: "Vans"),Brand(brandName: "SUPRA", brandImage: "Supra"),Brand(brandName: "TIMBERLAND", brandImage: "timperland"),Brand(brandName: "ASICS TIGER", brandImage: "asics"),Brand(brandName: "CONVERSE", brandImage: "Converse"),Brand(brandName: "DR MARTENS", brandImage: "Dr martens"),Brand(brandName: "FLEX FIT", brandImage: "FlexFit"),Brand(brandName: "NIKE", brandImage: "Nike"),Brand(brandName: "PALLADIUM", brandImage: "Palladium"),Brand(brandName: "PUMA", brandImage: "Puma"),Brand(brandName: "HERSCHEL", brandImage: "Herschel")]
-    
+   // var brandsArray = [Brand(brandName: "ADIDAS", brandImage: "Adidas"),Brand(brandName: "VANS", brandImage: "Vans"),Brand(brandName: "SUPRA", brandImage: "Supra"),Brand(brandName: "TIMBERLAND", brandImage: "timperland"),Brand(brandName: "ASICS TIGER", brandImage: "asics"),Brand(brandName: "CONVERSE", brandImage: "Converse"),Brand(brandName: "DR MARTENS", brandImage: "Dr martens"),Brand(brandName: "FLEX FIT", brandImage: "FlexFit"),Brand(brandName: "NIKE", brandImage: "Nike"),Brand(brandName: "PALLADIUM", brandImage: "Palladium"),Brand(brandName: "PUMA", brandImage: "Puma"),Brand(brandName: "HERSCHEL", brandImage: "Herschel")]
+    var brandsArray : [SmartCollection] = [] {
+        didSet {
+           ReloadCV()
+        }
+    }
     var PriceRuleArray : [PriceRule] = []
+    
     var DiscountArray : [DiscountModel] = []{
         didSet{
             ReloadCV()
@@ -21,6 +26,18 @@ class BrandsViewModel {
     var nwService:NetworkServiceProtocol
     init(){
         nwService = NetworkService()
+    }
+    func getBrands(){
+        nwService.getData(path: "smart_collections", parameters: [:], model: BrandsResponse.self) { data, error in
+            if let data = data {
+                self.brandsArray = data.smartCollections!
+                print("--------------")
+                print(data.smartCollections)
+            } else {
+                print("ziad")
+                print(error?.localizedDescription)
+            }
+        }
     }
     func getData(){
         nwService.getData(path: "price_rules", parameters: [:], model: PriceRuleResponse.self) { data, error in

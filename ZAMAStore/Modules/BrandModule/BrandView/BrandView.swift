@@ -25,8 +25,10 @@ class BrandView: UIViewController {
         setupFlowLayout()
         setupFlowLayout1()
         viewModel.getData()
+        viewModel.getBrands()
         viewModel.ReloadCV={
             self.discountCollectionView.reloadData()
+            self.homeCollectionView.reloadData()
         }
        // scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
@@ -72,8 +74,9 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BrandCollectionViewCell
-        cell.brandImage.image = UIImage(named: viewModel.brandsArray[indexPath.row].brandImage)
-        cell.brandName.text = viewModel.brandsArray[indexPath.row].brandName
+        //let placeHolder = UIImage(systemName: "heart.fill")
+        cell.brandImage.sd_setImage(with: URL(string: viewModel.brandsArray[indexPath.row].image?.src ?? ""), placeholderImage: UIImage(systemName: "heart.fill"))
+        cell.brandName.text = viewModel.brandsArray[indexPath.row].title
         cell.layer.cornerRadius = 20
         return cell
     }
@@ -110,6 +113,12 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             DispatchQueue.main.asyncAfter(deadline: .now()+1){
                 cell.showLbl()
             }
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "CategoriesView") as! CategoriesViewController
+            vc.viewModel.isBrand = true
+            vc.viewModel.BrandOfDataString = viewModel.brandsArray[indexPath.row].title ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     

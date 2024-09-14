@@ -219,13 +219,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3C20FE8A2C87A0FF0049328A /* NavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NavigationBar;
-			sourceTree = "<group>";
-		};
 		3C20FE8D2C87A3070049328A /* BrandCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,7 +356,6 @@
 		E255E0082C8659FE006B83D1 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				3C20FE8A2C87A0FF0049328A /* NavigationBar */,
 				E255DFCD2C8657CB006B83D1 /* Assets.xcassets */,
 				E255DFC42C8657CA006B83D1 /* AppDelegate.swift */,
 				E255DFC62C8657CA006B83D1 /* SceneDelegate.swift */,
