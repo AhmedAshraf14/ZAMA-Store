@@ -224,16 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				316DA4752C907BD300FA8177 /* View */,
-				316DA4742C907BCD00FA8177 /* Model */,
 			);
 			path = OrdersCell;
-			sourceTree = "<group>";
-		};
-		316DA4742C907BCD00FA8177 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		316DA4752C907BD300FA8177 /* View */ = {
