@@ -1317,7 +1317,7 @@ extension Auth: AuthInterop {
     open func initializeRecaptchaConfig() async throws {
       // Trigger recaptcha verification flow to initialize the recaptcha client and
       // config. Recaptcha token will be returned.
-      let verifier = AuthRecaptchaVerifier.shared(auth: self)
+      let verifier = AuthRecaptchaVerifier.wishListShared(auth: self)
       _ = try await verifier.verify(forceRefresh: true, action: AuthRecaptchaAction.defaultAction)
     }
   #endif
@@ -2289,7 +2289,7 @@ extension Auth: AuthInterop {
     func injectRecaptcha<T: AuthRPCRequest>(request: T,
                                             action: AuthRecaptchaAction) async throws -> T
       .Response {
-      let recaptchaVerifier = AuthRecaptchaVerifier.shared(auth: self)
+      let recaptchaVerifier = AuthRecaptchaVerifier.wishListShared(auth: self)
       if recaptchaVerifier.enablementStatus(forProvider: AuthRecaptchaProvider.password) {
         try await recaptchaVerifier.injectRecaptchaFields(request: request,
                                                           provider: AuthRecaptchaProvider.password,

@@ -11,7 +11,8 @@ class ProductDetailsViewModel{
     var networkService : NetworkServiceProtocol!
     var product : ProductModel!
     var user = MyAccount.shared.currentUser
-    var wishlist = MyWishlist.shared
+    var wishlist = MyDraftlist.wishListShared
+    var cartDraftOrder = MyDraftlist.cartListShared
     var isFav : Bool = false
     
     init(){
@@ -24,7 +25,7 @@ class ProductDetailsViewModel{
     
     func productIsFav(){
         if (user?.tags != ""){
-            for product in wishlist.currentWishlist?.lineItems ?? []{
+            for product in wishlist.currentDraftlist?.lineItems ?? []{
                 if self.product.id == product.productID{
                     isFav = true
                     return
@@ -36,10 +37,13 @@ class ProductDetailsViewModel{
         }
     }
     
-    func postFavDraftOrder(){
+    func postToDraftOrder(isCart:Bool){
         let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
         
         let favDraftOrder = DraftOrderResponseModel(draftOrder: DraftOrder(id: 0, lineItems: [lineItem], customer: DraftCustomer(id: user!.id), useCustomerDefaultAddress: true))
+        if(isCart){
+            MyDraftlist.cartListShared.currentDraftlist = DraftOrder(id: 0, lineItems: [], customer: DraftCustomer(id: MyAccount.shared.currentUser.id), useCustomerDefaultAddress: true)
+        }
         
         let jsonObj = try? JSONEncoder().encode(favDraftOrder)
         let dic = try? JSONSerialization.jsonObject(with: jsonObj!, options: [])
@@ -53,12 +57,17 @@ class ProductDetailsViewModel{
                     let id = draftOrder["id"] as! Int
                     let draftOrderResponseData = try! JSONSerialization.data(withJSONObject: data, options: [])
                     let decodedDraftOrder = try! JSONDecoder().decode(DraftOrderResponseModel.self, from: draftOrderResponseData)
+                   
+                    MyAccount.shared.putCustomer(draftOrderID: id,attribute: isCart ? "note":"tags")
+                    if(isCart){
+                        MyDraftlist.cartListShared.currentDraftlist?.id=id
+                        MyDraftlist.cartListShared.reloadCart(){
+                            
+                        }
+                    }else{
+                        MyDraftlist.wishListShared.currentDraftlist = decodedDraftOrder.draftOrder
+                    }
                     
-                    MyAccount.shared.putCustomer(draftOrderID: id)
-                    MyWishlist.shared.currentWishlist = decodedDraftOrder.draftOrder
-                }
-                catch{
-                    print(error.localizedDescription)
                 }
             }
         }
@@ -66,14 +75,29 @@ class ProductDetailsViewModel{
     
     
     
-    func putFavDraftOrder(){
-        let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
-        wishlist.putLineItem(lineItem: lineItem)
+    func putToDraftOrder(isCart:Bool){
+        if(isCart){
+            for myproduct in cartDraftOrder.currentDraftlist!.lineItems!{
+                if(myproduct.productID == product.id){
+                    print("This product Already Exist")
+                    return
+                }
+            }
+        }
+        let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: product.variants[0].price)
+        if isCart{
+            cartDraftOrder.putLineItem(lineItem: lineItem,isCart: true)
+        }else{
+            wishlist.putLineItem(lineItem: lineItem,isCart: false)
+        }
+        
     }
     
     func deleteFavDraftOrder(){
         let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
-        wishlist.deleteLineItem(lineItem: lineItem)
+        wishlist.deleteLineItem(lineItem: lineItem){
+            
+        }
     }
 }
 

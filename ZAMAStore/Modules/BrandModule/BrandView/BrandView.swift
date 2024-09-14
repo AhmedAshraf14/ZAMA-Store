@@ -44,23 +44,15 @@ class BrandView: UIViewController {
     
     
     func setupNavbar(){
-        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
-        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(secondButtonTapped))
+        let cartButton = UIBarButtonItem.cartButton(target: self)
+        let heartButton = UIBarButtonItem.heartButton(target: self)
         let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
         self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
         self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
         self.tabBarController?.title="Home"
 
     }
-    @objc func firstButtonTapped() {
-        #warning("navigate to cart")
-        print("First button tapped")
-    }
-
-    @objc func secondButtonTapped() {
-        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
-        self.navigationController?.pushViewController(favVC, animated: true)
-    }
+    
     @objc func searchButtonTapped(){
         print("search button tapped")
     }
@@ -121,7 +113,7 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     }
     func setupFlowLayout1(){
         let flowLayout = UICollectionViewFlowLayout()
-        let itemWidth = (view.bounds.width - 30) / 2
+        //let itemWidth = (view.bounds.width - 30) / 2
         flowLayout.itemSize = CGSize(width: view.bounds.width-20, height: view.bounds.height*0.258616)
         flowLayout.scrollDirection = .horizontal
         discountCollectionView.collectionViewLayout = flowLayout

@@ -21,12 +21,23 @@ class MyAccount{
         }
     }
     
-    func putCustomer(draftOrderID:Int){
-        let paramaters : [String:Any] = ["customer":["id":currentUser!.id,"tags": draftOrderID==0 ? "" : "\(draftOrderID)"]]
+    func putCustomer(draftOrderID:Int,attribute:String="tags"){
+        let str:String? = attribute == "tags" ? "" : nil
+        #warning("خلي بالك يحسن ال ىهم يضرب ")
+        let paramaters : [String:Any] = ["customer":["id":currentUser!.id,attribute: draftOrderID==0 ? str : "\(draftOrderID)"]]
         networkService.postData(path: "customers/\(currentUser!.id)", parameters: paramaters, postFlag: false) { result, error in
             MyAccount.shared.reloadCustomer {
                 
             }
         }
     }
+    
+//    func putCustomer(cartOrderID:Int){
+//        let paramaters : [String:Any] = ["customer":["id":currentUser!.id,"note": cartOrderID==0 ? "" : "\(cartOrderID)"]]
+//        networkService.postData(path: "customers/\(currentUser!.id)", parameters: paramaters, postFlag: false) { result, error in
+//            MyAccount.shared.reloadCustomer {
+//                
+//            }
+//        }
+//    }
 }

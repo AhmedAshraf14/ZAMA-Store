@@ -82,8 +82,14 @@ class ProductDetailsView: UIViewController {
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
         if sizeButton.titleLabel?.text == "Size" || colorButton.titleLabel?.text == "Color" {
             self.presentAlert(title: "Error", message: "Choose Size and Color", buttonTitle: "OK")
+        }else{
+            if MyAccount.shared.currentUser.note==nil{
+                viewModel?.postToDraftOrder(isCart: true)
+            }
+                else{
+                    viewModel?.putToDraftOrder(isCart: true)
+                }
         }
-        #warning("add to cart")
     }
     
     @IBAction func reviewsButtonPressed(_ sender: UIButton) {
@@ -99,9 +105,9 @@ class ProductDetailsView: UIViewController {
             viewModel.deleteFavDraftOrder()
         }else{
             if viewModel.user?.tags == ""{
-                viewModel.postFavDraftOrder()
+                viewModel.postToDraftOrder(isCart: false)
             }else{
-                viewModel.putFavDraftOrder()
+                viewModel.putToDraftOrder(isCart: false)
             }
             viewModel.isFav.toggle()
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)

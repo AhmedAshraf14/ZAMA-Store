@@ -14,7 +14,7 @@ class WishlistCell: UITableViewCell {
     @IBOutlet weak var productNameLabel: UILabel!
     
     @IBOutlet weak var productPriceLabel: UILabel!
-    
+    var viewModel:WishListCellViewModel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +31,18 @@ class WishlistCell: UITableViewCell {
     }
     
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
+        if MyAccount.shared.currentUser.note==nil{
+            viewModel?.postToCartDraftOrder()
+        }
+            else{
+                viewModel?.putCartDraftOrder()
+            }
     }
-    
+    func setupCell(){
+        setupImage(imageUrl: viewModel.product.image.src)
+        productNameLabel.text=viewModel.product.title
+        productPriceLabel.text=viewModel.product.variants[0].price
+        productVendorLabel.text=viewModel.product.vendor
+    }
     
 }

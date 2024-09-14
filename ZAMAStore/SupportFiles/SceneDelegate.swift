@@ -14,9 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         let us = UserDefaults.standard
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
@@ -44,7 +42,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     }else {
                         MyAccount.shared.currentUser = result.customers[0]
                         if result.customers[0].tags != ""{
-                            self.getWishlist(favDraftID: result.customers[0].tags!)
+                            self.getDraftlist(draftID: result.customers[0].tags!)
+                        }
+                        if(result.customers[0].note != nil && result.customers[0].note != ""){
+                            self.getDraftlist(draftID: result.customers[0].note!,isCartList:true)
                         }
                     }
                 }
@@ -54,17 +55,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    private func getWishlist(favDraftID:String){
-        NetworkService().getDraftOrders(path: "draft_orders/\(favDraftID)", parameters: [:]) { result, error in
+    private func getDraftlist(draftID:String,isCartList:Bool = false){
+        NetworkService().getDraftOrders(path: "draft_orders/\(draftID)", parameters: [:]) { result, error in
             if let result = result {
-                self.settingWishlist(data: result)
+                self.settingDraftlist(data: result,draftList: isCartList ? MyDraftlist.cartListShared : MyDraftlist.wishListShared)
             }else {
                 print(error!.localizedDescription)
             }
         }
     }
     
-    private func settingWishlist(data:Data){
+    private func settingDraftlist(data:Data,draftList:MyDraftlist){
         do{
             if let dataString = String(data: data, encoding: .utf8){
                 if let jsonData = dataString.data(using: .utf8) {
@@ -76,7 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     if let jsonString = String (data: fixedJsonData, encoding: .utf8) {
                         let ourJson = jsonString.data(using: .utf8)
                         let draft = try! JSONDecoder().decode(DraftOrderResponseModel.self, from: ourJson!)
-                        MyWishlist.shared.currentWishlist = draft.draftOrder
+                        draftList.currentDraftlist = draft.draftOrder
                     }
                 }
             }
