@@ -37,10 +37,35 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
             viewModel.getData()
             print(viewModel.allProducts)
         }
+        segmentType.selectedSegmentIndex = 3
+        segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
+        self.setupNavbar()
     }
+    
+    func setupNavbar(){
+        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
+        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(secondButtonTapped))
+        let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
+        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
+        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
+        self.tabBarController?.title="Products"
+    }
+    @objc func firstButtonTapped() {
+        #warning("navigate to cart")
+        print("First button tapped")
+    }
+
+    @objc func secondButtonTapped() {
+        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
+        self.navigationController?.pushViewController(favVC, animated: true)
+    }
+    @objc func searchButtonTapped(){
+        print("search button tapped")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.products.count
     }
@@ -58,6 +83,13 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         cell.putData()
         cell.layer.cornerRadius = 20
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productDetailsVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsView") as! ProductDetailsView
+        //productDetailsVC.viewModel.productID = viewModel.products[indexPath.item].id
+        productDetailsVC.viewModel.product = viewModel.products[indexPath.item]
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
 
 }

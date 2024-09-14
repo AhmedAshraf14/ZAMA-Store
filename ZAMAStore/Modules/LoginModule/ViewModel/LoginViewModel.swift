@@ -11,6 +11,7 @@ class LoginViewModel{
     var networkService : NetworkServiceProtocol!
     var noResult : ((String)->Void) = {error in }
     var navigateForward : (()->Void) = {}
+    let us = UserDefaults.standard
     
     init() {
         self.networkService = NetworkService()
@@ -23,6 +24,9 @@ class LoginViewModel{
                     if let _ = error{
                         self?.noResult("email or password is Incorrect")
                     }else {
+                        MyAccount.shared.currentUser = result.customers[0]
+                        print(MyAccount.shared.currentUser.firstName)
+                        self?.setUpLoginData(password: password)
                         self?.navigateForward()
                     }
                 }
@@ -30,5 +34,11 @@ class LoginViewModel{
                 self?.noResult("Try again please")
             }
         }
+    }
+    
+    func setUpLoginData(password:String){
+        us.setValue(MyAccount.shared.currentUser.email, forKey: "email")
+        us.setValue(password, forKey: "password")
+        us.setValue(true, forKey: "flag")
     }
 }
