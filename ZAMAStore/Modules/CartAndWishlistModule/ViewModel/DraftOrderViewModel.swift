@@ -10,7 +10,9 @@ import Foundation
 class DraftOrderViewModel{
     
     var networkService : NetworkServiceProtocol
-    var draftOrders = MyWishlist.shared.currentWishlist?.lineItems ?? []
+    var draftOrders = MyDraftlist.wishListShared.currentDraftlist?.lineItems ?? []
+    #warning("Put this value when navigate")//Fake warning
+    var isCart:Bool = false
     var products : [ProductModel] = []
     
     var reloadTV : (()->Void) = {}
@@ -22,8 +24,13 @@ class DraftOrderViewModel{
     }
     
     
-    func getFavProducts(){
-        draftOrders = MyWishlist.shared.currentWishlist?.lineItems ?? []
+    
+    func getDraftProducts(){
+        if(isCart){
+            draftOrders = MyDraftlist.cartListShared.currentDraftlist?.lineItems ?? []
+        }else{
+            draftOrders = MyDraftlist.wishListShared.currentDraftlist?.lineItems ?? []
+        }
         var ids : String = ""
         for product in draftOrders {
             ids += "\(product.productID),"
@@ -43,8 +50,20 @@ class DraftOrderViewModel{
         }
     }
     
-    func deleteFavDraftOrder(product: ProductModel){
+    
+    
+    func deleteDraftOrder(product: ProductModel){
         let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
-        MyWishlist.shared.deleteLineItem(lineItem: lineItem)
+        if(isCart){
+            MyDraftlist.cartListShared.deleteLineItem(lineItem: lineItem,attribute: "note"){
+                self.getDraftProducts()
+            }
+        }else{
+            MyDraftlist.wishListShared.deleteLineItem(lineItem: lineItem){
+               // self.getDraftProducts()
+            }
+            self.getDraftProducts()
+        }
+        
     }
 }

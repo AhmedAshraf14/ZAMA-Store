@@ -1,22 +1,21 @@
 //
-//  ProductCellViewModel.swift
+//  WishListCellViewModel.swift
 //  ZAMAStore
 //
-//  Created by zyad Baset on 06/09/2024.
+//  Created by zyad Baset on 14/09/2024.
 //
 
 import Foundation
-class ProductCellViewModel{
+class WishListCellViewModel{
     var showError:((String)->Void)={error in }
-    let product:ProductModel
-    var cartDraftOrder=MyDraftlist.cartListShared
     var networkService:NetworkServiceProtocol
+    var product:ProductModel
+    var cartDraftOrder = MyDraftlist.cartListShared
     
-    init(product: ProductModel) {
+    init(product:ProductModel){
+        networkService = NetworkService()
         self.product = product
-        networkService=NetworkService()
     }
-    
     func postToCartDraftOrder(){
         let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
         let cartDraftOrder = DraftOrderResponseModel(draftOrder: DraftOrder(id: 0, lineItems: [lineItem], customer: DraftCustomer(id: MyAccount.shared.currentUser.id), useCustomerDefaultAddress: true))
@@ -42,6 +41,7 @@ class ProductCellViewModel{
                         
                     }
                 }
+              
             }
         }
         

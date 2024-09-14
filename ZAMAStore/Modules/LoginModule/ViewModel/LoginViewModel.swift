@@ -25,7 +25,6 @@ class LoginViewModel{
                         self?.noResult("email or password is Incorrect")
                     }else {
                         MyAccount.shared.currentUser = result.customers[0]
-                        print(MyAccount.shared.currentUser.firstName)
                         self?.setUpLoginData(password: password)
                         self?.navigateForward()
                     }

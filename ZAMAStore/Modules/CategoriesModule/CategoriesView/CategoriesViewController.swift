@@ -40,22 +40,17 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     func setupNavbar(){
-        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
-        let heartButton = UIBarButtonItem.heartButton(target: self, action: #selector(secondButtonTapped))
+        let cartButton = UIBarButtonItem.cartButton(target: self)
+        let heartButton = UIBarButtonItem.heartButton(target: self)
+        #warning("fix this ahmed")
         let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
         self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
         self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
         self.tabBarController?.title="Products"
     }
-    @objc func firstButtonTapped() {
-        #warning("navigate to cart")
-        print("First button tapped")
-    }
 
-    @objc func secondButtonTapped() {
-        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
-        self.navigationController?.pushViewController(favVC, animated: true)
-    }
+
+    #warning("delete this ahmed")
     @objc func searchButtonTapped(){
         print("search button tapped")
     }
@@ -73,6 +68,10 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductItem", for: indexPath) as! ProductItem
+        #warning("Never checkthis in runnig so becarefull")
+        cell.viewModel?.showError = { str in
+            self.presentAlert(title: "Error", message: str, buttonTitle: "OK")
+        }
         cell.viewModel = ProductCellViewModel(product: viewModel.products[indexPath.row])
         cell.putData()
         cell.layer.cornerRadius = 20

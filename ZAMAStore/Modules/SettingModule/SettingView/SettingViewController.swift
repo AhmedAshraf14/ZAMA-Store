@@ -92,17 +92,11 @@ extension SettingViewController{
         viewModel.customer?.addresses?.count ?? 1
     }
     func setupView(){
-        let pencilButton = UIBarButtonItem.pencilButton(target: self, action: #selector(addNewAddress))
+        let pencilButton = UIBarButtonItem.pencilButton(target: self)
         self.navigationItem.rightBarButtonItems = [pencilButton]
         self.title="Setting"
     }
-    
-    @objc
-    func addNewAddress(){
-        let storyboard = UIStoryboard(name: "Main2", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AdressViewController") as! AdressViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Addresses"
     }

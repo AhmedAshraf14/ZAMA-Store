@@ -18,34 +18,25 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     override func viewWillAppear(_ animated: Bool) {
         setupView()
+        tableView.reloadData()
     }
     //#selector(firstButtonTapped)
     func setupView(){
         lblName.text = "Welcome \(viewModel.currentUser.firstName!)"
-        let cartButton = UIBarButtonItem.cartButton(target: self, action: #selector(firstButtonTapped))
-        let gearButton = UIBarButtonItem.gearButton(target: self, action: #selector(secondButtonTapped))
+        let cartButton = UIBarButtonItem.cartButton(target: self)
+        let gearButton = UIBarButtonItem.gearButton(target: self)
         self.tabBarController?.navigationItem.rightBarButtonItems = [gearButton, cartButton]
         self.tabBarController?.title="Profile"
 
-    }
-    @objc func firstButtonTapped() {
-        print("First button tapped")
-    }
-
-    @objc func secondButtonTapped() {
-        let storyboard = UIStoryboard(name: "Main2", bundle: nil)
-        let initialViewController = storyboard.instantiateInitialViewController()
-    initialViewController?.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(initialViewController!, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         switch indexPath.section {
         case 0:
-            (cell.viewWithTag(1) as! UILabel).text = MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
         default:
-            (cell.viewWithTag(1) as! UILabel).text = MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].title ?? "NO Title"
-            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyWishlist.shared.currentWishlist?.lineItems?[indexPath.row].price ?? "N/A")"
+            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].price ?? "N/A")"
         }
         return cell
     }
@@ -53,9 +44,8 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if(section == 0){
             return viewModel.currentUser.ordersCount
         }
-        //return (MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0) < 2 ? (MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0) : 2
-        if MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0 < 2{
-            return MyWishlist.shared.currentWishlist?.lineItems?.count ?? 0
+        if MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0 < 2{
+            return MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0
         }else {
             return 2
         }

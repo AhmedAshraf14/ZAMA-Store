@@ -27,6 +27,7 @@ struct DraftOrder:Codable {
     var lineItems : [LineItem]?
     var customer : DraftCustomer
     var useCustomerDefaultAddress: Bool
+    var subTotalPrice:String?
 
     init(id: Int, lineItems: [LineItem], customer: DraftCustomer, useCustomerDefaultAddress: Bool) {
         self.id = id
@@ -41,6 +42,7 @@ struct DraftOrder:Codable {
         self.lineItems = try container.decode([LineItem].self, forKey: .lineItems)
         self.useCustomerDefaultAddress = true
         self.customer = try container.decode(DraftCustomer.self, forKey: .customer)
+        self.subTotalPrice = try container.decode(String.self, forKey: .subTotalPrice)
     }
     
     enum CodingKeys: String, CodingKey{
@@ -48,6 +50,7 @@ struct DraftOrder:Codable {
         case lineItems = "line_items"
         case useCustomerDefaultAddress = "use_customer_default_address"
         case customer
+        case   subTotalPrice = "subtotal_price"
     }
 }
 
@@ -56,8 +59,9 @@ struct LineItem: Codable {
     let variantID:Int
     let productID: Int
     let title: String
-    let quantity: Int
+    var quantity: Int
     let price : String?
+    
  
     enum CodingKeys: String, CodingKey {
         case id

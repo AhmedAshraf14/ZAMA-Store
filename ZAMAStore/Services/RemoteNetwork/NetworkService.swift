@@ -12,6 +12,7 @@ protocol NetworkServiceProtocol{
     func postData(path: String, parameters: Alamofire.Parameters, postFlag: Bool, handler: @escaping (Any?,Error?) -> Void)
     func deleteData(path: String)
     func deleteData1(path: String,handler:@escaping()->Void)
+    func getDraftOrders(path: String, parameters: Alamofire.Parameters, handler: @escaping (Data?, Error?) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol{

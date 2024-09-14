@@ -22,7 +22,6 @@ class SettingViewModel{
     func reloadUser() {
         MyAccount.shared.reloadCustomer(){
             self.customer = MyAccount.shared.currentUser
-            print(self.customer?.addresses)
             self.reloadTV()
         }
     }

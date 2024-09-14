@@ -26,7 +26,7 @@ class BrandsViewModel {
         nwService.getData(path: "price_rules", parameters: [:], model: PriceRuleResponse.self) { data, error in
             if let data = data {
                 self.PriceRuleArray = data.priceRules
-                print(data)
+                
                 for item in self.PriceRuleArray{
                     self.getData(id: item.id)
                 }
@@ -37,7 +37,6 @@ class BrandsViewModel {
         nwService.getData(path: "price_rules/\(id)/discount_codes", parameters: [:], model: DiscountResponse.self) { data, error in
             if let data = data {
                 self.DiscountArray.append(contentsOf: data.discountCode)
-                print(data)
             }
         }
     }
