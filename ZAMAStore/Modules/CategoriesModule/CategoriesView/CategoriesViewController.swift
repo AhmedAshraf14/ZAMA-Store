@@ -30,7 +30,13 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.getData()
+        if viewModel.isBrand {
+            viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
+            print(viewModel.allProducts)
+        }else {
+            viewModel.getData()
+            print(viewModel.allProducts)
+        }
         segmentType.selectedSegmentIndex = 3
         segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
