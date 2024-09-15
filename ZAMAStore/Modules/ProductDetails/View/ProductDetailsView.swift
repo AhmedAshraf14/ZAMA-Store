@@ -53,7 +53,7 @@ class ProductDetailsView: UIViewController {
         if let layout = imagesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: imagesCollectionView.frame.width, height: imagesCollectionView.frame.height)
         }
-        pageControl.numberOfPages = viewModel.product.images.count
+        pageControl.numberOfPages = viewModel.product.images!.count
         pageControl.addTarget(self, action: #selector(pageControlChanged(_:)), for: .valueChanged)
 
     }
@@ -146,7 +146,7 @@ extension ProductDetailsView : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-        cell.setupCell(imageUrl: viewModel.product.images[indexPath.item].src)
+        cell.setupCell(imageUrl: viewModel.product.images![indexPath.item].src)
         return cell
     }
     

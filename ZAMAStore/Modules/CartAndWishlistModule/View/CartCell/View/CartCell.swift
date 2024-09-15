@@ -55,7 +55,7 @@ class CartCell: UITableViewCell {
         lblVendor.text=viewModel.product.vendor
         lblCount.text="\(viewModel.lineItem.quantity)"
         stepperQuantity.value = Double(viewModel.lineItem.quantity)
-        setupImage(imageUrl: viewModel.product.image.src)
+        setupImage(imageUrl: viewModel.product.image?.src ?? "")
         
         
     }

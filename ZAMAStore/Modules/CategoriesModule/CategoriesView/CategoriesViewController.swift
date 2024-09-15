@@ -45,6 +45,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.title="Products"
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
         }else {
@@ -57,18 +58,20 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
-        
+//        if viewModel.isSearching{
+//            self.setupNavbar()
+//        }
     }
     
-    func setupNavbar(){
-        let cartButton = UIBarButtonItem.cartButton(target: self)
-        let heartButton = UIBarButtonItem.heartButton(target: self)
-        let searchButton = UIBarButtonItem.searchButton(target: self)
-        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
-        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
-        self.tabBarController?.title="Products"
-        self.tabBarController?.navigationItem.searchController = nil
-    }
+//    func setupNavbar(){
+//        let cartButton = UIBarButtonItem.cartButton(target: self)
+//        let heartButton = UIBarButtonItem.heartButton(target: self)
+//        let searchButton = UIBarButtonItem.searchButton(target: self)
+//        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
+//        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
+//        
+//        self.tabBarController?.navigationItem.searchController = nil
+//    }
     
     func setupSearchNavBar(){
         self.tabBarController?.navigationItem.leftBarButtonItems = []
@@ -79,7 +82,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         // Set the search controller in the navigation item
         self.tabBarController?.navigationItem.searchController = searchController
         self.tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
-        self.tabBarController?.title = "Products"
+        //self.tabBarController?.title = "Products"
         // Ensure the search bar does not remain on screen when the user navigates
         definesPresentationContext = true
     }

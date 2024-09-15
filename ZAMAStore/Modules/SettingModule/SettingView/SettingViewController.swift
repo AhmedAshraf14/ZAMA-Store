@@ -83,6 +83,9 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         defaultAction.backgroundColor = .secondaryLightGrey
         return(UISwipeActionsConfiguration(actions: [defaultAction]))
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 
 }
 

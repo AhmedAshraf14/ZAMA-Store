@@ -51,3 +51,10 @@ struct PriceRule: Codable {
         case title
     }
 }
+
+
+enum priceRuleImage : String{
+    case sale1
+    case sale2
+    case sale3
+}

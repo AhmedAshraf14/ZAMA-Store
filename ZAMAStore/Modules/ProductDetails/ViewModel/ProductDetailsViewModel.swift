@@ -20,7 +20,7 @@ class ProductDetailsViewModel{
     }
     
     func numberOfProductImages()->Int{
-        return product.images.count
+        return product.images!.count
     }
     
     func productIsFav(){

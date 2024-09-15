@@ -59,17 +59,17 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Create the container view for the header
         let headerView = UIView()
-        headerView.backgroundColor = .clear // Set the background color for the header
+        headerView.backgroundColor = .clear
 
-        // Create the label
+        
         let titleLabel = UILabel()
-        titleLabel.text = section==0 ? "Orders" : "Wishlist" // Set the text for the label
+        titleLabel.text = section==0 ? "Orders" : "Wishlist"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         titleLabel.textColor = .black
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         headerView.addSubview(titleLabel)
 
-        // Create the button
+        
         let button = UIButton(type: .system)
         button.setTitle("More", for: .normal)// Set the title for the button
         button.setTitleColor(UIColor(named: "mintGreen"), for: .normal)
@@ -79,13 +79,13 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         button.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
         headerView.addSubview(button)
 
-        // Set constraints for the label
+        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
             titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
         ])
 
-        // Set constraints for the button
+        
         NSLayoutConstraint.activate([
             button.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
             button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
@@ -101,12 +101,22 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @objc private func moreTapped(_ sender: UIButton){
         if sender.tag == 0{
             let ordersVC = UIStoryboard(name: "Main1", bundle: nil).instantiateViewController(withIdentifier: "OrdersViewController") as! OrdersViewController
-            ordersVC.viewModel.customerID = MyAccount.shared.currentUser.id
+            //ordersVC.viewModel.customerID = MyAccount.shared.currentUser.id
             self.navigationController?.pushViewController(ordersVC, animated: true)
         }else {
             let wishlistVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
             self.navigationController?.pushViewController(wishlistVC, animated: true)
         }
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let cartButton = UIBarButtonItem.cartButton(target: self)
+        let heartButton = UIBarButtonItem.heartButton(target: self)
+        let searchButton = UIBarButtonItem.searchButton(target: self)
+        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
+        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
     }
     
 }

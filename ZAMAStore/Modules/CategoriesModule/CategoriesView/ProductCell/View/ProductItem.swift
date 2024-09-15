@@ -60,9 +60,9 @@ class ProductItem: UICollectionViewCell {
         }
     
     func putData(){
-        lblPrice.text = viewModel?.product.variants.first?.price
+        lblPrice.text = "\(viewModel?.product.variants.first?.price ?? "N/A") EGP"
         lblTitle.text = viewModel?.product.title
-        img.sd_setImage(with: URL(string: (viewModel?.product.image.src)!)!, placeholderImage: UIImage(named: "placeholder.png"))
+        img.sd_setImage(with: URL(string: (viewModel?.product.image?.src ?? "")), placeholderImage: UIImage(named: "placeholder.png"))
     }
 
 }

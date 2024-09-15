@@ -39,7 +39,7 @@ class WishlistCell: UITableViewCell {
             }
     }
     func setupCell(){
-        setupImage(imageUrl: viewModel.product.image.src)
+        setupImage(imageUrl: viewModel.product.image?.src ?? "")
         productNameLabel.text=viewModel.product.title
         productPriceLabel.text=viewModel.product.variants[0].price
         productVendorLabel.text=viewModel.product.vendor
