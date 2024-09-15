@@ -28,10 +28,15 @@ extension UIViewController{
         self.navigationController?.pushViewController(favVC, animated: true)
     }
     @objc func navigateToSearchList() {
-//        let favVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
-//        self.navigationController?.pushViewController(favVC, animated: true)
-        #warning("Fix this Search button Ahmed Please")
-        print("Search Button Clicked")
+        if type(of: self) == BrandView.self{
+            let currentVC = tabBarController?.viewControllers![1] as! CategoriesViewController
+            //currentVC.isSearching = true
+            currentVC.setupSearchNavBar()
+            self.tabBarController!.selectedIndex = 1
+        }else{
+            let currentVC = tabBarController?.selectedViewController as! CategoriesViewController
+            currentVC.setupSearchNavBar()
+        }
     }
     @objc func navigateToSetting() {
         let storyboard = UIStoryboard(name: "Main2", bundle: nil)

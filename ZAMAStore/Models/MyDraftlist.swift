@@ -47,6 +47,9 @@ class MyDraftlist{
             #warning("خلي بالك من الحته ديه")
             MyAccount.shared.putCustomer(draftOrderID: 0,attribute: attribute)
             MyAccount.shared.reloadCustomer {
+                if attribute == "note"{
+                    handler()
+                }
             }
         }else{
             currentDraftlist?.lineItems!.removeAll { item in

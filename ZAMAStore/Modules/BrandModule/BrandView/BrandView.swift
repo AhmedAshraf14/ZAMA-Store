@@ -46,15 +46,11 @@ class BrandView: UIViewController {
     func setupNavbar(){
         let cartButton = UIBarButtonItem.cartButton(target: self)
         let heartButton = UIBarButtonItem.heartButton(target: self)
-        let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
+        let searchButton = UIBarButtonItem.searchButton(target: self)
         self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
         self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
         self.tabBarController?.title="Home"
-
-    }
-    
-    @objc func searchButtonTapped(){
-        print("search button tapped")
+        self.tabBarController?.navigationItem.searchController = nil
     }
     func checkCount(){
         if(count>=discountCollectionView.numberOfItems(inSection: 0)){
