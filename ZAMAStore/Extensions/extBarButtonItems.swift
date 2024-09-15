@@ -21,8 +21,7 @@ extension UIBarButtonItem{
     static func pencilButton(target:UIViewController)->UIBarButtonItem{
         return UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: target, action:#selector(target.navigateToAdrres))
     }
-    #warning("متنساش تظبط الحته ديه")
-    static func searchButton(target:Any,action:Selector)->UIBarButtonItem{
-        return UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: target, action: action)
+    static func searchButton(target:UIViewController)->UIBarButtonItem{
+        return UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: target, action: #selector(target.navigateToSearchList))
     }
 }

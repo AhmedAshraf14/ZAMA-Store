@@ -14,7 +14,10 @@ class CategoriesViewModel{
     var allProducts:[ProductModel]=[]
     var productsTypeArray:[ProductModel]=[]
     var nwService:NetworkServiceProtocol
+    var searchedArray: [ProductModel] = []
     var isBrand : Bool = false
+    var isSearching : Bool = false
+    var searchingText: String = ""
     var BrandOfDataString = ""
     init(){
         nwService = NetworkService()
@@ -45,6 +48,9 @@ class CategoriesViewModel{
             }
             //products = productsTypeArray
         }
+        if searchingText != "" {
+            filterData3()
+        }
         ReloadCV()
     }
    
@@ -60,6 +66,13 @@ class CategoriesViewModel{
                 }
             }
             //products = productsTypeArray
+        }
+    }
+    
+    func filterData3(){
+        self.products = self.products.filter { product in
+            // Assuming each product has a `title` property of type String
+            return product.title.lowercased().contains(searchingText.lowercased())
         }
     }
 }

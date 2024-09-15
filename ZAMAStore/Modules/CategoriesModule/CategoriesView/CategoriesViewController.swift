@@ -7,8 +7,23 @@
 
 import UIKit
 
-class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-
+class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+                // Reset to all products if search text is empty
+            self.viewModel.isSearching = false
+            self.viewModel.searchingText = ""
+            self.viewModel.filterData(type: segmentType.titleForSegment(at: segmentType.selectedSegmentIndex)!, tag: segmentGender.titleForSegment(at: segmentGender.selectedSegmentIndex)!) // Assuming you have all products stored
+                return
+            }
+            self.viewModel.isSearching = true
+           self.viewModel.searchingText = searchText
+            self.viewModel.filterData(type: segmentType.titleForSegment(at: segmentType.selectedSegmentIndex)!, tag: segmentGender.titleForSegment(at: segmentGender.selectedSegmentIndex)!)
+    }
+    
+     
+    
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     @IBOutlet weak var segmentType: UISegmentedControl!
@@ -32,33 +47,41 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     override func viewWillAppear(_ animated: Bool) {
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
-            print(viewModel.allProducts)
         }else {
             viewModel.getData()
-            print(viewModel.allProducts)
         }
+        searchController.searchBar.text = ""
+        viewModel.searchingText = ""
         segmentType.selectedSegmentIndex = 3
         segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
-        self.setupNavbar()
+        
     }
     
     func setupNavbar(){
         let cartButton = UIBarButtonItem.cartButton(target: self)
         let heartButton = UIBarButtonItem.heartButton(target: self)
-        #warning("fix this ahmed")
-        let searchButton = UIBarButtonItem.searchButton(target: self, action: #selector(searchButtonTapped))
+        let searchButton = UIBarButtonItem.searchButton(target: self)
         self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
         self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
         self.tabBarController?.title="Products"
+        self.tabBarController?.navigationItem.searchController = nil
     }
-
-
-    #warning("delete this ahmed")
-    @objc func searchButtonTapped(){
-        print("search button tapped")
+    
+    func setupSearchNavBar(){
+        self.tabBarController?.navigationItem.leftBarButtonItems = []
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search items"
+        // Set the search controller in the navigation item
+        self.tabBarController?.navigationItem.searchController = searchController
+        self.tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
+        self.tabBarController?.title = "Products"
+        // Ensure the search bar does not remain on screen when the user navigates
+        definesPresentationContext = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -90,5 +113,11 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         productDetailsVC.viewModel.product = viewModel.products[indexPath.item]
         self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
-
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.viewModel.isSearching = false
+        print("disappear")
+    }
 }

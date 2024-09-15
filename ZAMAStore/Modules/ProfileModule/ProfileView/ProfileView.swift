@@ -26,7 +26,9 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cartButton = UIBarButtonItem.cartButton(target: self)
         let gearButton = UIBarButtonItem.gearButton(target: self)
         self.tabBarController?.navigationItem.rightBarButtonItems = [gearButton, cartButton]
+        self.tabBarController?.navigationItem.leftBarButtonItems = []
         self.tabBarController?.title="Profile"
+        self.tabBarController?.navigationItem.searchController = nil
 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
