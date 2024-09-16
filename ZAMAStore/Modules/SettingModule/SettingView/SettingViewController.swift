@@ -11,6 +11,8 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
     var viewModel:SettingViewModel=SettingViewModel()
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var currencyControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.reloadTV={
@@ -22,10 +24,16 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.dataSource=self
     }
     override func viewWillAppear(_ animated: Bool) {
-      setupView()
+        super.viewWillAppear(animated)
+        setupView()
         viewModel.reloadUser()
+        currencyControl.selectedSegmentIndex = viewModel.checkCurrency()
     }
     
+    @IBAction func currencyChanged(_ sender: UISegmentedControl) {
+        viewModel.changeCurrency(to: sender.titleForSegment(at: sender.selectedSegmentIndex)!)
+        
+    }
     @IBAction func signOut(_ sender: Any) {
         
         let us = UserDefaults.standard

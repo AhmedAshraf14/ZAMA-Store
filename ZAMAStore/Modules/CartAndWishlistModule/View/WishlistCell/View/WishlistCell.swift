@@ -39,9 +39,16 @@ class WishlistCell: UITableViewCell {
             }
     }
     func setupCell(){
+        let currency = viewModel?.getCurrency()
+        var convertedPrice = 0.0
+        if let priceString = viewModel?.product.variants.first?.price,
+           let price = Double(priceString) {
+            convertedPrice = price * (currency?.1 ?? 1.0)
+        }
+        productPriceLabel.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
+        
         setupImage(imageUrl: viewModel.product.image?.src ?? "")
         productNameLabel.text=viewModel.product.title
-        productPriceLabel.text=viewModel.product.variants[0].price
         productVendorLabel.text=viewModel.product.vendor
     }
     

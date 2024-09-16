@@ -99,6 +99,10 @@ class ProductDetailsViewModel{
             
         }
     }
+    
+    func getCurrency()->(String,Double){
+        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
+    }
 }
 
 

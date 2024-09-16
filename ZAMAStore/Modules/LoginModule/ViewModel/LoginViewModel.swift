@@ -39,5 +39,7 @@ class LoginViewModel{
         us.setValue(MyAccount.shared.currentUser.email, forKey: "email")
         us.setValue(password, forKey: "password")
         us.setValue(true, forKey: "flag")
+        us.setValue(MyAccount.shared.currentUser.currency ?? "EGP", forKey: "currency")
+        us.setValue(1.0, forKey: "rate")
     }
 }
