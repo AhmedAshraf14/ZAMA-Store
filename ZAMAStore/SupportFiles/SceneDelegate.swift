@@ -33,56 +33,93 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
-    private func isValidAccount(email: String, password: String){
-        NetworkService().getData(path: "customers/search", parameters: ["query":"email:\(email)"], model: CustomersResponse.self) { result, error in
-            if let result = result{
-                Auth.auth().signIn(withEmail: result.customers[0].email, password: password) {authresult, error in
-                    if let _ = error{
-                        //self?.noResult("email or password is Incorrect")
-                    }else {
-                        MyAccount.shared.currentUser = result.customers[0]
-                        if result.customers[0].tags != ""{
-                            self.getDraftlist(draftID: result.customers[0].tags!)
-                        }
-                        if(result.customers[0].note != nil && result.customers[0].note != ""){
-                            self.getDraftlist(draftID: result.customers[0].note!,isCartList:true)
-                        }
-                    }
-                }
-            }else {
-                //self?.noResult("Try again please")
+    private func isValidAccount(email: String, password: String) {
+        let parameters = ["query": "email:\(email)"]
+        
+        NetworkService().getData(path: "customers/search", parameters: parameters, model: CustomersResponse.self) { result, error in
+            guard let result = result else {
+                print("Error fetching customer: \(error!.localizedDescription)")
+                return
+            }
+            
+            let customer = result.customers.first
+            let isGoogle = UserDefaults.standard.bool(forKey: "isGoogle")
+            
+            if isGoogle {
+                self.handleGoogleLogin(for: customer)
+            } else {
+                self.handleEmailLogin(for: customer, password: password)
             }
         }
     }
-    
-    private func getDraftlist(draftID:String,isCartList:Bool = false){
-        NetworkService().getDraftOrders(path: "draft_orders/\(draftID)", parameters: [:]) { result, error in
-            if let result = result {
-                self.settingDraftlist(data: result,draftList: isCartList ? MyDraftlist.cartListShared : MyDraftlist.wishListShared)
-            }else {
-                print(error!.localizedDescription)
+
+    private func handleGoogleLogin(for customer: Customer?) {
+        guard let customer = customer else {
+            print("No customer found")
+            return
+        }
+        
+        MyAccount.shared.currentUser = customer
+        
+        if let tags = customer.tags, !tags.isEmpty {
+            getDraftlist(draftID: tags)
+        }
+        
+        if let note = customer.note, !note.isEmpty {
+            getDraftlist(draftID: note, isCartList: true)
+        }
+    }
+
+    private func handleEmailLogin(for customer: Customer?, password: String) {
+        guard let customer = customer else {
+            print("No customer found")
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: customer.email, password: password) { authResult, error in
+            if let error = error {
+                print("Email or password is incorrect: \(error.localizedDescription)")
+                return
+            }
+            
+            MyAccount.shared.currentUser = customer
+            
+            if let tags = customer.tags, !tags.isEmpty {
+                self.getDraftlist(draftID: tags)
+            }
+            
+            if let note = customer.note, !note.isEmpty {
+                self.getDraftlist(draftID: note, isCartList: true)
             }
         }
     }
-    
-    private func settingDraftlist(data:Data,draftList:MyDraftlist){
-        do{
-            if let dataString = String(data: data, encoding: .utf8){
-                if let jsonData = dataString.data(using: .utf8) {
-                    
-                    let jsonObject = try! JSONSerialization.jsonObject(with: jsonData, options: [])
-                    
-                    let fixedJsonData = try! JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-                    
-                    if let jsonString = String (data: fixedJsonData, encoding: .utf8) {
-                        let ourJson = jsonString.data(using: .utf8)
-                        let draft = try! JSONDecoder().decode(DraftOrderResponseModel.self, from: ourJson!)
-                        draftList.currentDraftlist = draft.draftOrder
-                    }
-                }
+
+    private func getDraftlist(draftID: String, isCartList: Bool = false) {
+        let path = "draft_orders/\(draftID)"
+        
+        NetworkService().getDraftOrders(path: path, parameters: [:]) { result, error in
+            guard let data = result else {
+                print("Error fetching draft list: \(error!.localizedDescription)")
+                return
             }
+            
+            let draftList = isCartList ? MyDraftlist.cartListShared : MyDraftlist.wishListShared
+            self.settingDraftlist(data: data, draftList: draftList)
         }
     }
+
+    private func settingDraftlist(data: Data, draftList: MyDraftlist) {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            let fixedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+            
+            let draftOrder = try JSONDecoder().decode(DraftOrderResponseModel.self, from: fixedJsonData)
+            draftList.currentDraftlist = draftOrder.draftOrder
+        } catch {
+            print("Error decoding draft list: \(error.localizedDescription)")
+        }
+    }
+
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

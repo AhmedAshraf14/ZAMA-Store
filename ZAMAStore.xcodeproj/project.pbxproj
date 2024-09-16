@@ -80,8 +80,8 @@
 		E27469CD2C910928008C659F /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27469CC2C910928008C659F /* ReviewsView.swift */; };
 		E27469D12C9112A7008C659F /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27469CF2C9112A7008C659F /* ReviewTableViewCell.swift */; };
 		E27469D22C9112A7008C659F /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E27469D02C9112A7008C659F /* ReviewTableViewCell.xib */; };
-		E278CE472C88E15F0004F9A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */; };
 		E27E7D552C977B3600337B47 /* ConversionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E7D542C977B3600337B47 /* ConversionResponse.swift */; };
+		E27F2F1E2C9847A600770B52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E27F2F1D2C9847A500770B52 /* GoogleService-Info.plist */; };
 		E28876BE2C934D5B00917C71 /* DraftOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28876BD2C934D5B00917C71 /* DraftOrder.swift */; };
 		E28876C02C934F3900917C71 /* DraftOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28876BF2C934F3900917C71 /* DraftOrderViewModel.swift */; };
 		E28876C22C934F7000917C71 /* DraftOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28876C12C934F7000917C71 /* DraftOrderViewController.swift */; };
@@ -170,8 +170,8 @@
 		E27469CC2C910928008C659F /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		E27469CF2C9112A7008C659F /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E27469D02C9112A7008C659F /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
-		E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E27E7D542C977B3600337B47 /* ConversionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionResponse.swift; sourceTree = "<group>"; };
+		E27F2F1D2C9847A500770B52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E28876BD2C934D5B00917C71 /* DraftOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrder.swift; sourceTree = "<group>"; };
 		E28876BF2C934F3900917C71 /* DraftOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderViewModel.swift; sourceTree = "<group>"; };
 		E28876C12C934F7000917C71 /* DraftOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrderViewController.swift; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 				E255E0012C8659CC006B83D1 /* View */,
 				E255E0152C865A9F006B83D1 /* Modules */,
 				E255DFD22C8657CC006B83D1 /* Info.plist */,
-				E278CE462C88E15F0004F9A5 /* GoogleService-Info.plist */,
+				E27F2F1D2C9847A500770B52 /* GoogleService-Info.plist */,
 			);
 			path = ZAMAStore;
 			sourceTree = "<group>";
@@ -988,10 +988,10 @@
 			files = (
 				3CA6F0C02C8B3DA000A9DE40 /* ProductItem.xib in Resources */,
 				3C0A10232C94BC0100478DF0 /* CartCell.xib in Resources */,
+				E27F2F1E2C9847A600770B52 /* GoogleService-Info.plist in Resources */,
 				316DA4792C907C0200FA8177 /* OrdersTableViewCell.xib in Resources */,
 				E255E0062C8659DB006B83D1 /* Main1.storyboard in Resources */,
 				E26FB20B2C8E7F1900E26B03 /* ImageCollectionViewCell.xib in Resources */,
-				E278CE472C88E15F0004F9A5 /* GoogleService-Info.plist in Resources */,
 				E255DFD12C8657CC006B83D1 /* LaunchScreen.storyboard in Resources */,
 				3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */,
 				E255DFCE2C8657CB006B83D1 /* Assets.xcassets in Resources */,
