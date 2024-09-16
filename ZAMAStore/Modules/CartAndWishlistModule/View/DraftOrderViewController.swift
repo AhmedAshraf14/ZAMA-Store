@@ -26,9 +26,14 @@ class DraftOrderViewController: UIViewController {
         if(!viewModel.isCart){
             lblPriceee.isHidden=true
             lblPrice.isHidden=true
-            btnCheckOut.setTitle("Continue Shopping", for: .normal)
+            let title = "Continue Shopping"
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 30, weight: .bold)
+            ]
+            let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+            
+            btnCheckOut.setAttributedTitle(attributedTitle, for: .normal)
         }
-        
         
         let currency = self.viewModel?.getCurrency()
         var convertedPrice = 0.0
@@ -77,15 +82,27 @@ class DraftOrderViewController: UIViewController {
     }
     
     @IBAction func btnAction(_ sender: UIButton) {
-        
-        let vc = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        if !viewModel.isCart {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateInitialViewController()
+            if let scene = view.window?.windowScene {
+                if let window = scene.windows.first {
+                    window.rootViewController = initialViewController
+                    window.makeKeyAndVisible()
+                }
+            }
+        }else{
+            let checkOutVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(identifier: "CheckOutView") as! CheckOutView
+            checkOutVC.viewModel.items = viewModel.draftOrders
+            self.navigationController?.pushViewController(checkOutVC, animated: true)
+        }
+
     }
     
 }
 
 
-//MARK: - Extension hedic
+//MARK: - Extension tableView
 extension DraftOrderViewController : UITableViewDelegate, UITableViewDataSource{
     // number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
