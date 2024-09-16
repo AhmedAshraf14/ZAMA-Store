@@ -11,7 +11,6 @@ class DraftOrderViewModel{
     
     var networkService : NetworkServiceProtocol
     var draftOrders = MyDraftlist.wishListShared.currentDraftlist?.lineItems ?? []
-    #warning("Put this value when navigate")//Fake warning
     var isCart:Bool = false
     var products : [ProductModel] = []
     
