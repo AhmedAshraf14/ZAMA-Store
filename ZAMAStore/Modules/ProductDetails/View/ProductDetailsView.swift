@@ -53,7 +53,7 @@ class ProductDetailsView: UIViewController {
         if let layout = imagesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.itemSize = CGSize(width: imagesCollectionView.frame.width, height: imagesCollectionView.frame.height)
         }
-        pageControl.numberOfPages = viewModel.product.images.count
+        pageControl.numberOfPages = viewModel.product.images!.count
         pageControl.addTarget(self, action: #selector(pageControlChanged(_:)), for: .valueChanged)
 
     }
@@ -64,8 +64,14 @@ class ProductDetailsView: UIViewController {
     }
     
     func setupUI(){
+        let currency = viewModel?.getCurrency()
+        var convertedPrice = 0.0
+        if let priceString = viewModel?.product.variants.first?.price,
+           let price = Double(priceString) {
+            convertedPrice = price * (currency?.1 ?? 1.0)
+        }
+        productPriceLabel.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
         productTitleLabel.text = viewModel.product.title
-        productPriceLabel.text = "\(viewModel.product.variants[0].price) EGP"
         descriptionTextView.text = viewModel.product.bodyHTML
     }
     
@@ -146,7 +152,7 @@ extension ProductDetailsView : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-        cell.setupCell(imageUrl: viewModel.product.images[indexPath.item].src)
+        cell.setupCell(imageUrl: viewModel.product.images![indexPath.item].src)
         return cell
     }
     

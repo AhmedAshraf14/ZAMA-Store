@@ -48,7 +48,7 @@ class SignUpView: UIViewController {
             return
         }
         
-        let customer = Customer(id: 0, email: email, firstName: firstName, lastName: lastName, ordersCount: 0, totalSpent: "0", lastOrderID: nil, lastOrderName: nil, note: nil, tags: "", phone: phone, addresses: nil, defaultAddress: nil, password: password)
+        let customer = Customer(id: 0, email: email, firstName: firstName, lastName: lastName, ordersCount: 0, totalSpent: "0", lastOrderID: nil, lastOrderName: nil, currency: "", note: nil, tags: "", phone: phone, addresses: nil, defaultAddress: nil, password: password)
         
         viewModel.createCustomer(customer: customer)
     }

@@ -50,12 +50,19 @@ class CartCell: UITableViewCell {
     }
     
     func setUpCell(){
+        let currency = viewModel?.getCurrency()
+        var convertedPrice = 0.0
+        if let priceString = viewModel.lineItem.price,
+           let price = Double(priceString) {
+            convertedPrice = price * (currency?.1 ?? 1.0)
+        }
+        lblPrice.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
+        
         lblTitle.text=viewModel.lineItem.title
-        lblPrice.text=viewModel.lineItem.price
         lblVendor.text=viewModel.product.vendor
         lblCount.text="\(viewModel.lineItem.quantity)"
         stepperQuantity.value = Double(viewModel.lineItem.quantity)
-        setupImage(imageUrl: viewModel.product.image.src)
+        setupImage(imageUrl: viewModel.product.image?.src ?? "")
         
         
     }

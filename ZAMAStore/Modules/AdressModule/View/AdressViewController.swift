@@ -34,6 +34,7 @@ class AdressViewController: UIViewController {
             viewModel.address?.customer_address?.addressDefault=sqitchIsDefault.isOn
             viewModel.address?.customer_address?.customerID=MyAccount.shared.currentUser.id
             viewModel.pushData()
+            self.navigationController?.popViewController(animated: true)
         }else{
             self.presentAlert(title: "Error", message: "Fill all fields", buttonTitle: "OK")
         }

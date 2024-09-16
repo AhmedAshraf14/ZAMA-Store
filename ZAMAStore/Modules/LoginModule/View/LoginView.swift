@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+
 
 class LoginView: UIViewController {
     
@@ -26,18 +28,19 @@ class LoginView: UIViewController {
     }
     
     private func setupViewModel(){
+        viewModel.configureGoogleSignIn()
         viewModel.noResult = {error in
             self.presentAlert(title: "SignIn Error", message: error, buttonTitle: "OK")
         }
         viewModel.navigateForward = {
             
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewController = storyboard.instantiateInitialViewController()
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateInitialViewController()
             initialViewController?.modalPresentationStyle = .fullScreen
             self.present(initialViewController!, animated: true, completion: nil)
         }
-
+        
     }
     
     @IBAction func signinPressed(_ sender: UIButton) {
@@ -61,4 +64,8 @@ class LoginView: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()
     }
     
+    
+    @IBAction func signWithGooglePressed(_ sender: UIButton) {
+        viewModel.signInWithGoogle(view: self)
+    }
 }

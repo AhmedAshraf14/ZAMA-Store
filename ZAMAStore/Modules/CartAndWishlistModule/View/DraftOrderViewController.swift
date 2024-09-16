@@ -28,7 +28,17 @@ class DraftOrderViewController: UIViewController {
             lblPrice.isHidden=true
             btnCheckOut.setTitle("Continue Shopping", for: .normal)
         }
-        lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
+        
+        
+        let currency = self.viewModel?.getCurrency()
+        var convertedPrice = 0.0
+        if let priceString = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice,
+           let price = Double(priceString) {
+            convertedPrice = price * (currency?.1 ?? 1.0)
+        }
+        self.lblPrice.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
+        
+        //lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
         setupTable()
     }
     
@@ -52,7 +62,14 @@ class DraftOrderViewController: UIViewController {
         viewModel.getDraftProducts()
         viewModel.reloadTV = {
             self.tableView.reloadData()
-            self.lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
+            let currency = self.viewModel?.getCurrency()
+            var convertedPrice = 0.0
+            if let priceString = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice,
+               let price = Double(priceString) {
+                convertedPrice = price * (currency?.1 ?? 1.0)
+            }
+            self.lblPrice.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
+            //self.lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
         }
         viewModel.noResult={
             self.tableView.isHidden = true
@@ -117,7 +134,14 @@ extension DraftOrderViewController:DraftOrderViewControllerProtocol{
                 self.lblPrice.alpha = 0.0
             }) { _ in
                 // Update the label text after fade out
-                self.lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
+                let currency = self.viewModel?.getCurrency()
+                var convertedPrice = 0.0
+                if let priceString = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice,
+                   let price = Double(priceString) {
+                    convertedPrice = price * (currency?.1 ?? 1.0)
+                }
+                self.lblPrice.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
+                //self.lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
                 
                 // Animate fade in
                 UIView.animate(withDuration: 0.3) {

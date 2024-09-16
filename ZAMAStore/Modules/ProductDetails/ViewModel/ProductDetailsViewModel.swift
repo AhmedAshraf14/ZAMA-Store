@@ -20,7 +20,7 @@ class ProductDetailsViewModel{
     }
     
     func numberOfProductImages()->Int{
-        return product.images.count
+        return product.images!.count
     }
     
     func productIsFav(){
@@ -98,6 +98,10 @@ class ProductDetailsViewModel{
         wishlist.deleteLineItem(lineItem: lineItem){
             
         }
+    }
+    
+    func getCurrency()->(String,Double){
+        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
     }
 }
 

@@ -30,7 +30,7 @@ extension UIViewController{
     @objc func navigateToSearchList() {
         if type(of: self) == BrandView.self{
             let currentVC = tabBarController?.viewControllers![1] as! CategoriesViewController
-            //currentVC.isSearching = true
+            //currentVC.viewModel.isSearching = true
             currentVC.setupSearchNavBar()
             self.tabBarController!.selectedIndex = 1
         }else{

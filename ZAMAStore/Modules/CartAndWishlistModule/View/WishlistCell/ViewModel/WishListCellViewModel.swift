@@ -59,4 +59,8 @@ class WishListCellViewModel{
         let lineItem = LineItem(id: 0, variantID: product.variants[0].id, productID: product.id, title: product.title, quantity: 1, price: "")
         cartDraftOrder.putLineItem(lineItem: lineItem,isCart: true)
     }
+    
+    func getCurrency()->(String,Double){
+        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
+    }
 }

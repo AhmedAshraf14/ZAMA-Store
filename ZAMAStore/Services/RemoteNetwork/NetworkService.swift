@@ -17,6 +17,7 @@ protocol NetworkServiceProtocol{
 
 class NetworkService: NetworkServiceProtocol{
     private let baseUrl = "https://nciost1.myshopify.com/admin/api/2024-07/"
+    private let currencyUrl = "https://api.exconvert.com/"
     
     private let headers1: HTTPHeaders = [
         "X-Shopify-Access-Token": "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"
@@ -48,8 +49,14 @@ class NetworkService: NetworkServiceProtocol{
     
     
     func getData<T: Codable> (path: String, parameters: Alamofire.Parameters, model: T.Type, handler: @escaping (T?, Error?) -> Void){
+        var url = "\(baseUrl)\(path).json"
+        var headers = headers1
+        if path == "convert"{
+            url = "\(currencyUrl)\(path)"
+            headers = [:]
+        }
         
-        AF.request("\(baseUrl)\(path).json",parameters: parameters, headers: headers1).validate().responseDecodable(of: model.self) { response in
+        AF.request("\(url)",parameters: parameters, headers: headers).validate().responseDecodable(of: model.self) { response in
             switch response.result {
             case .success(let data):
                 handler(data,nil)
