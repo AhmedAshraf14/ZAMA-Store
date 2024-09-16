@@ -10,7 +10,6 @@ import UIKit
 class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var ordersTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
-    
     var viewModel = OrdersViewModell()
     
     override func viewDidLoad() {

@@ -61,7 +61,8 @@ class DraftOrderViewController: UIViewController {
     
     @IBAction func btnAction(_ sender: UIButton) {
         
-        print("Button Clicked")
+        let vc = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
