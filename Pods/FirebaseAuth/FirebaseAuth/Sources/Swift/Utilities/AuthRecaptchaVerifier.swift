@@ -58,7 +58,7 @@
     private let kRecaptchaVersion = "RECAPTCHA_ENTERPRISE"
     private init() {}
 
-    class func wishListShared(auth: Auth?) -> AuthRecaptchaVerifier {
+    class func shared(auth: Auth?) -> AuthRecaptchaVerifier {
       if _shared.auth != auth {
         _shared.agentConfig = nil
         _shared.tenantConfigs = [:]

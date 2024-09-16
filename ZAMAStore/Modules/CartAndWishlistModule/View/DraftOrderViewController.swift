@@ -96,6 +96,7 @@ class DraftOrderViewController: UIViewController {
             checkOutVC.viewModel.items = viewModel.draftOrders
             self.navigationController?.pushViewController(checkOutVC, animated: true)
         }
+
     }
     
 }

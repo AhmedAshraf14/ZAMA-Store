@@ -14,7 +14,6 @@
 		316DA4792C907C0200FA8177 /* OrdersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316DA4772C907C0200FA8177 /* OrdersTableViewCell.xib */; };
 		318545A32C876F0B0067C820 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318545A12C876F0B0067C820 /* BrandCollectionViewCell.swift */; };
 		318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318545A22C876F0B0067C820 /* BrandCollectionViewCell.xib */; };
-		33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */; };
 		3C0A10082C91440800478DF0 /* AdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10072C91440800478DF0 /* AdressViewController.swift */; };
 		3C0A100A2C91441A00478DF0 /* AdressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10092C91441A00478DF0 /* AdressViewModel.swift */; };
 		3C0A10132C92482900478DF0 /* extBarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0A10122C92482900478DF0 /* extBarButtonItems.swift */; };
@@ -28,10 +27,17 @@
 		3C20FEA62C87F10B0049328A /* DiscountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEA42C87F10B0049328A /* DiscountCell.swift */; };
 		3C20FEA72C87F10B0049328A /* DiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C20FEA52C87F10B0049328A /* DiscountCell.xib */; };
 		3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C20FEAE2C8946CB0049328A /* DiscountModel.swift */; };
+		3C5809F22C988C77008DC82E /* Main4.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C5809F12C988C77008DC82E /* Main4.storyboard */; };
 		3CA6F0BF2C8B3DA000A9DE40 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA6F0BD2C8B3DA000A9DE40 /* ProductItem.swift */; };
 		3CA6F0C02C8B3DA000A9DE40 /* ProductItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA6F0BE2C8B3DA000A9DE40 /* ProductItem.xib */; };
 		3CA6F0C42C8B401400A9DE40 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA6F0C32C8B401400A9DE40 /* ProductModel.swift */; };
 		3CA6F0C72C8B406700A9DE40 /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA6F0C62C8B406700A9DE40 /* ProductCellViewModel.swift */; };
+		3CBEB6EE2C98C0E7005B9AB6 /* PayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1C23B2C98B71C00396C60 /* PayViewModel.swift */; };
+		3CBEB6EF2C98C0F1005B9AB6 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1C23F2C98B8F800396C60 /* PayViewController.swift */; };
+		3CBEB6F02C98C0FA005B9AB6 /* CreditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5809F32C9894E7008DC82E /* CreditViewModel.swift */; };
+		3CBEB6F12C98C0FF005B9AB6 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5809EF2C988C59008DC82E /* CreditViewController.swift */; };
+		3CBEB6F32C98D8A8005B9AB6 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEB6F22C98D8A8005B9AB6 /* PayModel.swift */; };
+		9DAFA7563E8BB0377E72257C /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DC10EC9D52FC537B3D6904 /* Pods_ZAMAStore.framework */; };
 		E23C28252C87F12E002F6884 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C28242C87F12E002F6884 /* ValidationError.swift */; };
 		E24B62582C886E5D0099E503 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */; };
 		E255DFC52C8657CA006B83D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255DFC42C8657CA006B83D1 /* AppDelegate.swift */; };
@@ -115,13 +121,18 @@
 		3C20FEA42C87F10B0049328A /* DiscountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCell.swift; sourceTree = "<group>"; };
 		3C20FEA52C87F10B0049328A /* DiscountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCell.xib; sourceTree = "<group>"; };
 		3C20FEAE2C8946CB0049328A /* DiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
+		3C5809EF2C988C59008DC82E /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
+		3C5809F12C988C77008DC82E /* Main4.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main4.storyboard; sourceTree = "<group>"; };
+		3C5809F32C9894E7008DC82E /* CreditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewModel.swift; sourceTree = "<group>"; };
 		3CA6F0BD2C8B3DA000A9DE40 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		3CA6F0BE2C8B3DA000A9DE40 /* ProductItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItem.xib; sourceTree = "<group>"; };
 		3CA6F0C32C8B401400A9DE40 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		3CA6F0C62C8B406700A9DE40 /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
-		575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
-		925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
+		3CBEB6F22C98D8A8005B9AB6 /* PayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
+		3CC1C23B2C98B71C00396C60 /* PayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewModel.swift; sourceTree = "<group>"; };
+		3CC1C23F2C98B8F800396C60 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		95DC10EC9D52FC537B3D6904 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A38DA9000CB0EBD97D6DED55 /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		E23C28242C87F12E002F6884 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		E255DFC12C8657CA006B83D1 /* ZAMAStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZAMAStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +193,7 @@
 		E28876C52C934FB600917C71 /* WishlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCell.swift; sourceTree = "<group>"; };
 		E28876C62C934FB600917C71 /* WishlistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistCell.xib; sourceTree = "<group>"; };
 		E28876C92C937D4000917C71 /* MyDraftlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDraftlist.swift; sourceTree = "<group>"; };
+		F04D62DD83760600A1DC9A24 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
 		E2F1529A2C9788BE00BED1B1 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33CA634A1725CBA6DE60F7F3 /* Pods_ZAMAStore.framework in Frameworks */,
+				9DAFA7563E8BB0377E72257C /* Pods_ZAMAStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +401,39 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3C5809EB2C988BD5008DC82E /* CreditModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C5809EE2C988C41008DC82E /* Model */,
+				3C5809ED2C988C36008DC82E /* ViewModel */,
+				3C5809EC2C988BF4008DC82E /* View */,
+			);
+			path = CreditModule;
+			sourceTree = "<group>";
+		};
+		3C5809EC2C988BF4008DC82E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C5809EF2C988C59008DC82E /* CreditViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C5809ED2C988C36008DC82E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C5809F32C9894E7008DC82E /* CreditViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C5809EE2C988C41008DC82E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3CA6F0BA2C8B3D5F00A9DE40 /* ProductCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,10 +469,44 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		62A24207AD307F69032F5084 /* Frameworks */ = {
+		3CC1C2352C98B6D200396C60 /* PaymentModule */ = {
 			isa = PBXGroup;
 			children = (
-				925B282092115B38BDDC6201 /* Pods_ZAMAStore.framework */,
+				3CC1C2382C98B6EC00396C60 /* Model */,
+				3CC1C2372C98B6E400396C60 /* ViewModel */,
+				3CC1C2362C98B6DE00396C60 /* View */,
+			);
+			path = PaymentModule;
+			sourceTree = "<group>";
+		};
+		3CC1C2362C98B6DE00396C60 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3CC1C23F2C98B8F800396C60 /* PayViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3CC1C2372C98B6E400396C60 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3CC1C23B2C98B71C00396C60 /* PayViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3CC1C2382C98B6EC00396C60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3CBEB6F22C98D8A8005B9AB6 /* PayModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5995F2380273AF1DD0090846 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95DC10EC9D52FC537B3D6904 /* Pods_ZAMAStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -438,8 +517,8 @@
 				E255DFC32C8657CA006B83D1 /* ZAMAStore */,
 				E255DFC22C8657CA006B83D1 /* Products */,
 				E6F4E36C0130558BFC8009AA /* Pods */,
-				62A24207AD307F69032F5084 /* Frameworks */,
 				3C0A100F2C92472200478DF0 /* Recovered References */,
+				5995F2380273AF1DD0090846 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,6 +554,7 @@
 				E255E0032C8659DB006B83D1 /* Main1.storyboard */,
 				E255E0042C8659DB006B83D1 /* Main2.storyboard */,
 				E255E0022C8659DB006B83D1 /* Main3.storyboard */,
+				3C5809F12C988C77008DC82E /* Main4.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,7 +601,10 @@
 		E255E0152C865A9F006B83D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+
 				E25FBA892C98A7CE00886114 /* CheckOutModule */,
+				3CC1C2352C98B6D200396C60 /* PaymentModule */,
+				3C5809EB2C988BD5008DC82E /* CreditModule */,
 				316DA4692C906D3400FA8177 /* OredersModule */,
 				E28876B92C934D2300917C71 /* CartAndWishlistModule */,
 				3C0A10032C9143C600478DF0 /* AdressModule */,
@@ -950,8 +1033,8 @@
 		E6F4E36C0130558BFC8009AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */,
-				BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */,
+				A38DA9000CB0EBD97D6DED55 /* Pods-ZAMAStore.debug.xcconfig */,
+				F04D62DD83760600A1DC9A24 /* Pods-ZAMAStore.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -963,11 +1046,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E255DFD52C8657CC006B83D1 /* Build configuration list for PBXNativeTarget "ZAMAStore" */;
 			buildPhases = (
-				285F394821DC091D770967D6 /* [CP] Check Pods Manifest.lock */,
+				F3CCCEDEFA6DD2284F069BFA /* [CP] Check Pods Manifest.lock */,
 				E255DFBD2C8657CA006B83D1 /* Sources */,
 				E255DFBE2C8657CA006B83D1 /* Frameworks */,
 				E255DFBF2C8657CA006B83D1 /* Resources */,
-				2168D092260B1A37221BBEA9 /* [CP] Embed Pods Frameworks */,
+				32607B14BF87396ABC251358 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1016,6 +1099,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5809F22C988C77008DC82E /* Main4.storyboard in Resources */,
 				3CA6F0C02C8B3DA000A9DE40 /* ProductItem.xib in Resources */,
 				3C0A10232C94BC0100478DF0 /* CartCell.xib in Resources */,
 				E27F2F1E2C9847A600770B52 /* GoogleService-Info.plist in Resources */,
@@ -1037,7 +1121,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2168D092260B1A37221BBEA9 /* [CP] Embed Pods Frameworks */ = {
+		32607B14BF87396ABC251358 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1054,7 +1138,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		285F394821DC091D770967D6 /* [CP] Check Pods Manifest.lock */ = {
+		F3CCCEDEFA6DD2284F069BFA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1083,6 +1167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CBEB6F12C98C0FF005B9AB6 /* CreditViewController.swift in Sources */,
+				3CBEB6F02C98C0FA005B9AB6 /* CreditViewModel.swift in Sources */,
+				3CBEB6EF2C98C0F1005B9AB6 /* PayViewController.swift in Sources */,
+				3CBEB6EE2C98C0E7005B9AB6 /* PayViewModel.swift in Sources */,
 				3C20FEAF2C8946CB0049328A /* DiscountModel.swift in Sources */,
 				E24B62582C886E5D0099E503 /* UIViewController+Ext.swift in Sources */,
 				316DA4782C907C0200FA8177 /* OrdersTableViewCell.swift in Sources */,
@@ -1151,6 +1239,7 @@
 				E25FBA8D2C98A80000886114 /* CheckOutViewModel.swift in Sources */,
 				3C20FEA62C87F10B0049328A /* DiscountCell.swift in Sources */,
 				E255E0612C865A9F006B83D1 /* SignupModel.swift in Sources */,
+				3CBEB6F32C98D8A8005B9AB6 /* PayModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1297,7 +1386,7 @@
 		};
 		E255DFD62C8657CC006B83D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 575397F0B641B9E28E3C78AA /* Pods-ZAMAStore.debug.xcconfig */;
+			baseConfigurationReference = A38DA9000CB0EBD97D6DED55 /* Pods-ZAMAStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1326,7 +1415,7 @@
 		};
 		E255DFD72C8657CC006B83D1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD9BA630ED9C6BB0C01DCB89 /* Pods-ZAMAStore.release.xcconfig */;
+			baseConfigurationReference = F04D62DD83760600A1DC9A24 /* Pods-ZAMAStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
