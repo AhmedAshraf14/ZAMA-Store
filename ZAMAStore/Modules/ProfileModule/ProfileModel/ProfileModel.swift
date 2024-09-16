@@ -23,7 +23,7 @@ struct Customer: Codable {
     let totalSpent: String
     let lastOrderID: Int?
     let lastOrderName: String?
-   // let currency: String?
+    let currency: String?
     let note : String?
     let tags : String?
     let phone: String?
@@ -40,7 +40,7 @@ struct Customer: Codable {
         case totalSpent = "total_spent"
         case lastOrderID = "last_order_id"
         case lastOrderName = "last_order_name"
-       // case currency
+        case currency
         case note
         case tags
         case phone
