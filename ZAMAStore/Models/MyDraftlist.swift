@@ -38,19 +38,23 @@ class MyDraftlist{
             
         }
     }
+    
+    func deleteWholeDraftOrder(attribute:String,handler:@escaping()->Void){
+        networkService.deleteData(path: "draft_orders/\(currentDraftlist!.id)")
+        currentDraftlist = nil
+        #warning("خلي بالك من الحته ديه")
+        MyAccount.shared.putCustomer(draftOrderID: 0,attribute: attribute)
+        MyAccount.shared.reloadCustomer {
+            if attribute == "note"{
+                handler()
+            }
+        }
+    }
     // delete line item inside draftorder
     func deleteLineItem(lineItem:LineItem,attribute:String="tags",handler:@escaping()->Void){
         // check if this last line item so delete it and update customer note or tag
         if currentDraftlist?.lineItems!.count == 1{
-            networkService.deleteData(path: "draft_orders/\(currentDraftlist!.id)")
-            currentDraftlist = nil
-            #warning("خلي بالك من الحته ديه")
-            MyAccount.shared.putCustomer(draftOrderID: 0,attribute: attribute)
-            MyAccount.shared.reloadCustomer {
-                if attribute == "note"{
-                    handler()
-                }
-            }
+            deleteWholeDraftOrder(attribute: attribute, handler: handler)
         }else{
             currentDraftlist?.lineItems!.removeAll { item in
                 item.variantID == lineItem.variantID
