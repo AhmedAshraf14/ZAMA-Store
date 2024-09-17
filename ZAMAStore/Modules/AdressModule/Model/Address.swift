@@ -12,6 +12,9 @@ struct AddressResponse:Codable{
     init(){
         customer_address=Address(addressDefault: false)
     }
+    init(add:Address){
+        customer_address=add
+    }
 }
 struct Address: Codable {
     var id, customerID: Int?

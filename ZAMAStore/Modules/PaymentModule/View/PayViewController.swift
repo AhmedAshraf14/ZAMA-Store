@@ -8,6 +8,13 @@
 import UIKit
 import PassKit
 class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
+    
+    
+    @IBOutlet weak var view2: UIView!
+    
+    
+    
+    @IBOutlet weak var imgViewFinish: UIImageView!
     private var paymentRequest : PKPaymentRequest = PKPaymentRequest()
     var selectedPay:Int=0
     @IBOutlet weak var cardCircle: UIImageView!
@@ -24,9 +31,10 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
         SetupView()
         //Apple setting
         prepareApple()
-        
+        self.title = "Payment Method"
         //Sucess View
         viewModel.showSucessView = {self.showPaymentSuccess()}
+        self.view2.alpha = 0.0
         // Do any additional setup after loading the view.
     }
     
@@ -43,7 +51,7 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
         case 0 : showAlert()
         case 1: payWithCard()
         case 2: payWithApplePay()
-        
+        case 3: viewModel.pushOrder()
         default:
             showAlert()
         }
@@ -57,20 +65,11 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
         self.presentAlert(title: "Payment", message: "Please choose the payment method", buttonTitle: "OK")
     }
 
-    @IBAction func applePayact(_ sender: Any) {
-        cardCircle.image=UIImage(systemName: "circle")
-        appleCircle.image=UIImage(systemName: "circle.fill")
-        cashCircle.image=UIImage(systemName: "circle")
-        selectedPay = 2
-    }
-    
-    
-
-    @IBAction func cardBtnAction(_ sender: Any) {
-        cardCircle.image=UIImage(systemName: "circle.fill")
-        appleCircle.image=UIImage(systemName: "circle")
-        cashCircle.image=UIImage(systemName: "circle")
-        selectedPay = 1
+    @IBAction func cardBtnAction(_ sender: UIButton) {
+        cardCircle.image=UIImage(systemName: "circle\(sender.tag == 1 ? ".fill" : "")")
+        appleCircle.image=UIImage(systemName: "circle\(sender.tag == 2 ? ".fill" : "")")
+        cashCircle.image=UIImage(systemName: "circle\(sender.tag == 3 ? ".fill" : "")")
+        selectedPay = sender.tag
     }
     
 }
@@ -116,26 +115,29 @@ extension PayViewController{
 extension PayViewController{
     func showPaymentSuccess() {
         // Create a UIView for the success message
-        let successView = UIView(frame: CGRect(x: 50, y: 200, width: 300, height: 100))
-        successView.backgroundColor = .mintGreen
-        successView.layer.cornerRadius = 15
-        successView.alpha = 0.0 
-        successView.center = self.view.center// Initially hidden
+//        let successView = UIView(frame: CGRect(x: 50, y: 200, width: 300, height: 100))
+//        successView.backgroundColor = .mintGreen
+//        successView.layer.cornerRadius = 15
+//        successView.alpha = 0.0 
+//        successView.center = self.view.center// Initially hidden
+//
+//        // Add a UILabel to the success view
+//        //let successLabel = UILabel(frame: successView.bounds)
+//        let successLabel = UIImage(systemName: "checkmark.circle.fill")
+//        let img = UIImageView
+//        //successLabel.text = "Order Comfirmed!"
+//        //successLabel.textAlignment = .center
+//        //successLabel.textColor = .white
+//        successLabel.font = UIFont.boldSystemFont(ofSize: 18)
+//        successView.addSubview(successLabel!)
+//        
+//        // Add the success view to the main view
+//        self.view.addSubview(successView)
 
-        // Add a UILabel to the success view
-        let successLabel = UILabel(frame: successView.bounds)
-        successLabel.text = "Order Comfirmed!"
-        successLabel.textAlignment = .center
-        successLabel.textColor = .white
-        successLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        successView.addSubview(successLabel)
         
-        // Add the success view to the main view
-        self.view.addSubview(successView)
-
         // Transition and animate the success view appearance
         UIView.transition(with: self.view, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-            successView.alpha = 1.0  // Fade in
+            self.view2.alpha = 1.0  // Fade in
         }) { _ in
             // Once the view is visible, add a scale bounce effect
             UIView.animate(withDuration: 0.3,
@@ -144,19 +146,19 @@ extension PayViewController{
                            initialSpringVelocity: 0.5,
                            options: [],
                            animations: {
-                successView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)  // Scale up
+                self.view2.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)  // Scale up
             }) { _ in
                 // Scale back to original size
                 UIView.animate(withDuration: 0.3) {
-                    successView.transform = CGAffineTransform.identity
+                    self.view2.transform = CGAffineTransform.identity
                 }
             }
 
             // After a 2-second delay, hide the view with a fade-out transition
             UIView.animate(withDuration: 0.5, delay: 2.0, options: [], animations: {
-                successView.alpha = 0.0  // Fade out
+                self.view2.alpha = 0.0  // Fade out
             }) { _ in
-                successView.removeFromSuperview()  // Remove the view from the hierarchy
+                self.view2.removeFromSuperview()  // Remove the view from the hierarchy
                 self.returnToHomeScreen()
             }
         }

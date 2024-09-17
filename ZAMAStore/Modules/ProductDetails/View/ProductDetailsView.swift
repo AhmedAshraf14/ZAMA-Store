@@ -89,6 +89,10 @@ class ProductDetailsView: UIViewController {
     }
     
     @IBAction func addToCartButtonPressed(_ sender: UIButton) {
+        if !flag{
+            self.presentSignInAlert()
+            return
+        }
         if sizeButton.titleLabel?.text == "Size" || colorButton.titleLabel?.text == "Color" {
             self.presentAlert(title: "Error", message: "Choose Size and Color", buttonTitle: "OK")
         }else{
@@ -108,6 +112,10 @@ class ProductDetailsView: UIViewController {
     }
     
     @IBAction func favButtonPressed(_ sender: UIButton) {
+        if !flag{
+            self.presentSignInAlert()
+            return
+        }
         if viewModel.isFav{
             self.presentActionAlert(title: "Sure?", message: "Item will be removed from your wishlist") {
                 self.viewModel.isFav.toggle()
