@@ -7,7 +7,7 @@
 
 import Foundation
 class ProductCellViewModel{
-    var showError:((String)->Void)={error in }
+    var showError:(()->Void) = {}
     let product:ProductModel
     var cartDraftOrder=MyDraftlist.cartListShared
     var networkService:NetworkServiceProtocol
@@ -52,7 +52,7 @@ class ProductCellViewModel{
     func putCartDraftOrder(){
         for myproduct in cartDraftOrder.currentDraftlist!.lineItems!{
             if(myproduct.productID == product.id){
-                showError("This product Already Exist")
+                self.showError()
                 return
             }
         }

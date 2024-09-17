@@ -14,6 +14,7 @@ class ProductItem: UICollectionViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var warningLabel: UILabel!
     var viewModel:ProductCellViewModel?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,12 +51,22 @@ class ProductItem: UICollectionViewCell {
          }
      }
      */
+    func showLbl(){
+        warningLabel.isHidden.toggle()
+    }
     @IBAction func addToCartAct(_ sender: Any) {
+        
         if MyAccount.shared.currentUser.note==nil{
             viewModel?.postToCartDraftOrder()
         }
             else{
                 viewModel?.putCartDraftOrder()
+                viewModel?.showError = { 
+                    self.showLbl()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1){
+                        self.showLbl()
+                    }
+                }
             }
         }
     

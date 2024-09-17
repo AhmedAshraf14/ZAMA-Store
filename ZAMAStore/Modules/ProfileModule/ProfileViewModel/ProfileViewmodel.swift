@@ -11,6 +11,8 @@ class MyAccount{
     static let shared=MyAccount()
     var currentUser:Customer!
     var networkService:NetworkServiceProtocol
+    var orders: [Order] = []
+    var reloadTv : (()->Void) = {}
     private init() {
         networkService = NetworkService()
     }
@@ -31,6 +33,21 @@ class MyAccount{
             }
         }
     }
+    func getCurrency()->(String,Double){
+        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
+    }
+    
+    func getOrders() {
+          
+        networkService.getData(path: "customers/\(currentUser!.id)/orders" ,parameters: ["status":"any"], model: OrdersResponse.self) { [weak self] data, error in
+            if let data = data {
+                self?.orders = data.orders
+                self?.reloadTv()
+            }else{
+                print(error!.localizedDescription)
+            }
+          }
+      }
     
 //    func putCustomer(cartOrderID:Int){
 //        let paramaters : [String:Any] = ["customer":["id":currentUser!.id,"note": cartOrderID==0 ? "" : "\(cartOrderID)"]]

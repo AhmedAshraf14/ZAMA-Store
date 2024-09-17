@@ -94,10 +94,6 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductItem", for: indexPath) as! ProductItem
-        #warning("Never checkthis in runnig so becarefull")
-        cell.viewModel?.showError = { str in
-            self.presentAlert(title: "Error", message: str, buttonTitle: "OK")
-        }
         cell.viewModel = ProductCellViewModel(product: viewModel.products[indexPath.row])
         cell.putData()
         cell.layer.cornerRadius = 20

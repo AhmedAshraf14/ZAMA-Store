@@ -33,6 +33,9 @@ class ProductDetailsView: UIViewController {
         viewModel.productIsFav()
         setupImageSlider()
         setupUI()
+        viewModel.errorResult = { error in
+            self.presentAlert(title: "Warning", message: error, buttonTitle: "OK")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,9 +109,16 @@ class ProductDetailsView: UIViewController {
     
     @IBAction func favButtonPressed(_ sender: UIButton) {
         if viewModel.isFav{
-            viewModel.isFav.toggle()
-            sender.setImage(UIImage(systemName: "heart"), for: .normal)
-            viewModel.deleteFavDraftOrder()
+            let favAlert = UIAlertController(title: "Sure?", message: "Item will be removed from your wishlist", preferredStyle: .alert)
+            favAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                self.viewModel.isFav.toggle()
+                sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                self.viewModel.deleteFavDraftOrder()
+            }))
+            favAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            favAlert.modalPresentationStyle = .overFullScreen
+            favAlert.modalTransitionStyle = .crossDissolve
+            self.present(favAlert, animated: true)
         }else{
             if viewModel.user?.tags == ""{
                 viewModel.postToDraftOrder(isCart: false)
