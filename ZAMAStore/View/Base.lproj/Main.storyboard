@@ -110,9 +110,9 @@
                         <color key="selectedImageTintColor" name="mintGreen"/>
                     </tabBar>
                     <connections>
-                        <segue destination="JZx-g2-tjn" kind="relationship" relationship="viewControllers" id="ga6-Iq-GZt"/>
-                        <segue destination="SKv-tn-cHP" kind="relationship" relationship="viewControllers" id="4eg-95-CO4"/>
-                        <segue destination="0Ml-5f-Q1u" kind="relationship" relationship="viewControllers" id="9gO-JQ-ntO"/>
+                        <segue destination="JZx-g2-tjn" kind="relationship" relationship="viewControllers" id="9f1-bU-x0d"/>
+                        <segue destination="SKv-tn-cHP" kind="relationship" relationship="viewControllers" id="hDS-ad-Ig9"/>
+                        <segue destination="0Ml-5f-Q1u" kind="relationship" relationship="viewControllers" id="r6Z-ZH-h5t"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQl-uI-lbo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,7 +205,7 @@
                             <constraint firstItem="eUP-2t-FYb" firstAttribute="trailing" secondItem="3rl-gq-Ht6" secondAttribute="trailing" id="yRV-zC-JiN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" selectedImage="house" catalog="system" id="9Wa-9n-yfp"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="9Wa-9n-yfp"/>
                     <connections>
                         <outlet property="discountCollectionView" destination="UgI-iy-s38" id="ydk-UK-9qx"/>
                         <outlet property="homeCollectionView" destination="eUP-2t-FYb" id="MVt-fv-RVY"/>
@@ -278,7 +278,7 @@
                             <constraint firstItem="yn6-zz-W6C" firstAttribute="bottom" secondItem="Lj2-vw-EF4" secondAttribute="bottom" constant="10" id="iA4-cT-hTs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" selectedImage="person" catalog="system" id="awp-mj-6Uk"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="awp-mj-6Uk"/>
                     <connections>
                         <outlet property="lblName" destination="6vO-9O-c2Z" id="5xR-Ip-jzW"/>
                         <outlet property="tableView" destination="Lj2-vw-EF4" id="aiY-D7-glg"/>

@@ -22,33 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code Copied" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7E-ae-yRL">
-                        <rect key="frame" x="146.5" y="4" width="88.5" height="17"/>
-                        <color key="backgroundColor" name="lightGrey"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                        <color key="textColor" name="mintGreen"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SALE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTI-PL-1II">
-                        <rect key="frame" x="20" y="40" width="77" height="37"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                        <color key="textColor" name="white1"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ON New" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0x-To-E0B">
-                        <rect key="frame" x="20" y="77" width="118" height="37"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                        <color key="textColor" name="white1"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFs-Pg-byM">
-                        <rect key="frame" x="20" y="113" width="147" height="37"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                        <color key="textColor" name="white1"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awu-qf-iFF">
-                        <rect key="frame" x="322.5" y="65" width="30.5" height="27.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                        <rect key="frame" x="125.5" y="89.5" width="130" height="43"/>
+                        <color key="backgroundColor" name="white1"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" name="mintGreen"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -57,34 +33,24 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="zRV-ZA-WyP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3b3-y8-ZYW"/>
-                <constraint firstItem="oFs-Pg-byM" firstAttribute="leading" secondItem="T0x-To-E0B" secondAttribute="leading" id="6PK-qX-P7B"/>
-                <constraint firstItem="JTI-PL-1II" firstAttribute="leading" secondItem="zRV-ZA-WyP" secondAttribute="leading" constant="20" id="7ki-Bx-HzE"/>
-                <constraint firstItem="z7E-ae-yRL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="FSE-tt-ka0"/>
-                <constraint firstItem="T0x-To-E0B" firstAttribute="top" secondItem="JTI-PL-1II" secondAttribute="bottom" id="Gbr-Fd-8BJ"/>
-                <constraint firstItem="Awu-qf-iFF" firstAttribute="trailing" secondItem="zRV-ZA-WyP" secondAttribute="trailing" constant="-28" id="KB1-Qq-OdV"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="z7E-ae-yRL" secondAttribute="top" constant="44" id="Kh7-pA-X18"/>
-                <constraint firstItem="oFs-Pg-byM" firstAttribute="top" secondItem="T0x-To-E0B" secondAttribute="bottom" constant="-1" id="LMg-Ae-q4M"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.206731" id="4pc-l9-dXb"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="LRR-ju-ON7"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="NBj-n4-OWs"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.341207" id="O6n-Ib-Obj"/>
                 <constraint firstItem="zRV-ZA-WyP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f9k-ay-JgZ"/>
                 <constraint firstAttribute="bottom" secondItem="zRV-ZA-WyP" secondAttribute="bottom" id="fSx-dP-0gY"/>
-                <constraint firstItem="JTI-PL-1II" firstAttribute="top" secondItem="zRV-ZA-WyP" secondAttribute="top" constant="40" id="kz6-qM-6Ci"/>
-                <constraint firstItem="Awu-qf-iFF" firstAttribute="top" secondItem="zRV-ZA-WyP" secondAttribute="top" constant="65" id="mU6-56-OX7"/>
                 <constraint firstAttribute="trailing" secondItem="zRV-ZA-WyP" secondAttribute="trailing" id="sld-Eo-E4Z"/>
-                <constraint firstItem="T0x-To-E0B" firstAttribute="leading" secondItem="JTI-PL-1II" secondAttribute="leading" id="z3j-DL-G2h"/>
             </constraints>
             <size key="customSize" width="381" height="208"/>
             <connections>
                 <outlet property="copiedCode" destination="z7E-ae-yRL" id="M9r-Yl-wYX"/>
                 <outlet property="imgBC" destination="zRV-ZA-WyP" id="ija-8I-s2b"/>
-                <outlet property="lblValue" destination="Awu-qf-iFF" id="6bG-5U-h4S"/>
             </connections>
             <point key="canvasLocation" x="119.56521739130436" y="75"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="sale1" width="6912" height="3456"/>
-        <namedColor name="lightGrey">
-            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="mintGreen">
             <color red="0.40200001001358032" green="0.76700001955032349" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

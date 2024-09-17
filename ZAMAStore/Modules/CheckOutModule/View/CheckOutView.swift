@@ -31,11 +31,11 @@ class CheckOutView: UIViewController {
             var convertedSubPrice = 0.0
             var convertedTotalPrice = 0.0
             var convertedTotalTax = 0.0
-            if let subTotalPriceString = self.viewModel.currentOrder.subTotalPrice,
+            if let subTotalPriceString = self.viewModel.currentOrder?.subTotalPrice,
                let subTotalPrice = Double(subTotalPriceString),
-               let totalPriceString = self.viewModel.currentOrder.totalPrice,
+               let totalPriceString = self.viewModel.currentOrder?.totalPrice,
                let totalPrice = Double(totalPriceString),
-               let totalTaxString = self.viewModel.currentOrder.totalTax,
+               let totalTaxString = self.viewModel.currentOrder?.totalTax,
                let totalTax = Double(totalTaxString){
                 
                 convertedSubPrice = subTotalPrice * (currency?.1 ?? 1.0)
@@ -54,6 +54,8 @@ class CheckOutView: UIViewController {
     }
     
     @IBAction func continueToPaymentPressed(_ sender: UIButton) {
+        let paymentVC = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
+        self.navigationController?.pushViewController(paymentVC, animated: true)
     }
 }
 

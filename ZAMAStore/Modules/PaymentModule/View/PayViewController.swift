@@ -82,10 +82,10 @@ extension PayViewController{
         request.supportedCountries = ["EG", "US"]
         request.merchantCapabilities = .threeDSecure
         request.countryCode = "EG"
-        request.currencyCode = "USD" // put you currency
+        request.currencyCode = UserDefaults.standard.string(forKey: "currency") ?? "EGP" // put you currency
     }
     func payWithApplePay(){
-        let amount = String(1200) // order toatal amoun
+        let amount = viewModel.cart.currentDraftlist?.totalPrice // order toatal amoun
         paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Cart Order", amount: NSDecimalNumber(string: amount ))]
             
             let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)

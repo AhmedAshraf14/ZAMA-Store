@@ -93,7 +93,6 @@ class DraftOrderViewController: UIViewController {
             }
         }else{
             let checkOutVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(identifier: "CheckOutView") as! CheckOutView
-            checkOutVC.viewModel.items = viewModel.draftOrders
             self.navigationController?.pushViewController(checkOutVC, animated: true)
         }
 

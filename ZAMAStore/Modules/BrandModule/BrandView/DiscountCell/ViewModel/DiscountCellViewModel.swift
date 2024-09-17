@@ -7,5 +7,5 @@
 
 import Foundation
 class DiscountViewModel{
-    
+    let images = ["sale1","sale2","sale3","sale4"]
 }

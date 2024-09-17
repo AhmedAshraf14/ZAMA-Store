@@ -8,30 +8,33 @@
 import Foundation
 
 class CheckOutViewModel{
-    var currentOrder : DraftOrder!
+    var currentOrder = MyDraftlist.cartListShared.currentDraftlist
     var networkService : NetworkServiceProtocol!
-    var renderData : (()->Void)?
-    var items : [LineItem]!
+    var renderData : (()->Void) = {}
+    var items : [LineItem] = MyDraftlist.cartListShared.currentDraftlist?.lineItems ?? []
     init() {
         self.networkService = NetworkService()
     }
     
     func getOrder(){
         let draftOrderID = MyDraftlist.cartListShared.currentDraftlist?.id
-        networkService.getDraftOrders(path: "draft_orders/\(draftOrderID ?? 0)", parameters: [:]) { data, error in
-            if let data = data{
-                do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-                    let fixedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-                    
-                    let draftOrder = try JSONDecoder().decode(DraftOrderResponseModel.self, from: fixedJsonData)
-                    self.currentOrder = draftOrder.draftOrder
-                    self.renderData!()
-                } catch {
-                    print("Error decoding draft list: \(error.localizedDescription)")
-                }
-            }
+        MyDraftlist.cartListShared.reloadCart {
+            self.renderData()
         }
+//        networkService.getDraftOrders(path: "draft_orders/\(draftOrderID ?? 0)", parameters: [:]) { data, error in
+//            if let data = data{
+//                do {
+//                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+//                    let fixedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+//                    
+//                    let draftOrder = try JSONDecoder().decode(DraftOrderResponseModel.self, from: fixedJsonData)
+//                    self.currentOrder = draftOrder.draftOrder
+//                    self.renderData!()
+//                } catch {
+//                    print("Error decoding draft list: \(error.localizedDescription)")
+//                }
+//            }
+//        }
     }
     
     func checkCoupon(code:String){

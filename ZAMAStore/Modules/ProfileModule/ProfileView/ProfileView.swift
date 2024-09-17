@@ -101,7 +101,7 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @objc private func moreTapped(_ sender: UIButton){
         if sender.tag == 0{
             let ordersVC = UIStoryboard(name: "Main1", bundle: nil).instantiateViewController(withIdentifier: "OrdersViewController") as! OrdersViewController
-            //ordersVC.viewModel.customerID = MyAccount.shared.currentUser.id
+            ordersVC.viewModel.customerID = MyAccount.shared.currentUser.id
             self.navigationController?.pushViewController(ordersVC, animated: true)
         }else {
             let wishlistVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController

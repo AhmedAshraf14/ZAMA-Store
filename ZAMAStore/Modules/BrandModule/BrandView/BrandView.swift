@@ -12,12 +12,14 @@ class BrandView: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var discountCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     let viewModel = BrandsViewModel()
     var scrollTimer:Timer?
     var count:Int=0
     override func viewDidLoad() {
-       
         super.viewDidLoad()
+        setupActivityIndicator()
+        showActivityIndicator()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         discountCollectionView.delegate = self
@@ -29,6 +31,7 @@ class BrandView: UIViewController {
         viewModel.ReloadCV={
             self.discountCollectionView.reloadData()
             self.homeCollectionView.reloadData()
+            self.hideActivityIndicator()
         }
        scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
@@ -40,7 +43,34 @@ class BrandView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavbar()
+        
     }
+    
+    private func setupActivityIndicator() {
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(activityIndicator)
+            
+            NSLayoutConstraint.activate([
+                activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+            
+            activityIndicator.isHidden = true
+        }
+    
+    func showActivityIndicator() {
+            UIView.animate(withDuration: 0.3) {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+        }
+
+        func hideActivityIndicator() {
+            UIView.animate(withDuration: 0.3) {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+            }
+        }
     
     
     func setupNavbar(){
@@ -80,7 +110,8 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         if(collectionView == discountCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscountCell", for: indexPath) as! DiscountCell
-            cell.lblValue.text = viewModel.DiscountArray[indexPath.row].code
+            //cell.lblValue.text = viewModel.DiscountArray[indexPath.row].code
+            cell.setupCell(index: indexPath.row)
             cell.layer.cornerRadius = 20
             return cell
         }
@@ -131,6 +162,11 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             vc.viewModel.BrandOfDataString = viewModel.brandsArray[indexPath.row].title ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
             
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if(collectionView == discountCollectionView){
+            pageControl.currentPage = indexPath.item
         }
     }
     

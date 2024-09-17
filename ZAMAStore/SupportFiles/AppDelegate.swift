@@ -18,6 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        let themeColor = UIColor.mintGreen
+        
+        let backButtonAppearance = UIBarButtonItem.appearance()
+        backButtonAppearance.tintColor = themeColor
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.tintColor = themeColor
+//        let tabBarItemAppearance = UITabBarItem.appearance()
+//        tabBarItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: themeColor], for: .normal)
         return true
     }
 
