@@ -24,12 +24,13 @@ class LoginViewModel {
         let parameters = ["query": "email:\(email)"]
         
         networkService.getData(path: "customers/search", parameters: parameters, model: CustomersResponse.self) { [weak self] result, error in
-            guard let result = result else {
+            if let result = result {
+                self?.signInWithEmail(result: result, password: password)
+            }else {
                 self?.noResult("Try again please")
-                return
             }
             
-            self?.signInWithEmail(result: result, password: password)
+            
         }
     }
     

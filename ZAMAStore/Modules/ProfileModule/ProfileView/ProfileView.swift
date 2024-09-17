@@ -54,8 +54,8 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             (cell.viewWithTag(2) as! UILabel).text = "Total Price : " + String(format: "%.2f", convertedPrice) + " \(currency.0)"
         default:
-            (cell.viewWithTag(1) as! UILabel).text = "Product : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "N/A")"
-            if let priceString = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].price,
+            (cell.viewWithTag(1) as! UILabel).text = "Product : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].title ?? "N/A")"
+            if let priceString = MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].price,
                let price = Double(priceString) {
                 convertedPrice = price * (currency.1)
             }
@@ -64,7 +64,7 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let lineItemsCount = MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0
+        let lineItemsCount = MyDraftlist.wishListShared.currentDraftlist?.lineItems.count ?? 0
         
         if section == 0 {
             return viewModel.orders.count < 2 ? viewModel.orders.count : 2

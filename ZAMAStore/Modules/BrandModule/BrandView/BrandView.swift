@@ -95,7 +95,7 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BrandCollectionViewCell
         //let placeHolder = UIImage(systemName: "heart.fill")
-        cell.brandImage.sd_setImage(with: URL(string: viewModel.brandsArray[indexPath.row].image?.src ?? ""), placeholderImage: UIImage(systemName: "heart.fill"))
+        cell.brandImage.sd_setImage(with: URL(string: viewModel.brandsArray[indexPath.row].image?.src ?? ""))
         cell.brandName.text = viewModel.brandsArray[indexPath.row].title
         cell.layer.cornerRadius = 20
         return cell

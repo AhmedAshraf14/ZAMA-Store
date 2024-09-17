@@ -35,7 +35,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         super.viewDidLoad()
         
         self.activityIndicator.setupActivityIndicator(in: view)
-        self.activityIndicator.showActivityIndicator()
+        
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         setupFlowLayout()
@@ -48,6 +48,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
 
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicator.showActivityIndicator()
         self.tabBarController?.title="Products"
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
@@ -63,6 +64,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
             self.activityIndicator.hideActivityIndicator()
+            self.categoriesCollectionView.isHidden = false
         }
     }
     
@@ -108,6 +110,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         super.viewWillDisappear(animated)
         self.viewModel.isSearching = false
         self.viewModel.isBrand = false
+        self.categoriesCollectionView.isHidden = true
         print("disappear")
     }
 }

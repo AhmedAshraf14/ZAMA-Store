@@ -18,6 +18,19 @@ extension UIViewController{
             self.present(alertVC, animated: true, completion: nil)
         }
     }
+    
+    func presentActionAlert(title: String, message: String, okAction: @escaping (()->Void)){
+        DispatchQueue.main.async {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                okAction()
+            } ))
+            alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alertVC.modalPresentationStyle = .overFullScreen
+            alertVC.modalTransitionStyle = .crossDissolve
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
     @objc func navigateToCartList(){
         let cartView = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(withIdentifier: "DraftOrderViewController") as! DraftOrderViewController
         cartView.viewModel.isCart=true

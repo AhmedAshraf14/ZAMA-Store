@@ -15,11 +15,6 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var currencyControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.reloadTV={
-            DispatchQueue.main.async{
-                self.tableView.reloadData()
-            }
-        }
         tableView.delegate=self
         tableView.dataSource=self
     }
@@ -27,6 +22,11 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewWillAppear(animated)
         setupView()
         viewModel.reloadUser()
+        viewModel.reloadTV={
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
+        }
         currencyControl.selectedSegmentIndex = viewModel.checkCurrency()
     }
     
@@ -74,8 +74,14 @@ class SettingViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") { action, view, handler in
-            self.viewModel.deleteAddress(index: indexPath.row)
+            if self.viewModel.customer?.addresses?.count == 1 {
+                handler(true)
+                return}
+            self.presentActionAlert(title: "Warning", message: "This address will be deleted") {
+                self.viewModel.deleteAddress(index: indexPath.row)
+            }
             handler(true)
         }
         deleteAction.image=UIImage(systemName: "trash.fill")

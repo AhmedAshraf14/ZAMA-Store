@@ -149,7 +149,10 @@ extension DraftOrderViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") { action, view, handler in
-            self.viewModel.deleteDraftOrder(product: self.viewModel.products[indexPath.row])
+            
+            self.presentActionAlert(title: "Warning", message: "This proudct will be removed") {
+                self.viewModel.deleteDraftOrder(product: self.viewModel.products[indexPath.row])
+            }
             
             handler(true)
         }
