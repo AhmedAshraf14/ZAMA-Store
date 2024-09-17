@@ -9,27 +9,23 @@ import Foundation
 
 class OrdersViewModell{
     var bindResultToViewController: (()->()) = {}
-    var helper:NetworkServiceProtocol
+    //var helper:NetworkServiceProtocol
     var orders: [Order] = []
-    var customerID = 7341601423497
     
-    init(){
-        helper = NetworkService()
+    func formatDateStringToNumbers(_ dateString: String) -> String? {
+        let inputFormatter = ISO8601DateFormatter()
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+    
+        if let date = inputFormatter.date(from: dateString) {
+            return outputFormatter.string(from: date)
+        } else {
+            return nil
+        }
     }
-    func getOrders() {
-          
-        helper.getData(path: "customers/\(customerID)/orders" ,parameters: ["status":"any"], model: OrdersResponse.self) { [weak self] data, error in
-            if let data = data {
-                self?.orders = data.orders ?? []
-                print("-------------")
-                print(self?.orders)
-                self?.bindResultToViewController()
-            }else{
-                print(error!.localizedDescription)
-            }
-             
-          }
-      }
+    func getCurrency()->(String,Double){
+        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
+    }
       
     
 }
