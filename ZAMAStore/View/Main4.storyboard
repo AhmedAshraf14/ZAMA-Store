@@ -150,10 +150,10 @@
                                 <color key="backgroundColor" name="secondaryLightGrey"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcH-WC-xIp">
-                                <rect key="frame" x="33" y="716" width="344" height="102"/>
+                                <rect key="frame" x="33" y="689" width="344" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm Payment"/>
                                 <connections>
                                     <action selector="FinishPayBtn:" destination="m6c-b6-AFe" eventType="touchUpInside" id="qqY-GV-zt5"/>
                                 </connections>

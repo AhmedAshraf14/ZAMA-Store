@@ -21,6 +21,8 @@ class DraftOrderViewController: UIViewController {
         super.init(coder: coder)
     }
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if(!viewModel.isCart){
@@ -34,7 +36,6 @@ class DraftOrderViewController: UIViewController {
             
             btnCheckOut.setAttributedTitle(attributedTitle, for: .normal)
         }
-        
         let currency = self.viewModel?.getCurrency()
         var convertedPrice = 0.0
         if let priceString = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice,
@@ -42,8 +43,6 @@ class DraftOrderViewController: UIViewController {
             convertedPrice = price * (currency?.1 ?? 1.0)
         }
         self.lblPrice.text = String(format: "%.2f", convertedPrice) + " \(currency?.0 ?? "")"
-        
-        //lblPrice.text = MyDraftlist.cartListShared.currentDraftlist?.subTotalPrice
         setupTable()
     }
     
@@ -55,6 +54,7 @@ class DraftOrderViewController: UIViewController {
         tableView.register(nib1, forCellReuseIdentifier: "CartCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,8 +78,12 @@ class DraftOrderViewController: UIViewController {
         }
         viewModel.noResult={
             self.tableView.isHidden = true
+            self.lblPrice.text = "0.0"
         }
+        viewModel.emptyTable()
+       
     }
+    
     
     @IBAction func btnAction(_ sender: UIButton) {
         if !viewModel.isCart {
@@ -92,6 +96,16 @@ class DraftOrderViewController: UIViewController {
                 }
             }
         }else{
+            if MyAccount.shared.currentUser.defaultAddress == nil {
+                
+                self.presentAlert(title: "Warning", message: "you need to put address first", buttonTitle: "Ok")
+                return
+            }
+            if viewModel.draftOrders.count == 0 {
+                
+                self.presentAlert(title: "Warning", message: "you need to put product in cart", buttonTitle: "Ok")
+                return
+            }
             let checkOutVC = UIStoryboard(name: "Main3", bundle: nil).instantiateViewController(identifier: "CheckOutView") as! CheckOutView
             self.navigationController?.pushViewController(checkOutVC, animated: true)
         }

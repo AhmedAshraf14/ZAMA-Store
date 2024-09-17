@@ -32,4 +32,13 @@ struct ShippingAddress: Codable {
     let city: String?
     let country: String?
     let name: String?
+    
+    
+    static func converAddress(add:Address?)->ShippingAddress?{
+        if let add = add{
+            var shipAdd = ShippingAddress(address1: add.address1, phone: add.phone, city: add.city, country: add.country, name: add.name)
+            return shipAdd
+        }
+        return nil
+    }
 }

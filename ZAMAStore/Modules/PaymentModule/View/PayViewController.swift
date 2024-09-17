@@ -24,6 +24,9 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
         SetupView()
         //Apple setting
         prepareApple()
+        
+        //Sucess View
+        viewModel.showSucessView = {self.showPaymentSuccess()}
         // Do any additional setup after loading the view.
     }
     
@@ -105,3 +108,76 @@ extension PayViewController{
     }
 
 }
+
+
+
+
+//MARK: - Animation of finishing payment
+extension PayViewController{
+    func showPaymentSuccess() {
+        // Create a UIView for the success message
+        let successView = UIView(frame: CGRect(x: 50, y: 200, width: 300, height: 100))
+        successView.backgroundColor = .mintGreen
+        successView.layer.cornerRadius = 15
+        successView.alpha = 0.0 
+        successView.center = self.view.center// Initially hidden
+
+        // Add a UILabel to the success view
+        let successLabel = UILabel(frame: successView.bounds)
+        successLabel.text = "Order Comfirmed!"
+        successLabel.textAlignment = .center
+        successLabel.textColor = .white
+        successLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        successView.addSubview(successLabel)
+        
+        // Add the success view to the main view
+        self.view.addSubview(successView)
+
+        // Transition and animate the success view appearance
+        UIView.transition(with: self.view, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+            successView.alpha = 1.0  // Fade in
+        }) { _ in
+            // Once the view is visible, add a scale bounce effect
+            UIView.animate(withDuration: 0.3,
+                           delay: 0.0,
+                           usingSpringWithDamping: 0.6,
+                           initialSpringVelocity: 0.5,
+                           options: [],
+                           animations: {
+                successView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)  // Scale up
+            }) { _ in
+                // Scale back to original size
+                UIView.animate(withDuration: 0.3) {
+                    successView.transform = CGAffineTransform.identity
+                }
+            }
+
+            // After a 2-second delay, hide the view with a fade-out transition
+            UIView.animate(withDuration: 0.5, delay: 2.0, options: [], animations: {
+                successView.alpha = 0.0  // Fade out
+            }) { _ in
+                successView.removeFromSuperview()  // Remove the view from the hierarchy
+                self.returnToHomeScreen()
+            }
+        }
+    }
+    
+    
+    func returnToHomeScreen(){
+        if let window = UIApplication.shared.windows.first {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let newRootViewController = storyboard.instantiateInitialViewController()
+
+            // Set the new root view controller
+            window.rootViewController = newRootViewController
+
+            // Make the new root view controller visible
+            window.makeKeyAndVisible()
+
+            // Optionally, you can add a custom transition animation
+            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
+        }
+    }
+}
+
+

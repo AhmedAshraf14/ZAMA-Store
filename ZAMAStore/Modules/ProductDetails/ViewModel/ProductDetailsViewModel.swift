@@ -77,7 +77,7 @@ class ProductDetailsViewModel{
     
     func putToDraftOrder(isCart:Bool){
         if(isCart){
-            for myproduct in cartDraftOrder.currentDraftlist!.lineItems!{
+            for myproduct in cartDraftOrder.currentDraftlist!.lineItems{
                 if(myproduct.productID == product.id){
                     print("This product Already Exist")
                     return

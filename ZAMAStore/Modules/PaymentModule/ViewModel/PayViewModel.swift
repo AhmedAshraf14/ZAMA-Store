@@ -13,6 +13,7 @@ class PayViewModel{
     var order:OrderResponse?
     var networkService:NetworkServiceProtocol
     var errorResult : ((String)->Void) = {str in }
+    var showSucessView:()->Void = {}
     
     init(){
         networkService=NetworkService()
@@ -20,23 +21,18 @@ class PayViewModel{
     
     
     func pushOrder(){
-        let lineItemsResponse = lineItemResponse(line_items: makeLineItems())
-        let order :[String:Any] = ["order":[
-            "email":user!.email,
-            "send_receipt" : true,
-            "send_fulfillment_receipt" : true,
-            "shipping_address":user!.defaultAddress,
-            //"discount_codes":[["code":UIPasteboard.general.string]],
-            "line_items" : lineItemsResponse
-            ]]
-        networkService.postData(path: "orders", parameters: order, postFlag: true) { data, error in
+        let order = OrderResponse()
+        let jsonObj = try? JSONEncoder().encode(order)
+                let dic = try? JSONSerialization.jsonObject(with: jsonObj!, options: [])
+                let dic2 = dic as? [String:Any]
+        networkService.postData(path: "orders", parameters: dic2 ?? [:], postFlag: true) { data, error in
             if let error = error {
                 print("//////////")
                 print(error.localizedDescription)
                 self.errorResult("Failed to pay, please try again.")
             }else {
                 self.cart.deleteWholeDraftOrder(attribute: "note") {
-                    
+                    self.showSucessView()
                 }
             }
         }
@@ -44,7 +40,7 @@ class PayViewModel{
     
     func makeLineItems()->[lineItemOrder]{
         var lineItems : [lineItemOrder] = []
-        for item in cart.currentDraftlist!.lineItems! {
+        for item in cart.currentDraftlist!.lineItems {
             lineItems.append(lineItemOrder(variantID: item.variantID, quantity: item.quantity))
         }
         return lineItems

@@ -19,13 +19,14 @@ class CartCellViewModel{
         self.index=index
         self.product=product
         viewController = obj
-        for (i,currentlineItem) in MyDraftlist.cartListShared.currentDraftlist!.lineItems!.enumerated(){
+        for (i,currentlineItem) in MyDraftlist.cartListShared.currentDraftlist!.lineItems.enumerated(){
             if(currentlineItem.productID == product.id){
                 self.lineItem = currentlineItem
                 self.indexLineItem = i
             }
         }
     }
+    
 
     
     func updateQuantity(quantity:Int) {

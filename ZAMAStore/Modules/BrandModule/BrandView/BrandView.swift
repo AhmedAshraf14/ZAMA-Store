@@ -33,7 +33,7 @@ class BrandView: UIViewController {
             self.homeCollectionView.reloadData()
             self.hideActivityIndicator()
         }
-       scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
+        scrollTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
         homeCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         let nib2 = UINib(nibName: "DiscountCell", bundle: nil)
@@ -110,7 +110,6 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         if(collectionView == discountCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscountCell", for: indexPath) as! DiscountCell
-            //cell.lblValue.text = viewModel.DiscountArray[indexPath.row].code
             cell.setupCell(index: indexPath.row)
             cell.layer.cornerRadius = 20
             return cell
@@ -153,14 +152,13 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             cell.showLbl()
             let pasteboard = UIPasteboard.general
             pasteboard.string = viewModel.DiscountArray[indexPath.row].code
-            DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                cell.showLbl()
-            }
         } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "CategoriesView") as! CategoriesViewController
+            let vc = tabBarController?.viewControllers![1] as! CategoriesViewController
             vc.viewModel.isBrand = true
             vc.viewModel.BrandOfDataString = viewModel.brandsArray[indexPath.row].title ?? ""
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc.tabBarController?.navigationItem.title = vc.viewModel.BrandOfDataString
+            //vc.setupSearchNavBar()
+            self.tabBarController!.selectedIndex = 1
             
         }
     }

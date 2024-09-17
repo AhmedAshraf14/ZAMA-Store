@@ -40,16 +40,16 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @IBAction func tagSegmentAct(_ sender: UISegmentedControl) {
         viewModel.filterData(type: segmentType.titleForSegment(at: segmentType.selectedSegmentIndex)!, tag: segmentGender.titleForSegment(at: segmentGender.selectedSegmentIndex)!)
-        //print(sender.titleForSegment(at: sender.selectedSegmentIndex)!)
-        print("///called///")
-        
+
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.title="Products"
+        
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
+            self.tabBarController?.title=viewModel.BrandOfDataString
         }else {
             viewModel.getData()
+            self.tabBarController?.title="Products"
         }
         searchController.searchBar.text = ""
         viewModel.searchingText = ""
@@ -58,20 +58,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
         }
-//        if viewModel.isSearching{
-//            self.setupNavbar()
-//        }
     }
-    
-//    func setupNavbar(){
-//        let cartButton = UIBarButtonItem.cartButton(target: self)
-//        let heartButton = UIBarButtonItem.heartButton(target: self)
-//        let searchButton = UIBarButtonItem.searchButton(target: self)
-//        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
-//        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
-//        
-//        self.tabBarController?.navigationItem.searchController = nil
-//    }
     
     func setupSearchNavBar(){
         self.tabBarController?.navigationItem.leftBarButtonItems = []
@@ -79,11 +66,8 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search items"
-        // Set the search controller in the navigation item
         self.tabBarController?.navigationItem.searchController = searchController
         self.tabBarController?.navigationItem.hidesSearchBarWhenScrolling = false
-        //self.tabBarController?.title = "Products"
-        // Ensure the search bar does not remain on screen when the user navigates
         definesPresentationContext = true
     }
     
@@ -121,6 +105,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel.isSearching = false
+        self.viewModel.isBrand = false
         print("disappear")
     }
 }

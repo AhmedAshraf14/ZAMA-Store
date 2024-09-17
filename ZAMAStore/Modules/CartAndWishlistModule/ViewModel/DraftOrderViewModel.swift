@@ -20,6 +20,12 @@ class DraftOrderViewModel{
     
     init() {
         self.networkService = NetworkService()
+        
+    }
+    func emptyTable(){
+        if(draftOrders.count == 0){
+            noResult()
+        }
     }
     
     

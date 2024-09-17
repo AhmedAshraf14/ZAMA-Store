@@ -35,10 +35,10 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         switch indexPath.section {
         case 0:
-            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].title ?? "NO Title"
         default:
-            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
-            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].price ?? "N/A")"
+            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].price ?? "N/A")"
         }
         return cell
     }
@@ -46,8 +46,8 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if(section == 0){
             return viewModel.currentUser.ordersCount
         }
-        if MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0 < 2{
-            return MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0
+        if MyDraftlist.wishListShared.currentDraftlist?.lineItems.count ?? 0 < 2{
+            return MyDraftlist.wishListShared.currentDraftlist?.lineItems.count ?? 0
         }else {
             return 2
         }
