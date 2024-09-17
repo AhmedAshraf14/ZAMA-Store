@@ -47,6 +47,12 @@
                                     <action selector="addToCartAct:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hOy-gN-bda"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx8-qt-cFx">
+                                <rect key="frame" x="89.666666666666686" y="25" width="131" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" name="mintGreen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="lightGrey"/>
                         <constraints>
@@ -56,7 +62,9 @@
                             <constraint firstItem="dqj-6p-aWF" firstAttribute="top" secondItem="fxm-Ol-crb" secondAttribute="top" id="KX8-tY-U5z"/>
                             <constraint firstAttribute="trailing" secondItem="dqj-6p-aWF" secondAttribute="trailing" id="KdU-zv-4Hx"/>
                             <constraint firstItem="Gep-a4-6hl" firstAttribute="leading" secondItem="fxm-Ol-crb" secondAttribute="leading" constant="10" id="U2q-H6-kT2"/>
+                            <constraint firstItem="kx8-qt-cFx" firstAttribute="top" secondItem="fxm-Ol-crb" secondAttribute="top" constant="25" id="Vi8-lw-hUj"/>
                             <constraint firstItem="0ji-ye-mkT" firstAttribute="trailing" secondItem="T2o-vz-ALD" secondAttribute="trailing" id="Vqm-PJ-SGT"/>
+                            <constraint firstItem="kx8-qt-cFx" firstAttribute="centerX" secondItem="fxm-Ol-crb" secondAttribute="centerX" id="ZLL-A8-Auf"/>
                             <constraint firstItem="Gep-a4-6hl" firstAttribute="top" secondItem="0ji-ye-mkT" secondAttribute="bottom" constant="10" id="anM-lM-ZVK"/>
                             <constraint firstItem="T2o-vz-ALD" firstAttribute="leading" secondItem="fxm-Ol-crb" secondAttribute="leading" constant="5" id="eaz-04-cu3"/>
                             <constraint firstItem="Gep-a4-6hl" firstAttribute="height" secondItem="fxm-Ol-crb" secondAttribute="height" multiplier="0.122615" id="ip3-Wp-Jzp"/>
@@ -82,6 +90,7 @@
                 <outlet property="lblPrice" destination="0ji-ye-mkT" id="Scd-g1-NuJ"/>
                 <outlet property="lblTitle" destination="T2o-vz-ALD" id="PT5-KG-x74"/>
                 <outlet property="view" destination="fxm-Ol-crb" id="5cv-T5-iJL"/>
+                <outlet property="warningLabel" destination="kx8-qt-cFx" id="zUT-yH-YZI"/>
             </connections>
             <point key="canvasLocation" x="224.42748091603053" y="96.478873239436624"/>
         </collectionViewCell>

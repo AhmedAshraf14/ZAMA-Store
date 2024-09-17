@@ -13,6 +13,7 @@ class ProductDetailsViewModel{
     var user = MyAccount.shared.currentUser
     var wishlist = MyDraftlist.wishListShared
     var cartDraftOrder = MyDraftlist.cartListShared
+    var errorResult : ((String)->Void) = {error in }
     var isFav : Bool = false
     
     init(){
@@ -79,7 +80,7 @@ class ProductDetailsViewModel{
         if(isCart){
             for myproduct in cartDraftOrder.currentDraftlist!.lineItems{
                 if(myproduct.productID == product.id){
-                    print("This product Already Exist")
+                    self.errorResult("This product is already in your cart.")
                     return
                 }
             }

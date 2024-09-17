@@ -8,6 +8,8 @@
 import UIKit
 
 class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
                 // Reset to all products if search text is empty
@@ -31,6 +33,9 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var viewModel = CategoriesViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.activityIndicator.setupActivityIndicator(in: view)
+        self.activityIndicator.showActivityIndicator()
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         setupFlowLayout()
@@ -43,7 +48,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
 
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.tabBarController?.title="Products"
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
             self.tabBarController?.title=viewModel.BrandOfDataString
@@ -57,6 +62,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
+            self.activityIndicator.hideActivityIndicator()
         }
     }
     
@@ -84,10 +90,6 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductItem", for: indexPath) as! ProductItem
-        #warning("Never checkthis in runnig so becarefull")
-        cell.viewModel?.showError = { str in
-            self.presentAlert(title: "Error", message: str, buttonTitle: "OK")
-        }
         cell.viewModel = ProductCellViewModel(product: viewModel.products[indexPath.row])
         cell.putData()
         cell.layer.cornerRadius = 20

@@ -9,16 +9,26 @@ import UIKit
 class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var viewModel = MyAccount.shared
     @IBOutlet weak var lblName: UILabel!
-    
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.setupActivityIndicator(in: view)
+        
         tableView.delegate=self
         tableView.dataSource=self
     }
     override func viewWillAppear(_ animated: Bool) {
+        activityIndicator.showActivityIndicator()
         setupView()
-        tableView.reloadData()
+        viewModel.getOrders()
+        //tableView.reloadData()
+        viewModel.reloadTv = {
+            self.tableView.reloadData()
+            self.activityIndicator.hideActivityIndicator()
+            self.lblName.isHidden = false
+            self.tableView.isHidden = false
+        }
     }
     //#selector(firstButtonTapped)
     func setupView(){
@@ -33,24 +43,35 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let currency = viewModel.getCurrency()
+        var convertedPrice = 0.0
         switch indexPath.section {
         case 0:
-            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(1) as! UILabel).text = "Order Number : \(viewModel.orders[indexPath.row].orderNumber ?? 0)"
+            if let priceString = viewModel.orders[indexPath.row].totalPrice ,
+               let price = Double(priceString) {
+                convertedPrice = price * (currency.1)
+            }
+            (cell.viewWithTag(2) as! UILabel).text = "Total Price : " + String(format: "%.2f", convertedPrice) + " \(currency.0)"
         default:
-            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].title ?? "NO Title"
-            (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems[indexPath.row].price ?? "N/A")"
+            (cell.viewWithTag(1) as! UILabel).text = "Product : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "N/A")"
+            if let priceString = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].price,
+               let price = Double(priceString) {
+                convertedPrice = price * (currency.1)
+            }
+            (cell.viewWithTag(2) as! UILabel).text = "Price : " + String(format: "%.2f", convertedPrice) + " \(currency.0)"
         }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0){
-            return viewModel.currentUser.ordersCount
+        let lineItemsCount = MyDraftlist.wishListShared.currentDraftlist?.lineItems?.count ?? 0
+        
+        if section == 0 {
+            return viewModel.orders.count < 2 ? viewModel.orders.count : 2
+        } else {
+            return lineItemsCount < 2 ? lineItemsCount : 2
         }
-        if MyDraftlist.wishListShared.currentDraftlist?.lineItems.count ?? 0 < 2{
-            return MyDraftlist.wishListShared.currentDraftlist?.lineItems.count ?? 0
-        }else {
-            return 2
-        }
+
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -117,6 +138,9 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let searchButton = UIBarButtonItem.searchButton(target: self)
         self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
         self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
+        
+        self.lblName.isHidden = true
+        self.tableView.isHidden = true
     }
-    
+
 }

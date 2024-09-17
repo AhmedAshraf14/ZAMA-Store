@@ -79,6 +79,7 @@
 		E255E06B2C865A9F006B83D1 /* BrandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E04D2C865A9F006B83D1 /* BrandModel.swift */; };
 		E255E06C2C865A9F006B83D1 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E04F2C865A9F006B83D1 /* DataDecoder.swift */; };
 		E255E06D2C865A9F006B83D1 /* DataEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E255E0502C865A9F006B83D1 /* DataEncoder.swift */; };
+		E25DD9422C991BD500CFB5AE /* ActivityIndicator+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DD9412C991BD500CFB5AE /* ActivityIndicator+Ext.swift */; };
 		E25FBA8D2C98A80000886114 /* CheckOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25FBA8C2C98A80000886114 /* CheckOutViewModel.swift */; };
 		E25FBA8F2C98A83300886114 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25FBA8E2C98A83300886114 /* CheckOutView.swift */; };
 		E26FB20A2C8E7F1900E26B03 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26FB2082C8E7F1900E26B03 /* ImageCollectionViewCell.swift */; };
@@ -176,6 +177,7 @@
 		E255E04D2C865A9F006B83D1 /* BrandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandModel.swift; sourceTree = "<group>"; };
 		E255E04F2C865A9F006B83D1 /* DataDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 		E255E0502C865A9F006B83D1 /* DataEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEncoder.swift; sourceTree = "<group>"; };
+		E25DD9412C991BD500CFB5AE /* ActivityIndicator+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityIndicator+Ext.swift"; sourceTree = "<group>"; };
 		E25FBA8C2C98A80000886114 /* CheckOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewModel.swift; sourceTree = "<group>"; };
 		E25FBA8E2C98A83300886114 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
 		E26FB2082C8E7F1900E26B03 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -193,8 +195,8 @@
 		E28876C52C934FB600917C71 /* WishlistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCell.swift; sourceTree = "<group>"; };
 		E28876C62C934FB600917C71 /* WishlistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistCell.xib; sourceTree = "<group>"; };
 		E28876C92C937D4000917C71 /* MyDraftlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDraftlist.swift; sourceTree = "<group>"; };
-		F04D62DD83760600A1DC9A24 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
 		E2F1529A2C9788BE00BED1B1 /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
+		F04D62DD83760600A1DC9A24 /* Pods-ZAMAStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.release.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,6 +596,7 @@
 				E255E0132C865A9F006B83D1 /* UIColor.swift */,
 				E255E0142C865A9F006B83D1 /* Section.swift */,
 				E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */,
+				E25DD9412C991BD500CFB5AE /* ActivityIndicator+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -601,7 +604,6 @@
 		E255E0152C865A9F006B83D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-
 				E25FBA892C98A7CE00886114 /* CheckOutModule */,
 				3CC1C2352C98B6D200396C60 /* PaymentModule */,
 				3C5809EB2C988BD5008DC82E /* CreditModule */,
@@ -1167,6 +1169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25DD9422C991BD500CFB5AE /* ActivityIndicator+Ext.swift in Sources */,
 				3CBEB6F12C98C0FF005B9AB6 /* CreditViewController.swift in Sources */,
 				3CBEB6F02C98C0FA005B9AB6 /* CreditViewModel.swift in Sources */,
 				3CBEB6EF2C98C0F1005B9AB6 /* PayViewController.swift in Sources */,
