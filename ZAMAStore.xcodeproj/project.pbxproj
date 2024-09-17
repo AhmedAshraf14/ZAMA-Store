@@ -37,6 +37,7 @@
 		3CBEB6F02C98C0FA005B9AB6 /* CreditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5809F32C9894E7008DC82E /* CreditViewModel.swift */; };
 		3CBEB6F12C98C0FF005B9AB6 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5809EF2C988C59008DC82E /* CreditViewController.swift */; };
 		3CBEB6F32C98D8A8005B9AB6 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBEB6F22C98D8A8005B9AB6 /* PayModel.swift */; };
+		3CFBBF1D2C9A10B60020CAD0 /* MYTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFBBF1C2C9A10B60020CAD0 /* MYTabBar.swift */; };
 		9DAFA7563E8BB0377E72257C /* Pods_ZAMAStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DC10EC9D52FC537B3D6904 /* Pods_ZAMAStore.framework */; };
 		E23C28252C87F12E002F6884 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C28242C87F12E002F6884 /* ValidationError.swift */; };
 		E24B62582C886E5D0099E503 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */; };
@@ -132,6 +133,7 @@
 		3CBEB6F22C98D8A8005B9AB6 /* PayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
 		3CC1C23B2C98B71C00396C60 /* PayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewModel.swift; sourceTree = "<group>"; };
 		3CC1C23F2C98B8F800396C60 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		3CFBBF1C2C9A10B60020CAD0 /* MYTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYTabBar.swift; sourceTree = "<group>"; };
 		95DC10EC9D52FC537B3D6904 /* Pods_ZAMAStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZAMAStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38DA9000CB0EBD97D6DED55 /* Pods-ZAMAStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZAMAStore.debug.xcconfig"; path = "Target Support Files/Pods-ZAMAStore/Pods-ZAMAStore.debug.xcconfig"; sourceTree = "<group>"; };
 		E23C28242C87F12E002F6884 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				E255E0142C865A9F006B83D1 /* Section.swift */,
 				E24B62572C886E5D0099E503 /* UIViewController+Ext.swift */,
 				E25DD9412C991BD500CFB5AE /* ActivityIndicator+Ext.swift */,
+				3CFBBF1C2C9A10B60020CAD0 /* MYTabBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 			files = (
 				E25DD9422C991BD500CFB5AE /* ActivityIndicator+Ext.swift in Sources */,
 				3CBEB6F12C98C0FF005B9AB6 /* CreditViewController.swift in Sources */,
+				3CFBBF1D2C9A10B60020CAD0 /* MYTabBar.swift in Sources */,
 				3CBEB6F02C98C0FA005B9AB6 /* CreditViewModel.swift in Sources */,
 				3CBEB6EF2C98C0F1005B9AB6 /* PayViewController.swift in Sources */,
 				3CBEB6EE2C98C0E7005B9AB6 /* PayViewModel.swift in Sources */,

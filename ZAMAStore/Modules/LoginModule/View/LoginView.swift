@@ -31,6 +31,12 @@ class LoginView: UIViewController {
     
     
     
+    @IBAction func guestBtnAction(_ sender: Any) {
+        viewModel.navigateForward()
+    }
+    
+    
+    
     private func setupViewModel(){
         viewModel.configureGoogleSignIn()
         viewModel.noResult = {error in

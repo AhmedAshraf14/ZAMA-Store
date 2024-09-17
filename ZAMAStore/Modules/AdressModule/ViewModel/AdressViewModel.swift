@@ -11,9 +11,20 @@ class AddressViewModel{
     var address:AddressResponse?
     let networkService:NetworkServiceProtocol
     let user = MyAccount.shared.currentUser
+    var isShow=false
     init() {
         networkService = NetworkService()
         address=AddressResponse()
+    }
+    
+    
+    func checkAddress(text:String?)->Bool{
+        guard let text = text else { return false }
+        if(text.count != 0 && text.replacingOccurrences(of: " ", with: "").count != 0){
+            return true
+        }else{
+            return false
+        }
     }
     
     func pushData(){
@@ -28,3 +39,4 @@ class AddressViewModel{
         }
     }
 }
+
