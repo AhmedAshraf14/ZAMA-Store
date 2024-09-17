@@ -22,6 +22,7 @@ struct Address: Codable {
     var name: String?
     var addressDefault: Bool
 
+    
     enum CodingKeys: String, CodingKey {
         case id
         case customerID = "customer_id"

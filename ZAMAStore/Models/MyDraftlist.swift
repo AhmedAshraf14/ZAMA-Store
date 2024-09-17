@@ -21,7 +21,7 @@ class MyDraftlist{
     // Put New Line Item
     func putLineItem(lineItem:LineItem,isCart:Bool){
         //append line item to currentLineItem
-        currentDraftlist?.lineItems!.append(lineItem)
+        currentDraftlist?.lineItems.append(lineItem)
         //making Response and encode it
         let response = DraftOrderResponseModel(draftOrder: currentDraftlist!)
         let jsonObj = try? JSONEncoder().encode(response)
@@ -53,10 +53,10 @@ class MyDraftlist{
     // delete line item inside draftorder
     func deleteLineItem(lineItem:LineItem,attribute:String="tags",handler:@escaping()->Void){
         // check if this last line item so delete it and update customer note or tag
-        if currentDraftlist?.lineItems!.count == 1{
+        if currentDraftlist?.lineItems.count == 1{
             deleteWholeDraftOrder(attribute: attribute, handler: handler)
         }else{
-            currentDraftlist?.lineItems!.removeAll { item in
+            currentDraftlist?.lineItems.removeAll { item in
                 item.variantID == lineItem.variantID
             }
             let response = DraftOrderResponseModel(draftOrder: currentDraftlist!)
@@ -81,7 +81,7 @@ extension MyDraftlist{
     static let cartListShared=MyDraftlist()
     // Change the quantity inside Cart draft orders
     func putQuantity(quantity:Int,index:Int,handler:@escaping(()->Void)) {
-        currentDraftlist?.lineItems![index].quantity=quantity
+        currentDraftlist?.lineItems[index].quantity=quantity
         let response = DraftOrderResponseModel(draftOrder: currentDraftlist!)
         let jsonObj = try? JSONEncoder().encode(response)
         let dic = try? JSONSerialization.jsonObject(with: jsonObj!, options: [])

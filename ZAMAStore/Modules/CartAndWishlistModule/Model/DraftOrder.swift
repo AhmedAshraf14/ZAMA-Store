@@ -24,7 +24,7 @@ struct DraftOrderResponseModel: Codable {
 
 struct DraftOrder:Codable {
     var id : Int
-    var lineItems : [LineItem]?
+    var lineItems : [LineItem]=[]
     var customer : DraftCustomer
     var useCustomerDefaultAddress: Bool
     var subTotalPrice:String?
