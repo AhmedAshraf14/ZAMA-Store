@@ -15,13 +15,14 @@ struct Order: Codable {
     let orderNumber: Int?
     let lineItems: [LineItem]?
     let shippingAddress: ShippingAddress?
-    
+    let createdAt : String
     enum CodingKeys: String, CodingKey {
         case id
         case totalPrice = "total_price"
         case orderNumber = "order_number"
         case lineItems = "line_items"
         case shippingAddress = "shipping_address"
+        case createdAt = "created_at"
         }
 }
 

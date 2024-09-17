@@ -9,8 +9,12 @@ import UIKit
 
 class OrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate , UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var ordersTableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
-    var viewModel = OrdersViewModell()
+    var viewModel : OrdersViewModell!
+    
+    required init?(coder: NSCoder) {
+        self.viewModel = OrdersViewModell()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +22,6 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         ordersTableView.dataSource = self
         let nib = UINib(nibName: "OrdersTableViewCell", bundle: nil)
         ordersTableView.register(nib, forCellReuseIdentifier: "OrdersTableViewCell")
-        
-        // Bind the result to update the UI
-        viewModel.bindResultToViewController = { [weak self] in
-            DispatchQueue.main.async {
-                self?.ordersTableView.reloadData()
-            }
-        }
-        
-        // Fetch the orders
-        viewModel.getOrders()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,23 +30,26 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrdersTableViewCell", for: indexPath) as! OrdersTableViewCell
-      //  cell.trackingNumberLabel.text = "Tracking number: " + viewModel.orders[indexPath.row].orderNumber.map { "\($0)" }!
-        cell.totalNumberLabel.text = "Total Amount " + viewModel.orders[indexPath.row].totalPrice.map{ "\($0)" }!
-        //cell.quantityLabel.text = viewModel.orders[indexPath.row].lineItems[indexPath.row].quantity.map{"\($0)"}
-        if let lineItems = viewModel.orders[indexPath.row].lineItems {
-            cell.quantityLabel.text = "Numbers Of Product: " + "\(lineItems.count ?? 0)"
-           } else {
-               cell.quantityLabel.text = "Quantity: N/A"
-           }
-        
-        cell.OrderNumberLabel.text = "Order number: " + viewModel.orders[indexPath.row].orderNumber.map { "\($0)" }!
-        cell.statusLabel.text = "Deliverd"
-        cell.statusLabel.textColor = UIColor(named: "mintGreen")
+        cell.OrderNumberLabel.text = "Order number : \(viewModel.orders[indexPath.row].orderNumber ?? 0)"
+        let currency = viewModel.getCurrency()
+        var convertedPrice = 0.0
+        if let priceString = viewModel.orders[indexPath.row].totalPrice,
+           let price = Double(priceString) {
+            convertedPrice = price * (currency.1)
+        }
+        cell.totalPriceLabel.text = "Total price : \(String(format: "%.2f", convertedPrice))"  + " \(currency.0)"
+        cell.numberOfProductsLabel.text = "Number of products : \(viewModel.orders[indexPath.row].lineItems?.count ?? 0)"
+        cell.dateLabel.text = "Date : \(viewModel.formatDateStringToNumbers(viewModel.orders[indexPath.row].createdAt) ?? "N/A")"
+        cell.statusLabel.text = "Shipping address : \(viewModel.orders[indexPath.row].shippingAddress?.address1 ?? "N/A")"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200 // Height of each cell
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Your orders"
     }
   
 

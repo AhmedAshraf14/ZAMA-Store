@@ -11,15 +11,16 @@ class OrdersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ordersView: UIView!
     @IBOutlet weak var OrderNumberLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var numberOfProductsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var totalNumberLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    @IBAction func detailsButtonA(_ sender: UIButton) {
+        ordersView.layer.cornerRadius = 12
+        ordersView.layer.borderWidth = 0.5
+        ordersView.layer.borderColor = UIColor.mintGreen.cgColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
