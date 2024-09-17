@@ -12,14 +12,15 @@ class BrandView: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var discountCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    @IBOutlet weak var brandsButton: UILabel!
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     let viewModel = BrandsViewModel()
     var scrollTimer:Timer?
     var count:Int=0
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupActivityIndicator()
-        showActivityIndicator()
+        activityIndicator.setupActivityIndicator(in: view)
+        activityIndicator.showActivityIndicator()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         discountCollectionView.delegate = self
@@ -31,7 +32,8 @@ class BrandView: UIViewController {
         viewModel.ReloadCV={
             self.discountCollectionView.reloadData()
             self.homeCollectionView.reloadData()
-            self.hideActivityIndicator()
+            self.brandsButton.isHidden = false
+            self.activityIndicator.hideActivityIndicator()
         }
        scrollTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
@@ -46,31 +48,7 @@ class BrandView: UIViewController {
         
     }
     
-    private func setupActivityIndicator() {
-            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(activityIndicator)
-            
-            NSLayoutConstraint.activate([
-                activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            ])
-            
-            activityIndicator.isHidden = true
-        }
     
-    func showActivityIndicator() {
-            UIView.animate(withDuration: 0.3) {
-                self.activityIndicator.isHidden = false
-                self.activityIndicator.startAnimating()
-            }
-        }
-
-        func hideActivityIndicator() {
-            UIView.animate(withDuration: 0.3) {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-            }
-        }
     
     
     func setupNavbar(){

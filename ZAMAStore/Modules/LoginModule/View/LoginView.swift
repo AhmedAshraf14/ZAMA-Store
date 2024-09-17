@@ -13,6 +13,8 @@ class LoginView: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     var viewModel : LoginViewModel!
     var isHiddenEye = true
     
@@ -23,18 +25,21 @@ class LoginView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityIndicator.setupActivityIndicator(in: view)
         setupViewModel()
     }
+    
+    
     
     private func setupViewModel(){
         viewModel.configureGoogleSignIn()
         viewModel.noResult = {error in
+            self.activityIndicator.hideActivityIndicator()
             self.presentAlert(title: "SignIn Error", message: error, buttonTitle: "OK")
         }
         viewModel.navigateForward = {
             
-            
+            self.activityIndicator.hideActivityIndicator()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateInitialViewController()
             initialViewController?.modalPresentationStyle = .fullScreen
@@ -44,6 +49,7 @@ class LoginView: UIViewController {
     }
     
     @IBAction func signinPressed(_ sender: UIButton) {
+        self.activityIndicator.showActivityIndicator()
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty
         else {

@@ -8,6 +8,8 @@
 import UIKit
 
 class CategoriesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
                 // Reset to all products if search text is empty
@@ -31,6 +33,9 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     var viewModel = CategoriesViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.activityIndicator.setupActivityIndicator(in: view)
+        self.activityIndicator.showActivityIndicator()
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         setupFlowLayout()
@@ -46,6 +51,7 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.title="Products"
+        
         if viewModel.isBrand {
             viewModel.getData(param: ["vendor":viewModel.BrandOfDataString])
         }else {
@@ -57,21 +63,9 @@ class CategoriesViewController: UIViewController,UICollectionViewDelegate,UIColl
         segmentGender.selectedSegmentIndex = 3
         viewModel.ReloadCV={
             self.categoriesCollectionView.reloadData()
+            self.activityIndicator.hideActivityIndicator()
         }
-//        if viewModel.isSearching{
-//            self.setupNavbar()
-//        }
     }
-    
-//    func setupNavbar(){
-//        let cartButton = UIBarButtonItem.cartButton(target: self)
-//        let heartButton = UIBarButtonItem.heartButton(target: self)
-//        let searchButton = UIBarButtonItem.searchButton(target: self)
-//        self.tabBarController?.navigationItem.rightBarButtonItems = [heartButton, cartButton]
-//        self.tabBarController?.navigationItem.leftBarButtonItem = searchButton
-//        
-//        self.tabBarController?.navigationItem.searchController = nil
-//    }
     
     func setupSearchNavBar(){
         self.tabBarController?.navigationItem.leftBarButtonItems = []

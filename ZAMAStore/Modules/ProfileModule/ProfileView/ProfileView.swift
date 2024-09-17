@@ -35,7 +35,7 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         switch indexPath.section {
         case 0:
-            (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
+            (cell.viewWithTag(1) as! UILabel).text = "NO Title" /*MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title*/
         default:
             (cell.viewWithTag(1) as! UILabel).text = MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].title ?? "NO Title"
             (cell.viewWithTag(2) as! UILabel).text = "Price : \(MyDraftlist.wishListShared.currentDraftlist?.lineItems?[indexPath.row].price ?? "N/A")"
