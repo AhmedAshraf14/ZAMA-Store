@@ -9,7 +9,11 @@ import Foundation
 struct OrderResponse:Codable{
     var order:Order1
     init(code: String , amount: String){
-        order = Order1(email: MyAccount.shared.currentUser.email, send_receipt: true, send_fulfillment_receipt: true, line_items: MyDraftlist.cartListShared.currentDraftlist?.lineItems ?? [], shipping_address: ShippingAddress.converAddress(add: MyAccount.shared.currentUser.defaultAddress)!, discount_codes: [DiscountCode(code: code, amount: amount)])
+        var code2 = code
+        if code == ""{
+            code2 = "FAKE30"
+        }
+        order = Order1(email: MyAccount.shared.currentUser.email, send_receipt: true, send_fulfillment_receipt: true, line_items: MyDraftlist.cartListShared.currentDraftlist?.lineItems ?? [], shipping_address: ShippingAddress.converAddress(add: MyAccount.shared.currentUser.defaultAddress)!, discount_codes: [DiscountCode(code: code2, amount: amount)])
     }
 }
 struct Order1:Codable{

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlC-Tv-3W3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlC-Tv-3W3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -267,21 +267,37 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5K8-Kk-Usk">
+                                <rect key="frame" x="44.5" y="427.5" width="325" height="50"/>
+                                <color key="backgroundColor" name="mintGreen"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign In">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signInButtonPrssed:" destination="0Ml-5f-Q1u" eventType="touchUpInside" id="Dwu-SP-Y3D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yn6-zz-W6C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5K8-Kk-Usk" firstAttribute="centerX" secondItem="yn6-zz-W6C" secondAttribute="centerX" id="7FP-N0-YVi"/>
                             <constraint firstItem="Lj2-vw-EF4" firstAttribute="top" secondItem="6vO-9O-c2Z" secondAttribute="bottom" constant="10" id="E42-m6-Jlh"/>
                             <constraint firstItem="6vO-9O-c2Z" firstAttribute="centerX" secondItem="3As-we-RT9" secondAttribute="centerX" id="Sjm-ka-s7V"/>
                             <constraint firstItem="Lj2-vw-EF4" firstAttribute="centerX" secondItem="3As-we-RT9" secondAttribute="centerX" id="VkU-eH-jyV"/>
                             <constraint firstItem="Lj2-vw-EF4" firstAttribute="width" secondItem="3As-we-RT9" secondAttribute="width" id="b2d-b5-wEd"/>
                             <constraint firstItem="6vO-9O-c2Z" firstAttribute="top" secondItem="yn6-zz-W6C" secondAttribute="top" constant="24" id="i20-rD-Np1"/>
                             <constraint firstItem="yn6-zz-W6C" firstAttribute="bottom" secondItem="Lj2-vw-EF4" secondAttribute="bottom" constant="10" id="iA4-cT-hTs"/>
+                            <constraint firstItem="5K8-Kk-Usk" firstAttribute="height" secondItem="yn6-zz-W6C" secondAttribute="height" multiplier="0.0693481" id="vSY-b9-K8y"/>
+                            <constraint firstItem="5K8-Kk-Usk" firstAttribute="centerY" secondItem="yn6-zz-W6C" secondAttribute="centerY" id="vki-Cl-1DP"/>
+                            <constraint firstItem="5K8-Kk-Usk" firstAttribute="width" secondItem="yn6-zz-W6C" secondAttribute="width" multiplier="0.785024" id="zDM-O3-wH6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="awp-mj-6Uk"/>
                     <connections>
                         <outlet property="lblName" destination="6vO-9O-c2Z" id="5xR-Ip-jzW"/>
+                        <outlet property="signInButton" destination="5K8-Kk-Usk" id="IxK-Ge-Zp0"/>
                         <outlet property="tableView" destination="Lj2-vw-EF4" id="aiY-D7-glg"/>
                     </connections>
                 </viewController>

@@ -64,7 +64,7 @@ class CheckOutView: UIViewController {
             let newAmount = Double(amount)!
             let newPrice = oldPrice * (newAmount * -1 / 100)
     
-            self.discountLabel.text = "\(newAmount * -1)%"
+            self.discountLabel.text = "\(newAmount * -1) %"
             self.totalPriceLabel.text = String(format: "%.2f", newPrice) + " \(currency?.0 ?? "")"
             self.validateButton.isEnabled = false
         }
@@ -77,7 +77,7 @@ class CheckOutView: UIViewController {
     
     @IBAction func continueToPaymentPressed(_ sender: UIButton) {
         let paymentVC = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
-        paymentVC.viewModel = PayViewModel(discountCode: couponTextField.text ?? "", amount: discountLabel.text!, totalPrice: self.totalPriceLabel.text ?? "")
+        paymentVC.viewModel = PayViewModel(discountCode: couponTextField.text ?? "FAKE30", amount: discountLabel.text ?? "0.0", totalPrice: self.totalPriceLabel.text ?? "")
         self.navigationController?.pushViewController(paymentVC, animated: true)
     }
 }

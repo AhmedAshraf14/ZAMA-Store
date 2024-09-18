@@ -40,9 +40,8 @@ class MyDraftlist{
     }
     
     func deleteWholeDraftOrder(attribute:String,handler:@escaping()->Void){
-        networkService.deleteData(path: "draft_orders/\(currentDraftlist!.id)")
+        networkService.deleteData(path: "draft_orders/\(currentDraftlist!.id)", handler: {})
         currentDraftlist = nil
-        #warning("خلي بالك من الحته ديه")
         MyAccount.shared.putCustomer(draftOrderID: 0,attribute: attribute)
         MyAccount.shared.reloadCustomer {
             if attribute == "note"{
@@ -105,7 +104,7 @@ extension MyDraftlist{
         }
     }
     // using to fix json file when getting data
-    #warning("الفانكشن ديه موجوده هنا و السين ديلجات يبقي حطها ف الجيمنيرال ")
+    
     func settingDraftlist(data:Data,draftList:MyDraftlist){
         do{
             if let dataString = String(data: data, encoding: .utf8){

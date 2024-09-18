@@ -90,6 +90,8 @@
 		E27469CD2C910928008C659F /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27469CC2C910928008C659F /* ReviewsView.swift */; };
 		E27469D12C9112A7008C659F /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27469CF2C9112A7008C659F /* ReviewTableViewCell.swift */; };
 		E27469D22C9112A7008C659F /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E27469D02C9112A7008C659F /* ReviewTableViewCell.xib */; };
+		E27A90B62C9B76DC004A5A97 /* ZAMAStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A90B52C9B76DC004A5A97 /* ZAMAStoreTests.swift */; };
+		E27A90BD2C9B76FE004A5A97 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27A90BC2C9B76FE004A5A97 /* NetworkServiceTests.swift */; };
 		E27E7D552C977B3600337B47 /* ConversionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E7D542C977B3600337B47 /* ConversionResponse.swift */; };
 		E27F2F1E2C9847A600770B52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E27F2F1D2C9847A500770B52 /* GoogleService-Info.plist */; };
 		E28876BE2C934D5B00917C71 /* DraftOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28876BD2C934D5B00917C71 /* DraftOrder.swift */; };
@@ -100,6 +102,16 @@
 		E28876CA2C937D4000917C71 /* MyDraftlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28876C92C937D4000917C71 /* MyDraftlist.swift */; };
 		E2F1529B2C9788BE00BED1B1 /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1529A2C9788BE00BED1B1 /* CurrencyRate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E27A90B72C9B76DC004A5A97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E255DFB92C8657CA006B83D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E255DFC02C8657CA006B83D1;
+			remoteInfo = ZAMAStore;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		316DA46D2C906DAA00FA8177 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
@@ -189,6 +201,9 @@
 		E27469CC2C910928008C659F /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		E27469CF2C9112A7008C659F /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E27469D02C9112A7008C659F /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		E27A90B32C9B76DC004A5A97 /* ZAMAStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZAMAStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E27A90B52C9B76DC004A5A97 /* ZAMAStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZAMAStoreTests.swift; sourceTree = "<group>"; };
+		E27A90BC2C9B76FE004A5A97 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		E27E7D542C977B3600337B47 /* ConversionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionResponse.swift; sourceTree = "<group>"; };
 		E27F2F1D2C9847A500770B52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E28876BD2C934D5B00917C71 /* DraftOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftOrder.swift; sourceTree = "<group>"; };
@@ -207,6 +222,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DAFA7563E8BB0377E72257C /* Pods_ZAMAStore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E27A90B02C9B76DC004A5A97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				E255DFC32C8657CA006B83D1 /* ZAMAStore */,
+				E27A90B42C9B76DC004A5A97 /* ZAMAStoreTests */,
 				E255DFC22C8657CA006B83D1 /* Products */,
 				E6F4E36C0130558BFC8009AA /* Pods */,
 				3C0A100F2C92472200478DF0 /* Recovered References */,
@@ -530,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				E255DFC12C8657CA006B83D1 /* ZAMAStore.app */,
+				E27A90B32C9B76DC004A5A97 /* ZAMAStoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -990,6 +1014,15 @@
 			path = ReviewCell;
 			sourceTree = "<group>";
 		};
+		E27A90B42C9B76DC004A5A97 /* ZAMAStoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				E27A90B52C9B76DC004A5A97 /* ZAMAStoreTests.swift */,
+				E27A90BC2C9B76FE004A5A97 /* NetworkServiceTests.swift */,
+			);
+			path = ZAMAStoreTests;
+			sourceTree = "<group>";
+		};
 		E28876B92C934D2300917C71 /* CartAndWishlistModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1099,24 @@
 			productReference = E255DFC12C8657CA006B83D1 /* ZAMAStore.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E27A90B22C9B76DC004A5A97 /* ZAMAStoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E27A90BB2C9B76DC004A5A97 /* Build configuration list for PBXNativeTarget "ZAMAStoreTests" */;
+			buildPhases = (
+				E27A90AF2C9B76DC004A5A97 /* Sources */,
+				E27A90B02C9B76DC004A5A97 /* Frameworks */,
+				E27A90B12C9B76DC004A5A97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E27A90B82C9B76DC004A5A97 /* PBXTargetDependency */,
+			);
+			name = ZAMAStoreTests;
+			productName = ZAMAStoreTests;
+			productReference = E27A90B32C9B76DC004A5A97 /* ZAMAStoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1078,6 +1129,10 @@
 				TargetAttributes = {
 					E255DFC02C8657CA006B83D1 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					E27A90B22C9B76DC004A5A97 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = E255DFC02C8657CA006B83D1;
 					};
 				};
 			};
@@ -1095,6 +1150,7 @@
 			projectRoot = "";
 			targets = (
 				E255DFC02C8657CA006B83D1 /* ZAMAStore */,
+				E27A90B22C9B76DC004A5A97 /* ZAMAStoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1120,6 +1176,13 @@
 				318545A42C876F0B0067C820 /* BrandCollectionViewCell.xib in Resources */,
 				E255E0052C8659DB006B83D1 /* Main3.storyboard in Resources */,
 				E28876C82C934FB600917C71 /* WishlistCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E27A90B12C9B76DC004A5A97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,7 +1313,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E27A90AF2C9B76DC004A5A97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E27A90BD2C9B76FE004A5A97 /* NetworkServiceTests.swift in Sources */,
+				E27A90B62C9B76DC004A5A97 /* ZAMAStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E27A90B82C9B76DC004A5A97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E255DFC02C8657CA006B83D1 /* ZAMAStore */;
+			targetProxy = E27A90B72C9B76DC004A5A97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E255DFCA2C8657CA006B83D1 /* Main.storyboard */ = {
@@ -1449,6 +1529,42 @@
 			};
 			name = Release;
 		};
+		E27A90B92C9B76DC004A5A97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ZAMAStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZAMAStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZAMAStore";
+			};
+			name = Debug;
+		};
+		E27A90BA2C9B76DC004A5A97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ZAMAStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZAMAStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZAMAStore";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1466,6 +1582,15 @@
 			buildConfigurations = (
 				E255DFD62C8657CC006B83D1 /* Debug */,
 				E255DFD72C8657CC006B83D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E27A90BB2C9B76DC004A5A97 /* Build configuration list for PBXNativeTarget "ZAMAStoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E27A90B92C9B76DC004A5A97 /* Debug */,
+				E27A90BA2C9B76DC004A5A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

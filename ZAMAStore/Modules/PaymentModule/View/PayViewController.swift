@@ -66,7 +66,7 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
     }
 
     @IBAction func cardBtnAction(_ sender: UIButton) {
-        cardCircle.image=UIImage(systemName: "circle\(sender.tag == 1 ? ".fill" : "")")
+        //cardCircle.image=UIImage(systemName: "circle\(sender.tag == 1 ? ".fill" : "")")
         appleCircle.image=UIImage(systemName: "circle\(sender.tag == 2 ? ".fill" : "")")
         cashCircle.image=UIImage(systemName: "circle\(sender.tag == 3 ? ".fill" : "")")
         selectedPay = sender.tag

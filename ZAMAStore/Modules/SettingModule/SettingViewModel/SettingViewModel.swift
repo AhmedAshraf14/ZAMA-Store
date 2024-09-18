@@ -90,7 +90,7 @@ extension SettingViewModel{
     }
     
     func deleteAddress(index:Int){
-        networkService.deleteData1(path: "customers/\(customer!.id)/addresses/\(customer!.addresses![index].id!)"){
+        networkService.deleteData(path: "customers/\(customer!.id)/addresses/\(customer!.addresses![index].id!)"){
             self.reloadUser()
         }
         

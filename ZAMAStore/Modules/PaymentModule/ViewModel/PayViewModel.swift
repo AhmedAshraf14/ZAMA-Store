@@ -27,7 +27,7 @@ class PayViewModel{
     
     
     func pushOrder(){
-        amount = amount.replacingOccurrences(of: "%", with: "")
+        amount = amount.replacingOccurrences(of: " %", with: "")
         print(amount)
         let order = OrderResponse(code: discountCode, amount: amount)
         let jsonObj = try? JSONEncoder().encode(order)
