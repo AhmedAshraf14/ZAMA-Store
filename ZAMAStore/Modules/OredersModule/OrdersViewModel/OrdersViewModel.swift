@@ -9,7 +9,6 @@ import Foundation
 
 class OrdersViewModell{
     var bindResultToViewController: (()->()) = {}
-    //var helper:NetworkServiceProtocol
     var orders: [Order] = []
     
     func formatDateStringToNumbers(_ dateString: String) -> String? {

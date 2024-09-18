@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="3391.304347826087" y="-253.125"/>
         </scene>
-        <!--Tab Bar-->
+        <!--Tab Bar Controller-->
         <scene sceneID="ODQ-nT-g4c">
             <objects>
-                <tabBarController storyboardIdentifier="MYTabBar" automaticallyAdjustsScrollViewInsets="NO" id="fLe-PC-cpI" customClass="MYTabBar" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MYTabBar" automaticallyAdjustsScrollViewInsets="NO" id="fLe-PC-cpI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xyc-ZY-g4b"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="nLr-dy-txY">

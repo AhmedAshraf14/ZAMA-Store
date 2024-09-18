@@ -6,12 +6,7 @@
 //
 
 import Foundation
-/*
- let parameters: [String: Any] = [
-     "discount_code": [
-         "price_rule_id": 507328175,
-         "code": "AhmedAsh",
- */
+
 struct DiscountResponse:Codable{
      var discountCode:[DiscountModel] = []
     

@@ -66,16 +66,5 @@ class CartCell: UITableViewCell {
         
         
     }
-    /*
-     let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath) as! CartCell
-     cell.viewModel=CartCellViewModel(lineItem:viewModel.draftOrders[indexPath.row] , index: indexPath.row)
-     cell.setupImage(imageUrl: viewModel.products[indexPath.row].image.src)
-     cell.lblTitle.text = viewModel.products[indexPath.row].title
-     cell.lblPrice.text = "Price : \(viewModel.products[indexPath.row].variants[0].price)"
-     cell.lblVendor.text = "Vendor : \(viewModel.products[indexPath.row].vendor)"
-     cell.lblCount.text = "\(viewModel.draftOrders[indexPath.row].quantity)"
-     cell.stepperQuantity.value = Double(viewModel.draftOrders[indexPath.row].quantity)
-     cell.viewModel=CartCellViewModel(lineItem: viewModel.draftOrders[indexPath.row], index: indexPath.row)
-     */
     
 }

@@ -24,7 +24,7 @@ class ProfileView: UIViewController,UITableViewDelegate,UITableViewDataSource {
             activityIndicator.showActivityIndicator()
             lblName.text = "Welcome \(viewModel.currentUser.firstName!)"
             viewModel.getOrders()
-            //tableView.reloadData()
+            
             viewModel.reloadTv = {
                 self.tableView.reloadData()
                 self.activityIndicator.hideActivityIndicator()

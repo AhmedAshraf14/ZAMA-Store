@@ -21,15 +21,15 @@ class DiscountCell: UICollectionViewCell {
     func showLbl(){
         copiedCode.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
 
-            // Animate: Scale up and fade in
+     
             UIView.animate(withDuration: 1.0, animations: {
                 self.copiedCode.alpha = 1.0  // Fade in
-                self.copiedCode.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)  // Grow to normal size
+                self.copiedCode.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }) {[weak self] _ in
-                // After 1 second, scale down and fade out
+                
                 UIView.animate(withDuration: 1.0, animations: {
-                    self?.copiedCode.alpha = 0.0  // Fade out
-                    self?.copiedCode.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)  // Shrink back down
+                    self?.copiedCode.alpha = 0.0
+                    self?.copiedCode.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
                 })
             }
     }

@@ -6,20 +6,6 @@
 //
 
 import Foundation
-/*
- let parameters: [String: Any] = [
-     "price_rule": [
-         "title": "B@SETDiscount",
-         "target_type": "line_item",  // Fixed the typo here
-         "target_selection": "all",
-         "allocation_method": "across",
-         "value_type": "fixed_amount",
-         "value": "-100.0",  // Assuming Shopify expects a positive value
-         "customer_selection": "all",
-         "starts_at": "2017-01-19T17:59:10Z"
-     ]
- ]
- */
 
 // MARK: - New
 struct PriceRuleResponse: Codable {
