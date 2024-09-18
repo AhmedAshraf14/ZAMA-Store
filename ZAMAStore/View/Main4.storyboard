@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Credit View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CreditViewController" id="Y6W-OH-hqX" customClass="CreditViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUu-kv-g7h">
+                                <rect key="frame" x="0.0" y="108" width="393" height="212"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOd-xC-eLO">
+                                        <rect key="frame" x="8" y="8" width="377" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartQuotesType="no" textContentType="cc-number"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3R0-8r-TE3">
+                                        <rect key="frame" x="8" y="139" width="377" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="cc-given-name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UwF-DU-61O">
+                                        <rect key="frame" x="8" y="65" width="125" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="cc-exp"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-CY-JSc">
+                                        <rect key="frame" x="170" y="65" width="152" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="cc-csc"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="creditcard.trianglebadge.exclamationmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nlh-Lr-LNX">
+                                        <rect key="frame" x="339" y="13" width="36" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wrongwaysign.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uxS-qq-F7Z">
+                                        <rect key="frame" x="101" y="74" width="25" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="secondaryLightGrey"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardHolder" destination="3R0-8r-TE3" id="XaR-Gu-DQM"/>
+                        <outlet property="cardView" destination="KUu-kv-g7h" id="lgc-xR-U5L"/>
+                        <outlet property="imgCredit" destination="Nlh-Lr-LNX" id="R2o-PL-k8e"/>
+                        <outlet property="txtCVV" destination="zNm-CY-JSc" id="qYh-tC-QCA"/>
+                        <outlet property="txtCardNum" destination="VOd-xC-eLO" id="dOf-Qh-nw4"/>
+                        <outlet property="txtexpireDate" destination="UwF-DU-61O" id="iPf-Nd-fx7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="3.5211267605633805"/>
+        </scene>
+        <!--Pay View Controller-->
+        <scene sceneID="Fxv-Vi-ZQa">
+            <objects>
+                <viewController storyboardIdentifier="PayViewController" id="m6c-b6-AFe" customClass="PayViewController" customModule="ZAMAStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oCZ-Zq-rh6">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P91-gm-oY1">
+                                <rect key="frame" x="0.0" y="109" width="393" height="219"/>
+                                <subviews>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-qk-08I">
+                                        <rect key="frame" x="0.0" y="78" width="401" height="65"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Apple Pay">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="baseForegroundColor" name="mintGreen"/>
+                                            <color key="baseBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cardBtnAction:" destination="m6c-b6-AFe" eventType="touchUpInside" id="pZh-y5-4dg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bz-ui-fpq">
+                                        <rect key="frame" x="0.0" y="153" width="393" height="66"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Cash on delivery">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="baseForegroundColor" name="mintGreen"/>
+                                            <color key="baseBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cardBtnAction:" destination="m6c-b6-AFe" eventType="touchUpInside" id="q6n-jr-8Zt"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QUm-WM-00D">
+                                        <rect key="frame" x="347" y="171" width="46" height="31"/>
+                                        <color key="tintColor" name="mintGreen"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Bz5-gS-gl2">
+                                        <rect key="frame" x="347" y="95.333333333333343" width="46" height="31"/>
+                                        <color key="tintColor" name="mintGreen"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="secondaryLightGrey"/>
+                                <constraints>
+                                    <constraint firstItem="HX3-qk-08I" firstAttribute="top" secondItem="P91-gm-oY1" secondAttribute="top" constant="78" id="0oP-sc-8Qf"/>
+                                    <constraint firstItem="6Bz-ui-fpq" firstAttribute="top" secondItem="P91-gm-oY1" secondAttribute="top" constant="153" id="8aJ-Pk-IkH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bz5-gS-gl2" secondAttribute="trailing" id="A7r-6m-62o"/>
+                                    <constraint firstItem="Bz5-gS-gl2" firstAttribute="height" secondItem="HX3-qk-08I" secondAttribute="height" multiplier="0.497436" id="FXg-cZ-Tkp"/>
+                                    <constraint firstItem="HX3-qk-08I" firstAttribute="leading" secondItem="P91-gm-oY1" secondAttribute="leading" id="Mxe-2Q-mOr"/>
+                                    <constraint firstItem="HX3-qk-08I" firstAttribute="height" secondItem="P91-gm-oY1" secondAttribute="height" multiplier="0.296804" id="Za4-cJ-2bq"/>
+                                    <constraint firstItem="HX3-qk-08I" firstAttribute="width" secondItem="P91-gm-oY1" secondAttribute="width" multiplier="1.02036" id="c5Q-ll-nj0"/>
+                                    <constraint firstItem="Bz5-gS-gl2" firstAttribute="centerY" secondItem="HX3-qk-08I" secondAttribute="centerY" id="f5o-Ph-WO5"/>
+                                    <constraint firstItem="QUm-WM-00D" firstAttribute="height" secondItem="6Bz-ui-fpq" secondAttribute="height" multiplier="0.489899" id="fjP-KP-3OT"/>
+                                    <constraint firstItem="6Bz-ui-fpq" firstAttribute="width" secondItem="P91-gm-oY1" secondAttribute="width" id="gEV-GZ-f5v"/>
+                                    <constraint firstItem="QUm-WM-00D" firstAttribute="width" secondItem="6Bz-ui-fpq" secondAttribute="width" multiplier="0.117048" id="kk8-nN-eVh"/>
+                                    <constraint firstItem="6Bz-ui-fpq" firstAttribute="leading" secondItem="P91-gm-oY1" secondAttribute="leading" id="pDP-of-n2Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="QUm-WM-00D" secondAttribute="trailing" id="qnJ-Pt-cg1"/>
+                                    <constraint firstItem="QUm-WM-00D" firstAttribute="centerY" secondItem="6Bz-ui-fpq" secondAttribute="centerY" id="r90-SU-K6N"/>
+                                    <constraint firstItem="Bz5-gS-gl2" firstAttribute="width" secondItem="HX3-qk-08I" secondAttribute="width" multiplier="0.114713" id="ve0-Hk-4jb"/>
+                                    <constraint firstItem="6Bz-ui-fpq" firstAttribute="height" secondItem="P91-gm-oY1" secondAttribute="height" multiplier="0.30137" id="zbZ-LU-nVQ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JcH-WC-xIp">
+                                <rect key="frame" x="24.666666666666657" y="712" width="344" height="56"/>
+                                <color key="tintColor" name="mintGreen"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm Payment">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="23"/>
+                                    <color key="baseBackgroundColor" name="mintGreen"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="FinishPayBtn:" destination="m6c-b6-AFe" eventType="touchUpInside" id="qqY-GV-zt5"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91N-GH-xTg">
+                                <rect key="frame" x="0.0" y="359" width="393" height="319"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-u2-LLk">
+                                        <rect key="frame" x="8" y="-5.9999999999999716" width="377" height="331"/>
+                                        <color key="tintColor" name="mintGreen"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="qD6-u2-LLk" firstAttribute="centerX" secondItem="91N-GH-xTg" secondAttribute="centerX" id="0Zi-vx-8Lu"/>
+                                    <constraint firstItem="qD6-u2-LLk" firstAttribute="height" secondItem="91N-GH-xTg" secondAttribute="height" multiplier="1.03344" id="8WO-Iz-dkR"/>
+                                    <constraint firstItem="qD6-u2-LLk" firstAttribute="centerY" secondItem="91N-GH-xTg" secondAttribute="centerY" id="bdd-Ur-98Z"/>
+                                    <constraint firstItem="qD6-u2-LLk" firstAttribute="width" secondItem="91N-GH-xTg" secondAttribute="width" multiplier="0.959288" id="iyH-Xt-vuf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tkC-Nu-kiZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="91N-GH-xTg" firstAttribute="width" secondItem="P91-gm-oY1" secondAttribute="width" id="33u-PS-7yS"/>
+                            <constraint firstItem="JcH-WC-xIp" firstAttribute="width" secondItem="oCZ-Zq-rh6" secondAttribute="width" multiplier="0.875318" id="5C3-y3-dQg"/>
+                            <constraint firstItem="tkC-Nu-kiZ" firstAttribute="bottom" secondItem="JcH-WC-xIp" secondAttribute="bottom" constant="50" id="Kf1-Ew-1Fb"/>
+                            <constraint firstItem="91N-GH-xTg" firstAttribute="height" secondItem="P91-gm-oY1" secondAttribute="height" multiplier="1.45662" id="U1j-JE-kkQ"/>
+                            <constraint firstItem="91N-GH-xTg" firstAttribute="centerX" secondItem="P91-gm-oY1" secondAttribute="centerX" id="Wdz-Jb-3vU"/>
+                            <constraint firstItem="P91-gm-oY1" firstAttribute="leading" secondItem="tkC-Nu-kiZ" secondAttribute="leading" id="XD8-6f-9ge"/>
+                            <constraint firstItem="P91-gm-oY1" firstAttribute="height" secondItem="oCZ-Zq-rh6" secondAttribute="height" multiplier="0.257042" id="eph-9l-m2q"/>
+                            <constraint firstItem="JcH-WC-xIp" firstAttribute="height" secondItem="oCZ-Zq-rh6" secondAttribute="height" multiplier="0.0657277" id="lo2-E7-FAq"/>
+                            <constraint firstItem="P91-gm-oY1" firstAttribute="top" secondItem="tkC-Nu-kiZ" secondAttribute="top" constant="50" id="nTF-j5-pO9"/>
+                            <constraint firstItem="91N-GH-xTg" firstAttribute="top" secondItem="P91-gm-oY1" secondAttribute="top" constant="250" id="nYd-Eb-FXF"/>
+                            <constraint firstItem="JcH-WC-xIp" firstAttribute="centerX" secondItem="tkC-Nu-kiZ" secondAttribute="centerX" id="vLS-eM-DRm"/>
+                            <constraint firstItem="P91-gm-oY1" firstAttribute="width" secondItem="oCZ-Zq-rh6" secondAttribute="width" id="y15-OL-KKf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appleCircle" destination="Bz5-gS-gl2" id="9G9-R8-Euf"/>
+                        <outlet property="btnApple" destination="HX3-qk-08I" id="AqN-2f-5IU"/>
+                        <outlet property="btnPayPal" destination="6Bz-ui-fpq" id="in0-MN-R4S"/>
+                        <outlet property="cashCircle" destination="QUm-WM-00D" id="7T0-nD-TZG"/>
+                        <outlet property="imgViewFinish" destination="qD6-u2-LLk" id="Pux-8Q-Fn2"/>
+                        <outlet property="view2" destination="91N-GH-xTg" id="AkY-YK-NN1"/>
+                        <outlet property="viewPayMethod" destination="P91-gm-oY1" id="baA-ne-h3S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8by-w8-rNS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.95419847328242" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark.seal" catalog="system" width="128" height="124"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="creditcard.trianglebadge.exclamationmark.fill" catalog="system" width="128" height="82"/>
+        <image name="wrongwaysign.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="mintGreen">
+            <color red="0.40200001001358032" green="0.76700001955032349" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryLightGrey">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

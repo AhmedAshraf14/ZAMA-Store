@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscountCell" id="gTV-IL-0wX" customClass="DiscountCell" customModule="ZAMAStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sale1" translatesAutoresizingMaskIntoConstraints="NO" id="zRV-ZA-WyP">
+                        <rect key="frame" x="0.0" y="0.0" width="381" height="208"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code Copied" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7E-ae-yRL">
+                        <rect key="frame" x="125.5" y="89.5" width="130" height="43"/>
+                        <color key="backgroundColor" name="lightGrey"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" name="mintGreen"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zRV-ZA-WyP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3b3-y8-ZYW"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.206731" id="4pc-l9-dXb"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="LRR-ju-ON7"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="NBj-n4-OWs"/>
+                <constraint firstItem="z7E-ae-yRL" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.341207" id="O6n-Ib-Obj"/>
+                <constraint firstItem="zRV-ZA-WyP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f9k-ay-JgZ"/>
+                <constraint firstAttribute="bottom" secondItem="zRV-ZA-WyP" secondAttribute="bottom" id="fSx-dP-0gY"/>
+                <constraint firstAttribute="trailing" secondItem="zRV-ZA-WyP" secondAttribute="trailing" id="sld-Eo-E4Z"/>
+            </constraints>
+            <size key="customSize" width="381" height="208"/>
+            <connections>
+                <outlet property="copiedCode" destination="z7E-ae-yRL" id="M9r-Yl-wYX"/>
+                <outlet property="imgBC" destination="zRV-ZA-WyP" id="ija-8I-s2b"/>
+            </connections>
+            <point key="canvasLocation" x="119.56521739130436" y="75"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sale1" width="6912" height="3456"/>
+        <namedColor name="lightGrey">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mintGreen">
+            <color red="0.40200001001358032" green="0.76700001955032349" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
