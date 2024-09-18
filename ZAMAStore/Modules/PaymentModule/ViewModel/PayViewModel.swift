@@ -14,14 +14,22 @@ class PayViewModel{
     var networkService:NetworkServiceProtocol
     var errorResult : ((String)->Void) = {str in }
     var showSucessView:()->Void = {}
+    var discountCode : String
+    var amount : String
+    var totalPrice : String
     
-    init(){
-        networkService=NetworkService()
+    init(discountCode: String, amount: String, totalPrice: String) {
+        self.networkService = NetworkService()
+        self.discountCode = discountCode
+        self.amount = amount
+        self.totalPrice = totalPrice
     }
     
     
     func pushOrder(){
-        let order = OrderResponse()
+        amount = amount.replacingOccurrences(of: "%", with: "")
+        print(amount)
+        let order = OrderResponse(code: discountCode, amount: amount)
         let jsonObj = try? JSONEncoder().encode(order)
                 let dic = try? JSONSerialization.jsonObject(with: jsonObj!, options: [])
                 let dic2 = dic as? [String:Any]

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -90,8 +90,8 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egD-Mk-Kse">
                                         <rect key="frame" x="0.0" y="8" width="393" height="62"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Pay with Card">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Credit/Debit Card">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="baseForegroundColor" name="mintGreen"/>
                                             <color key="baseBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         </buttonConfiguration>
@@ -100,10 +100,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-qk-08I">
-                                        <rect key="frame" x="-8" y="78" width="401" height="65"/>
+                                        <rect key="frame" x="0.0" y="78" width="401" height="65"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Pay with Apple Pay">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Apple Pay">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="baseForegroundColor" name="mintGreen"/>
                                             <color key="baseBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         </buttonConfiguration>
@@ -115,7 +115,7 @@
                                         <rect key="frame" x="0.0" y="153" width="393" height="66"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Cash on delivery">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="baseForegroundColor" name="mintGreen"/>
                                             <color key="baseBackgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         </buttonConfiguration>
@@ -145,7 +145,7 @@
                                     <constraint firstItem="6Bz-ui-fpq" firstAttribute="top" secondItem="P91-gm-oY1" secondAttribute="top" constant="153" id="8aJ-Pk-IkH"/>
                                     <constraint firstItem="egD-Mk-Kse" firstAttribute="height" secondItem="P91-gm-oY1" secondAttribute="height" multiplier="0.283105" id="BNA-nv-5t7"/>
                                     <constraint firstItem="egD-Mk-Kse" firstAttribute="width" secondItem="P91-gm-oY1" secondAttribute="width" id="Maq-8A-FjV"/>
-                                    <constraint firstItem="HX3-qk-08I" firstAttribute="leading" secondItem="P91-gm-oY1" secondAttribute="leading" constant="-8" id="Mxe-2Q-mOr"/>
+                                    <constraint firstItem="HX3-qk-08I" firstAttribute="leading" secondItem="P91-gm-oY1" secondAttribute="leading" id="Mxe-2Q-mOr"/>
                                     <constraint firstItem="HX3-qk-08I" firstAttribute="height" secondItem="P91-gm-oY1" secondAttribute="height" multiplier="0.296804" id="Za4-cJ-2bq"/>
                                     <constraint firstItem="HX3-qk-08I" firstAttribute="width" secondItem="P91-gm-oY1" secondAttribute="width" multiplier="1.02036" id="c5Q-ll-nj0"/>
                                     <constraint firstItem="egD-Mk-Kse" firstAttribute="leading" secondItem="P91-gm-oY1" secondAttribute="leading" id="erS-qW-2ly"/>
@@ -159,7 +159,10 @@
                                 <rect key="frame" x="24.666666666666657" y="712" width="344" height="56"/>
                                 <color key="tintColor" name="mintGreen"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Confirm Payment"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm Payment">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="23"/>
+                                    <color key="baseBackgroundColor" name="mintGreen"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="FinishPayBtn:" destination="m6c-b6-AFe" eventType="touchUpInside" id="qqY-GV-zt5"/>
                                 </connections>
@@ -230,10 +233,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

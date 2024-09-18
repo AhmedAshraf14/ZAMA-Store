@@ -78,8 +78,8 @@ class BrandView: UIViewController {
 extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == discountCollectionView){
-            pageControl.numberOfPages = viewModel.DiscountArray.count
-            return viewModel.DiscountArray.count
+            pageControl.numberOfPages = viewModel.PriceRuleArray.count
+            return viewModel.PriceRuleArray.count
         }
         return viewModel.brandsArray.count
     }
@@ -129,7 +129,7 @@ extension BrandView : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             let cell = collectionView.cellForItem(at: indexPath) as! DiscountCell
             cell.showLbl()
             let pasteboard = UIPasteboard.general
-            pasteboard.string = viewModel.DiscountArray[indexPath.row].code
+            pasteboard.string = viewModel.PriceRuleArray[indexPath.row].title
         } else {
             let vc = tabBarController?.viewControllers![1] as! CategoriesViewController
             vc.viewModel.isBrand = true

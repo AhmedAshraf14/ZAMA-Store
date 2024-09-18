@@ -12,8 +12,8 @@ class CheckOutView: UIViewController {
     @IBOutlet weak var couponTextField: UITextField!
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var totalTax: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var validateButton: UIButton!
     var viewModel : CheckOutViewModel!
     
     required init?(coder: NSCoder) {
@@ -25,12 +25,11 @@ class CheckOutView: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         viewModel.getOrder()
+        couponTextField.addTarget(self, action: #selector(editTF), for: .editingChanged)
         let currency = self.viewModel?.getCurrency()
-        self.discountLabel.text = "0.00" + " \(currency?.0 ?? "")"
         viewModel.renderData = {
             var convertedSubPrice = 0.0
             var convertedTotalPrice = 0.0
-            var convertedTotalTax = 0.0
             if let subTotalPriceString = self.viewModel.currentOrder?.subTotalPrice,
                let subTotalPrice = Double(subTotalPriceString),
                let totalPriceString = self.viewModel.currentOrder?.totalPrice,
@@ -39,22 +38,46 @@ class CheckOutView: UIViewController {
                let totalTax = Double(totalTaxString){
                 
                 convertedSubPrice = subTotalPrice * (currency?.1 ?? 1.0)
-                convertedTotalPrice = totalPrice * (currency?.1 ?? 1.0)
-                convertedTotalTax = totalTax * (currency?.1 ?? 1.0)
+                convertedTotalPrice = (totalPrice - totalTax) * (currency?.1 ?? 1.0)
+                //convertedTotalTax = totalTax * (currency?.1 ?? 1.0)
             }
             self.subTotalPriceLabel.text = String(format: "%.2f", convertedSubPrice) + " \(currency?.0 ?? "")"
             self.totalPriceLabel.text = String(format: "%.2f", convertedTotalPrice) + " \(currency?.0 ?? "")"
-            self.totalTax.text = String(format: "%.2f", convertedTotalTax) + " \(currency?.0 ?? "")"
+            self.discountLabel.text = "0.0 %"
+        }
+        
+        viewModel.errorResult = {error in
+            self.presentAlert(title: "Warning", message: error, buttonTitle: "OK")
         }
         
         
     }
     
     @IBAction func validatePressed(_ sender: UIButton) {
+        viewModel.getPriceRules {
+            self.viewModel.checkCoupon(code: self.couponTextField.text ?? "")
+        }
+        viewModel.validCode = { amount in
+            let currency = self.viewModel?.getCurrency()
+            let oldPriceString = self.totalPriceLabel.text?.replacingOccurrences(of: " EGP", with: "").replacingOccurrences(of: " EUR", with: "").replacingOccurrences(of: " USD", with: "")
+            let oldPrice = Double(oldPriceString!)!
+            let newAmount = Double(amount)!
+            let newPrice = oldPrice * (newAmount * -1 / 100)
+    
+            self.discountLabel.text = "\(newAmount * -1)%"
+            self.totalPriceLabel.text = String(format: "%.2f", newPrice) + " \(currency?.0 ?? "")"
+            self.validateButton.isEnabled = false
+        }
+    }
+    
+    @objc func editTF(){
+        viewModel.renderData()
+        self.validateButton.isEnabled = true
     }
     
     @IBAction func continueToPaymentPressed(_ sender: UIButton) {
         let paymentVC = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
+        paymentVC.viewModel = PayViewModel(discountCode: couponTextField.text ?? "", amount: discountLabel.text!, totalPrice: self.totalPriceLabel.text ?? "")
         self.navigationController?.pushViewController(paymentVC, animated: true)
     }
 }
@@ -78,5 +101,10 @@ extension CheckOutView : UITableViewDelegate, UITableViewDataSource{
         return 80
     }
     
+    
+}
+
+
+extension CheckOutView : UITextFieldDelegate{
     
 }

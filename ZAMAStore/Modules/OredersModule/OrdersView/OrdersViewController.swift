@@ -22,6 +22,10 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         ordersTableView.dataSource = self
         let nib = UINib(nibName: "OrdersTableViewCell", bundle: nil)
         ordersTableView.register(nib, forCellReuseIdentifier: "OrdersTableViewCell")
+        self.title = "Your orders"
+        if viewModel.orders.count == 0 {
+            ordersTableView.isHidden = true
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,9 +52,6 @@ class OrdersViewController: UIViewController, UITableViewDataSource, UITableView
         return 150
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Your orders"
-    }
   
 
 }

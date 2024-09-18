@@ -11,6 +11,9 @@ class CheckOutViewModel{
     var currentOrder = MyDraftlist.cartListShared.currentDraftlist
     var networkService : NetworkServiceProtocol!
     var renderData : (()->Void) = {}
+    var validCode : ((String)->Void) = {amount in}
+    var PriceRuleArray : [PriceRule] = []
+    var errorResult : ((String)-> Void) = {error in}
     var items : [LineItem] = MyDraftlist.cartListShared.currentDraftlist?.lineItems ?? []
     init() {
         self.networkService = NetworkService()
@@ -21,24 +24,28 @@ class CheckOutViewModel{
         MyDraftlist.cartListShared.reloadCart {
             self.renderData()
         }
-//        networkService.getDraftOrders(path: "draft_orders/\(draftOrderID ?? 0)", parameters: [:]) { data, error in
-//            if let data = data{
-//                do {
-//                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-//                    let fixedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-//                    
-//                    let draftOrder = try JSONDecoder().decode(DraftOrderResponseModel.self, from: fixedJsonData)
-//                    self.currentOrder = draftOrder.draftOrder
-//                    self.renderData!()
-//                } catch {
-//                    print("Error decoding draft list: \(error.localizedDescription)")
-//                }
-//            }
-//        }
+        
+    }
+    
+    func getPriceRules(handler: @escaping (()->Void)){
+        networkService.getData(path: "price_rules", parameters: [:], model: PriceRuleResponse.self) { data, error in
+            if let data = data {
+                self.PriceRuleArray = data.priceRules
+                handler()
+            }else {
+                self.errorResult("Error in connection")
+            }
+        }
     }
     
     func checkCoupon(code:String){
-        
+        for ruleCode in PriceRuleArray {
+            if code == ruleCode.title {
+                self.validCode(ruleCode.value ?? "0")
+                return
+            }
+        }
+        self.errorResult("Not Valid Coupon")
     }
     
     func getCurrency()->(String,Double){

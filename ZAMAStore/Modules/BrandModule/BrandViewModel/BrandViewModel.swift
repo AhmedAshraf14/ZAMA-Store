@@ -31,11 +31,8 @@ class BrandsViewModel {
         nwService.getData(path: "smart_collections", parameters: [:], model: BrandsResponse.self) { data, error in
             if let data = data {
                 self.brandsArray = data.smartCollections!
-                print("--------------")
-                print(data.smartCollections)
             } else {
-                print("ziad")
-                print(error?.localizedDescription)
+                print("error")
             }
         }
     }
@@ -57,6 +54,7 @@ class BrandsViewModel {
             }
         }
     }
+    
     
     
 

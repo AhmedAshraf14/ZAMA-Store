@@ -24,7 +24,7 @@ class PayViewController: UIViewController, PKPaymentAuthorizationViewControllerD
     @IBOutlet weak var btnCard: UIButton!
     @IBOutlet weak var btnApple: UIButton!
     @IBOutlet weak var viewPayMethod: UIView!
-    var viewModel:PayViewModel=PayViewModel()
+    var viewModel:PayViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         //View SetUp
@@ -87,7 +87,7 @@ extension PayViewController{
         request.currencyCode = UserDefaults.standard.string(forKey: "currency") ?? "EGP" // put you currency
     }
     func payWithApplePay(){
-        let amount = viewModel.cart.currentDraftlist?.totalPrice // order toatal amoun
+        let amount = viewModel.totalPrice// order toatal amoun
         paymentRequest.paymentSummaryItems = [PKPaymentSummaryItem(label: "Cart Order", amount: NSDecimalNumber(string: amount ))]
             
             let controller = PKPaymentAuthorizationViewController(paymentRequest: paymentRequest)

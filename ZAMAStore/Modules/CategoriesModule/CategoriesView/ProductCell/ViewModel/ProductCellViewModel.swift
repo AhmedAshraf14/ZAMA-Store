@@ -50,7 +50,10 @@ class ProductCellViewModel{
     }
     
     func putCartDraftOrder(){
-        for myproduct in cartDraftOrder.currentDraftlist!.lineItems{
+        guard let list = cartDraftOrder.currentDraftlist?.lineItems else{
+            return
+        }
+        for myproduct in list{
             if(myproduct.productID == product.id){
                 self.showError()
                 return
