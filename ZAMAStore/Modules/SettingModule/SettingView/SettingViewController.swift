@@ -94,9 +94,9 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text=viewModel.customer?.addresses![indexPath.row].address1
-        cell.detailTextLabel?.text=viewModel.customer?.addresses![indexPath.row].address2
-        if(viewModel.customer!.addresses![indexPath.row].addressDefault){
+        cell.textLabel?.text=viewModel.customer?.addresses?[indexPath.row].address1
+        cell.detailTextLabel?.text=viewModel.customer?.addresses?[indexPath.row].address2
+        if((viewModel.customer!.addresses?[indexPath.row].addressDefault) != nil){
             cell.backgroundColor = .mintGreen
         }else{
             cell.backgroundColor = .lightGrey

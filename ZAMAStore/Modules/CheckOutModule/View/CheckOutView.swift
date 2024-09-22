@@ -77,7 +77,7 @@ class CheckOutView: UIViewController {
     
     @IBAction func continueToPaymentPressed(_ sender: UIButton) {
         let paymentVC = UIStoryboard(name: "Main4", bundle: nil).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
-        paymentVC.viewModel = PayViewModel(discountCode: couponTextField.text ?? "FAKE30", amount: discountLabel.text ?? "0.0", totalPrice: self.totalPriceLabel.text ?? "")
+        paymentVC.viewModel = PayViewModel(discountCode: couponTextField.text ?? "NO_Descount", amount: discountLabel.text ?? "0.0", totalPrice: self.totalPriceLabel.text ?? "")
         self.navigationController?.pushViewController(paymentVC, animated: true)
     }
 }

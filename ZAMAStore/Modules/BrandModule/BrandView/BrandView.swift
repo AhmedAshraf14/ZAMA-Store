@@ -35,7 +35,7 @@ class BrandView: UIViewController {
             self.brandsButton.isHidden = false
             self.activityIndicator.hideActivityIndicator()
         }
-        scrollTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
+        
         let nib = UINib(nibName: "BrandCollectionViewCell", bundle: nil)
         homeCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         let nib2 = UINib(nibName: "DiscountCell", bundle: nil)
@@ -46,6 +46,10 @@ class BrandView: UIViewController {
         super.viewWillAppear(animated)
         setupNavbar()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(discountSlider), userInfo: nil, repeats: true)
     }
     
     

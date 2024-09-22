@@ -74,14 +74,15 @@ extension UIViewController{
         self.navigationController?.pushViewController(favVC, animated: true)
     }
     @objc func navigateToSearchList() {
-        if type(of: self) == BrandView.self{
+        if (type(of: self) == BrandView.self || type(of: self) == ProfileView.self){
             let currentVC = tabBarController?.viewControllers![1] as! CategoriesViewController
             //currentVC.viewModel.isSearching = true
             currentVC.setupSearchNavBar()
             self.tabBarController!.selectedIndex = 1
         }else{
-            let currentVC = tabBarController?.selectedViewController as! CategoriesViewController
-            currentVC.setupSearchNavBar()
+            
+            let currentVC = tabBarController?.selectedViewController as? CategoriesViewController
+            currentVC?.setupSearchNavBar()
         }
     }
     @objc func navigateToSetting() {

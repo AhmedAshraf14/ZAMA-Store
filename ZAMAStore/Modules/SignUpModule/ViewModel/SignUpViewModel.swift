@@ -65,7 +65,7 @@ class SignUpViewModel{
             ]
             self?.networkService.postData(path: "customers", parameters: paramater, postFlag: true) { [weak self]result, error in
                 if let error = error{
-                    self?.noResult(error.localizedDescription)
+                    self?.noResult("phone already registerd for another account")
                 }else {
                     self?.navigate()
                 }

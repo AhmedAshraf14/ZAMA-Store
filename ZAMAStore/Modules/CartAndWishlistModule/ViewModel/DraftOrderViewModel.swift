@@ -73,6 +73,9 @@ class DraftOrderViewModel{
     }
     
     func getCurrency()->(String,Double){
-        return (UserDefaults.standard.string(forKey: "currency")!,UserDefaults.standard.double(forKey: "rate"))
+        if UserDefaults.standard.double(forKey: "rate") == 0{
+            return (UserDefaults.standard.string(forKey: "currency") ?? "EGP",1)
+        }
+        return (UserDefaults.standard.string(forKey: "currency") ?? "EGP",UserDefaults.standard.double(forKey: "rate"))
     }
 }

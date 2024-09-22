@@ -12,6 +12,7 @@ class AddressViewModel{
     let networkService:NetworkServiceProtocol
     let user = MyAccount.shared.currentUser
     var isShow=false
+    var navigateBack:()->Void = {}
     init() {
         networkService = NetworkService()
         address=AddressResponse()
@@ -34,7 +35,7 @@ class AddressViewModel{
         networkService.postData(path: "customers/\(MyAccount.shared.currentUser.id)/addresses", parameters: dic2!, postFlag: true) { data, error in
             
             MyAccount.shared.reloadCustomer {
-                
+                self.navigateBack()
             }
         }
     }

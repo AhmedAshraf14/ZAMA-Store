@@ -98,8 +98,9 @@ class LoginViewModel {
         let parameters = ["query": "email:\(authResult.user.email ?? "N/A")"]
         
         networkService.getData(path: "customers/search", parameters: parameters, model: CustomersResponse.self) { [weak self] result, error in
-            if let result = result {
-                self?.handleExistingGoogleCustomer(result: result)
+            if result != nil && result?.customers.count != 0 {
+                print(result!.customers)
+                self?.handleExistingGoogleCustomer(result: result!)
             } else {
                 self?.createNewGoogleCustomer(authResult: authResult)
             }
@@ -119,7 +120,8 @@ class LoginViewModel {
                 "first_name": authResult.user.displayName ?? "N/A",
                 "last_name": authResult.user.displayName ?? "N/A",
                 "email": authResult.user.email ?? "N/A",
-                "phone": "01000000001",
+                "phone": authResult.user.phoneNumber ?? "",
+                
                 "addresses": [],
                 "password": "",
                 "password_confirmation": "",
